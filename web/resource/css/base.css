@@ -1,0 +1,363 @@
+    :root {
+  --primary-color: #fd5631;
+  /* màu của icon */
+  --selector: #c93cfb;
+
+  --primary-color-hover: #fd390e;
+  /* (màu của chữ nổi bật như H1, tiêu đề, h2…). */
+  --text-bold: #1f1b2d;
+  --text-header: #454056;
+  /* (màu của chữ bình thường). */
+  --text-color: #666276;
+  /* (màu của những chữ thêm thông tin phụ đi kèm), icon color */
+  --text-sub-color: #9691a4;
+  --text-footer: #FFFFFFA6;
+  --header-height: 69.83px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  /* font-size: 62.5%; */
+  line-height: 1.6rem;
+  font-family: "Noto Sans", sans-serif !important;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Noto Sans", sans-serif !important;
+}
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+a:hover {
+  color: var(--primary-color);
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+  /* margin: 0px; */
+  margin: 0;
+}
+.form-control:focus {
+  border-color: var(--primary-color-hover) !important;
+  box-shadow: 0 0 0 0.2rem rgba(253, 86, 49, 0.5);
+}
+input.form-control {
+  color: var(--text-color) !important;
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes slide-up {
+  from {
+    transform: translateY(0.5rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  from {
+    transform: translateY(0.5rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* fron chữ cho dòng, được responsive.................................... */
+h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+@media (min-width: 1200px) {
+  h1,
+  .h1 {
+    font-size: 2.5rem;
+  }
+}
+h2,
+.h2 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+@media (min-width: 1200px) {
+  h2,
+  .h2 {
+    font-size: 2rem;
+  }
+}
+h3,
+.h3 {
+  font-size: calc(1.3rem + 0.6vw);
+}
+@media (min-width: 1200px) {
+  h3,
+  .h3 {
+    font-size: 1.75rem;
+  }
+}
+h4,
+.h4 {
+  font-size: calc(1.275rem + 0.3vw);
+}
+@media (min-width: 1200px) {
+  h4,
+  .h4 {
+    font-size: 1.5rem;
+  }
+}
+h5,
+.h5 {
+  font-size: 1.25rem;
+}
+h6,
+.h6 {
+  font-size: 1.125rem;
+}
+/*------------------------------------
+- CHANGE COLOR primary BUTTON BOOTSTRAP TO màu cam của mình
+link: https://lingtalfi.com/bootstrap4-color-generator#
+------------------------------------*/
+:root {
+  --primary_t1: #fd5631;
+  --primary_t2: #f82f02;
+  --primary_t3: #fed6cd;
+  --primary_t4: #feebe6;
+  --primary_t5: #b12101;
+  --primary_t6: #e92c02;
+  --primary_t7: #fc380d;
+  --primary_t8: #7f1801;
+  --primary_t9: #fefbfb;
+
+  --primary_shadow: rgba(253, 86, 49, 0.5);
+  --primary_text_color_dark_bright: #fff;
+}
+
+.alert-primary {
+  color: var(--primary_t5);
+  background-color: var(--primary_t9);
+  border-color: var(--primary_t4);
+}
+
+.alert-primary hr {
+  border-top-color: var(--primary_t3);
+}
+
+.alert-primary .alert-link {
+  color: var(--primary_t8);
+}
+
+.badge-primary {
+  color: var(--primary_text_color_dark_bright);
+  background-color: var(--primary_t1);
+}
+
+.badge-primary[href]:hover,
+.badge-primary[href]:focus {
+  color: var(--primary_text_color_dark_bright);
+  background-color: var(--primary_t2);
+}
+
+.bg-primary {
+  background-color: var(--primary_t1) !important;
+}
+
+a.bg-primary:hover,
+a.bg-primary:focus,
+button.bg-primary:hover,
+button.bg-primary:focus {
+  background-color: var(--primary_t2) !important;
+}
+
+.border-primary {
+  border-color: var(--primary_t1) !important;
+}
+
+.btn-primary {
+  color: var(--primary_text_color_dark_bright);
+  background-color: var(--primary_t1);
+  border-color: var(--primary_t1);
+}
+
+.btn-primary:hover {
+  color: var(--primary_text_color_dark_bright);
+  background-color: var(--primary_t7);
+  border-color: var(--primary_t2);
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem var(--primary_shadow);
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: var(--primary_text_color_dark_bright);
+  background-color: var(--primary_t1);
+  border-color: var(--primary_t1);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: var(--primary_text_color_dark_bright);
+  background-color: var(--primary_t2);
+  border-color: var(--primary_t6);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem var(--primary_shadow);
+}
+
+.btn-outline-primary {
+  color: var(--primary_t1);
+  background-color: transparent;
+  border-color: var(--primary_t1);
+}
+
+.btn-outline-primary:hover {
+  color: var(--primary_text_color_dark_bright);
+  background-color: var(--primary_t1);
+  border-color: var(--primary_t1);
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+  box-shadow: 0 0 0 0.2rem var(--primary_shadow);
+}
+
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled {
+  color: var(--primary_t1);
+  background-color: transparent;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: var(--primary_text_color_dark_bright);
+  background-color: var(--primary_t1);
+  border-color: var(--primary_t1);
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem var(--primary_shadow);
+}
+
+.list-group-item-primary {
+  color: var(--primary_t5);
+  background-color: var(--primary_t4);
+}
+
+.list-group-item-primary.list-group-item-action:hover,
+.list-group-item-primary.list-group-item-action:focus {
+  color: var(--primary_t5);
+  background-color: var(--primary_t3);
+}
+
+.list-group-item-primary.list-group-item-action.active {
+  color: var(--primary_text_color_dark_bright);
+  background-color: var(--primary_t5);
+  border-color: var(--primary_t5);
+}
+
+.table-primary,
+.table-primary > th,
+.table-primary > td {
+  background-color: var(--primary_t4);
+}
+
+.table-hover .table-primary:hover {
+  background-color: var(--primary_t3);
+}
+
+.table-hover .table-primary:hover > td,
+.table-hover .table-primary:hover > th {
+  background-color: var(--primary_t3);
+}
+
+.text-primary {
+  color: var(--primary_t1) !important;
+}
+
+a.text-primary:hover,
+a.text-primary:focus {
+  color: var(--primary_t2) !important;
+}
+
+/* foooter  */
+.footer-bg-dark {
+  background-color: var(--text-bold);
+}
+.input-group{
+  color: rgba(255,255,255,.04) !important;
+}
+.input-group-text{
+  background-color: rgba(255,255,255,.04) !important;
+  border: none;
+}
+.form-group-light{
+  display: flex;
+  border-color: rgba(255,255,255,.15) !important;
+  /* background-color: rgba(255,255,255,.04) !important; */
+
+}
+.form-control-light{
+  /* border-color: rgba(255,255,255,.15) !important; */border: none;
+  background-color: rgba(255,255,255,.04) !important;
+  width: auto;
+  color: #fff;
+  width: calc(100% - 40px);
+}
+.nav-link-light {
+  font-size: 0.875rem;
+  color: var(--text-footer);
+  /* font-weight: 600; */
+}
+.text-footer-header {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.btn-translucent-light {
+  background-color: #ffffff0a;
+}
+.btn-translucent-light i {
+  color: #fff;
+}
+.btn-translucent-light:hover {
+  transition: all 0.25s linear 0s;
+  background-color: #fff;
+}
+.btn-translucent-light:hover i {
+  transition: all 0.25s linear 0s;
+  color: var(--primary-color);
+}
+/* foooter  */
+#general-container{
+    position: relative;
+    top: var(--header-height);
+}

@@ -1,0 +1,193 @@
+.header-text {
+  font-weight: 600 !important;
+  color: var(--text-header) !important;
+}
+.header-text:hover {
+  color: var(--primary-color) !important;
+}
+.header-text--active {
+  color: var(--primary-color) !important;
+}
+.header-text--active:hover {
+  color: var(--primary-color-hover) !important;
+}
+.dropdown-menu {
+  border: 1px solid #efecf3;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+    0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);
+}
+.notification-text-name h3 {
+  color: var(--text-bold);
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.dropdown-item-noti {
+  position: relative;
+  width: 100%;
+  min-width: 200px;
+  color: var(--text-color);
+}
+.disable-text {
+  color: var(--text-sub-color) !important;
+}
+@media (min-width: 991.98px) {
+  .dropdown-item-noti {
+    position: relative;
+    width: 100%;
+    min-width: 360px;
+    color: var(--text-color);
+  }
+}
+.dropdown-menu > li > a {
+  white-space: normal;
+}
+.dropdown-item-noti-username {
+  font-weight: 600 !important;
+  color: var(--text-header);
+}
+.dropdown-item-noti:hover .dropdown-item-noti-product-title {
+  color: var(--primary-color);
+}
+.dropdown-item-noti-product-title {
+  color: var(--text-header);
+  font-weight: 600;
+}
+
+.dropdown-menu-end {
+  left: auto;
+  right: 0;
+  /* margin-top: 0.5rem; */
+  max-height: 90vh;
+  overflow-y: scroll;
+  z-index: 999;
+}
+@media (max-width: 991.98px) {
+  .dropdown-menu-end {
+    left: auto;
+    right: 0;
+    /* margin-top: 0.5rem; */
+    /* max-height: 100vh; */
+    /* đã ổn */
+    max-height: 250px;
+    overflow-y: scroll;
+    z-index: 999;
+    /* background-color: #e7f218; */
+  }
+  .username--overflow {
+    overflow-y: scroll;
+    /* max-height: 90vh; */
+  }
+}
+.dropdown-menu-end::before {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: -20px;
+  width: 100px;
+  height: 20px;
+  /* background-color: var(--primary-color) !important; */
+  z-index: 9999;
+}
+.dropdown:hover .dropdown-menu-end {
+  display: block;
+  /* -webkit-animation:fade-in .25s ease-in-out;
+  animation:fade-in .25s ease-in-out */
+  -webkit-animation: slide-up 0.25s ease-in-out;
+  animation: slide-up 0.25s ease-in-out;
+}
+.dropdown:hover .bell-hover {
+  display: block !important;
+  animation: slide-up 0.25s ease-in-out;
+}
+.dropdown:hover .bell-normal {
+  display: none !important;
+}
+.username--overflow {
+  overflow-y: unset;
+  max-height: 90vh;
+}
+.dropdown-username-text {
+  color: var(--text-header) !important;
+  font-weight: 600 !important;
+}
+.dropdown-user-sub-text {
+  font-size: 0.875rem !important;
+  line-height: 0.875rem !important;
+  color: var(--text-sub-color);
+}
+.dropdown-user-icon {
+  font-size: 0.875rem !important;
+}
+.dropdown-user-text {
+  font-size: 0.875rem !important;
+  color: var(--text-color) !important;
+  margin-left: 0.5rem;
+}
+.dropdown-user-item:hover span {
+  color: var(--primary-color) !important;
+}
+.dropdown-item:active {
+  background-color: #fff !important;
+}
+.dropdown-item:focus,
+.dropdown-item:focus span {
+  /* background-color: var(--primary-color) !important; */
+  color: var(--primary-color);
+}
+.dropdown-item:focus .badge {
+  /* background-color: var(--primary-color) !important; */
+  color: #fff;
+}
+.dropdown-item:focus .normal {
+  color: var(--text-color) !important;
+}
+.time-request {
+  font-size: 0.75rem;
+  color: #1876f2;
+  font-weight: 600;
+}
+.not-seen {
+  background-color: #e9ecef;
+}
+.not-seen::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #1876f2;
+  position: absolute;
+  border-radius: 50%;
+  top: 0;
+  left: 90%;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* Customized scroll bar for notification */
+.dropdown-menu-end::-webkit-scrollbar,
+.username--overflow::-webkit-scrollbar {
+  padding-top: 20px;
+  width: 8px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+/* Track */
+.dropdown-menu-end::-webkit-scrollbar-track,
+.username--overflow::-webkit-scrollbar-track {
+  color: var(--text-sub-color);
+  padding-top: 20px;
+}
+
+/* Handle */
+.dropdown-menu-end::-webkit-scrollbar-thumb,
+.username--overflow::-webkit-scrollbar-thumb {
+  background: var(--text-sub-color);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.dropdown-menu-end::-webkit-scrollbar-thumb:hover,
+.username--overflow::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color);
+}

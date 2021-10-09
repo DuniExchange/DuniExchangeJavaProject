@@ -1,0 +1,15 @@
+#avatar-display{
+    background-color: red;
+}
+#information-display{
+    background-color: blue;
+}
+#function-display{
+    background-color: green;
+}
+
+.something{
+    background-color: yellow;
+    height: 200px;
+    width: 200px; 
+}
