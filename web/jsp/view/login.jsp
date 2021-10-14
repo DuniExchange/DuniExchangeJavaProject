@@ -1,3 +1,10 @@
+<%-- 
+    Document   : login
+    Created on : Oct 14, 2021, 11:38:07 PM
+    Author     : truon
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +14,12 @@
     <title>Đăng ký</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="/DuniExchange/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="resource/css/styleLog.css">
+    <link rel="stylesheet" href="/DuniExchange/resource/css/styleLog.css">
     <!-- base.css -->
-    <link rel="stylesheet" href="resource/css/base.css">
+    <link rel="stylesheet" href="/DuniExchange/resource/css/base.css">
     <!-- noto sans font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,8 +62,8 @@
                         </form>
                     </div>
                     <div class="signup-image">
-                        <figure><img src="resource/img/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="register.html" class="signup-image-link">Tôi đã có tài khoản</a>
+                        <figure><img src="/DuniExchange/resource/img/signup-image.jpg" alt="sing up image"></figure>
+                        <a href="register.jsp" class="signup-image-link">Tôi đã có tài khoản</a>
                     </div>
                 </div>
             </div>
@@ -65,7 +72,7 @@
 
 
     <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+    <!--<script src="/DuniExchange/vendor/jquery/jquery.min.js"></script>-->
+    <!--<script src="/DuniExchange/js/main.js"></script>-->
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
