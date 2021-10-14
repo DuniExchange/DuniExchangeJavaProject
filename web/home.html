@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- font awsomwe -->
+  <link rel="stylesheet" href="resource/font-awesome-pro-master/css/all.min.css">
+  <!-- bootstrap 5 -->
+  <link rel="stylesheet" href="framework/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+
+  <!-- base.css -->
+  <link rel="stylesheet" href="resource/css/base.css">
+  <!-- noto sans font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <!-- header css -->
+  <link rel="stylesheet" href="resource/css/header.css">
+  <!-- home css -->
+  <link rel="stylesheet" href="resource/css/home.css">
+
+  <!-- tiny slider -->
+  <link rel="stylesheet" href="node_modules/tiny-slider/dist/tiny-slider.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img style="width: 160px; height: auto" src="resource/img/logo.png"
+          alt="DuniExchange Logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item ">
+            <a class="nav-link header-text header-text--active" aria-current="page" href="#">Home Page</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link header-text" href="#">All Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link header-text" href="#">Exchanged Product</a>
+          </li>
+          <!-- <li class="nav-item dropdown" >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="overflow-y: scroll;">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+
+                </ul>
+              </li> -->
+          <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li> -->
+          <li class="nav-item">
+            <a class="nav-link header-text" href="#">About Us</a>
+          </li>
+        </ul>
+        <form class="d-flex" action="#">
+          <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <div class="d-inline-flex align-items-center" style="height: 100%;">
+              <a class="nav-link px-0 py-0 ms-lg-4 me-lg-2 mt-lg-0 mb-lg-0 ms-0 mt-3 mb-2" href="#" id="navbarDropdown"
+                role="button">
+                <!-- <i class="fas fa-bell-on  fa-lg"></i> -->
+                <!-- <i class="fal fa-bell fa-lg"></i> -->
+                <span class="bell-hover d-none" style="color: var(--text-color);">
+                  <i class="fad fa-bell fa-lg"></i>
+                </span>
+                <span class="bell-normal" style="color: var(--text-color);">
+                  <i class="fal fa-bell fa-lg"></i>
+                </span>
+              </a>
+            </div>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <div class="dropdown-item notification-text-name">
+                <h3 class="mb-0">Notifications</h3>
+              </div>
+              <div class="dropdown-divider w-75 ms-auto me-auto"
+                style="background-color: var(--text-color) !important;"></div>
+              <!-- thông báo request sản phẩm đổi -->
+              <li class="dropdown-item-noti not-seen"><a class="dropdown-item" href="#" style="z-index: 1;">
+                  <div class=""
+                    onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">
+                    <span class="dropdown-item-noti-username">Nhật Quang LNN</span>
+                    <span class="normal"> wants to exchange </span>
+                    <span class="dropdown-item-noti-product-title">Chiếc áo phông sặc sỡ này</span>
+                    <span class="normal"> for </span>
+                    <span class="dropdown-item-noti-product-title">Bí kíp pass môn FPT</span>
+                    <span class="normal"> with you.</span>
+                  </div>
+                  <div class="time-request"
+                    onclick="window.location.href ='https://fontawesome.com/v5.15/icons/bell?style=duotone'">10 hours
+                    ago</div>
+                  <div class="mt-2">
+                    <button type="button" onclick="window.location.href = 'https://www.facebook.com/'"
+                      class="btn btn-success btn-sm">Accept Exchange</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm">Deny Exchange</button>
+                  </div>
+                </a>
+              </li>
+              <!-- hết thời gian đổi do user 2 đã đổi hoặc user 1 đã đổi sảm phẩm đó -->
+              <li class="dropdown-item-noti "><a class="dropdown-item" href="#">
+                  <div class="disable-text">
+                    <span class="dropdown-item-noti-username disable-text">Nhật Quang LNN</span>
+                    <span class="normal"> wants to exchange </span>
+                    <span class="dropdown-item-noti-product-title disable-text">Bộ sách làm giàu</span>
+                    <span class="normal"> for </span>
+                    <span class="dropdown-item-noti-product-title disable-text">Chiếc máy tính cũ</span>
+                    <span class="normal"> with you.</span>
+                  </div>
+                  <div class="mt-2">
+                    <button type="button" class="btn btn-warning btn-sm" disabled>Request Expired</button>
+                  </div>
+                </a>
+              </li>
+              <!-- thông báo đã đổi -->
+              <li class="dropdown-item-noti"><a class="dropdown-item" href="#">
+                  <div class="">
+                    <span class="normal"> You're agreed to exchange </span>
+                    <span class="dropdown-item-noti-product-title">Người yêu cũ</span>
+                    <span class="normal"> for </span>
+                    <span class="dropdown-item-noti-product-title">Bí kíp pass môn FPT</span>
+                    <span class="normal"> with</span>
+                    <span class="dropdown-item-noti-username">Mạnh Khôi</span>
+                    <span class="badge bg-primary">Agreed</span>
+                  </div>
+                  <div class="time-request">20 minutes ago</div>
+                </a>
+              </li>
+              <!-- request exchange and chờ xử lý -->
+              <li class="dropdown-item-noti"><a class="dropdown-item" href="#">
+                  <div class="">
+                    <span class="normal"> You requested to exchange </span>
+                    <span class="dropdown-item-noti-product-title">Chiếc áo phông sặc sỡ này</span>
+                    <span class="normal"> for </span>
+                    <span class="dropdown-item-noti-product-title">Laptop cũ ba đời</span>
+                    <span class="normal"> with</span>
+                    <span class="dropdown-item-noti-username">Mạnh Khôi</span>
+                    <span class="badge bg-info">Waiting...</span>
+                  </div>
+                  <div class="time-request">1 minutes ago</div>
+                </a>
+              </li>
+              <!-- request exchange and hết hạn, không còn tồn tại -->
+              <li class="dropdown-item-noti"><a class="dropdown-item" href="#">
+                  <div class="disable-text">
+                    <span class="normal"> You requested to exchange </span>
+                    <span class="dropdown-item-noti-product-title disable-text">Chiếc áo phông sặc sỡ này</span>
+                    <span class="normal"> for </span>
+                    <span class="dropdown-item-noti-product-title disable-text">Laptop cũ ba đời</span>
+                    <span class="normal"> with</span>
+                    <span class="dropdown-item-noti-username disable-text">Mạnh Khôi</span>
+                  </div>
+                  <div class="mt-2">
+                    <button type="button" class="btn btn-warning btn-sm" disabled>Request Expired</button>
+                  </div>
+                </a>
+              </li>
+              <!-- bạn từ chối -->
+              <li class="dropdown-item-noti"><a class="dropdown-item" href="#">
+                  <div class="">
+                    <span class="normal"> You refused to exchange </span>
+                    <span class="dropdown-item-noti-product-title">Chiếc áo phông sặc sỡ này</span>
+                    <span class="normal"> for </span>
+                    <span class="dropdown-item-noti-product-title">Laptop cũ ba đời</span>
+                    <span class="badge bg-secondary">Refused</span>
+                  </div>
+                  <div class="time-request">15 hours ago</div>
+                </a>
+              </li>
+              <!-- họ từ chối bạn-->
+              <li class="dropdown-item-noti"><a class="dropdown-item" href="#">
+                  <div class="">
+                    <span class="dropdown-item-noti-username">Mạnh Khôi</span>
+                    <span class="normal">refused to exchange</span>
+                    <span class="dropdown-item-noti-product-title">Chiếc áo phông sặc sỡ này</span>
+                    <span class="normal"> for </span>
+                    <span class="dropdown-item-noti-product-title">Laptop cũ ba đời</span>
+                    <span class="normal"> with you.</span>
+                    <span class="badge bg-danger">Refused</span>
+                  </div>
+                  <div class="time-request">15 hours ago</div>
+                </a>
+              </li>
+              <li class="dropdown-item-noti"><a class="dropdown-item" href="#">
+                  <div class="">
+                    <span class="dropdown-item-noti-username">Mạnh Khôi</span>
+                    <span class="normal">refused to exchange</span>
+                    <span class="dropdown-item-noti-product-title">Chiếc áo phông sặc sỡ này</span>
+                    <span class="normal"> for </span>
+                    <span class="dropdown-item-noti-product-title">Laptop cũ ba đời</span>
+                    <span class="normal"> with you.</span>
+                    <span class="badge bg-danger">Refused</span>
+                  </div>
+                  <div class="time-request">15 hours ago</div>
+                </a>
+              </li>
+              <hr class="dropdown-divider">
+          </li>
+        </ul>
+        <!-- <li class="nav-item ">
+                <a class="nav-link px-0 py-0 ms-lg-3 me-lg-2 mt-lg-0 mb-lg-0 ms-0 mt-3 mb-2" href="#" > -->
+        <!-- image auto have object-fit : cover  -->
+        <!-- <img class="rounded-circle" width="40px" height="40px" alt="" src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="Nhat Quang">
+                </a>
+              </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link px-0 py-0 ms-lg-3 me-lg-2 mt-lg-0 mb-lg-0 ms-0 mt-3 mb-2" href="#" id="navbarDropdown"
+            role="button">
+            <img class="rounded-circle" width="40px" height="40px" alt=""
+              src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="Nhat Quang">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end mt-2 username--overflow" aria-labelledby="navbarDropdown">
+            <div class="d-flex px-3 py-1 mb-2">
+              <img class="rounded-circle" width="48px" height="48px" alt=""
+                src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="Nhat Quang">
+              <div class=" ps-2">
+                <div class="dropdown-username-text">Nhat Quang</div>
+                <div>
+                  <span style="color: #fdbc31;">
+                    <i class="fas fa-star fa-xs"></i>
+                  </span>
+                  <span style="color: #fdbc31;">
+                    <i class="fas fa-star fa-xs"></i>
+                  </span>
+                  <span style="color: #fdbc31;">
+                    <i class="fas fa-star fa-xs"></i>
+                  </span>
+                  <span style="color: #fdbc31;">
+                    <i class="fas fa-star fa-xs"></i>
+                  </span>
+                  <span style="color: #fdbc31;">
+                    <i class="fas fa-star fa-xs"></i>
+                  </span>
+                  <div class="dropdown-user-sub-text d-inline">
+                    <small>(433)</small>
+                  </div>
+                </div>
+                <div class="py-2 dropdown-user-sub-text">
+                  <small class="d-block">(+84) 034 393 4215</small>
+                  <small>quanglnnde150066@fpt.edu.vn</small>
+                </div>
+              </div>
+            </div>
+            <hr class="dropdown-divider" style="color: var(--text-sub-color) !important;">
+            <li class="dropdown-user-item">
+              <a class="dropdown-item " href="#">
+                <span style="color: var(--text-sub-color);" class="dropdown-user-icon">
+                  <i class="fal fa-user"></i>
+                </span>
+                <span class="dropdown-user-text ">Personal Information</span>
+              </a>
+            </li>
+            <li class="dropdown-user-item">
+              <a class="dropdown-item" href="#">
+                <span style="color: var(--text-sub-color);" class="dropdown-user-icon">
+                  <i class="fal fa-heart"></i>
+                </span>
+                <span class="dropdown-user-text">My Favorites</span>
+              </a>
+            </li>
+            <li class="dropdown-user-item">
+              <a class="dropdown-item" href="#">
+                <span style="color: var(--text-sub-color);" class="dropdown-user-icon">
+                  <i class="fal fa-archive"></i>
+                </span>
+                <span class="dropdown-user-text">My Product</span>
+              </a>
+            </li>
+            <li class="dropdown-user-item">
+              <a class="dropdown-item " href="#">
+                <span style="color: var(--text-sub-color);" class="dropdown-user-icon">
+                  <i class="fal fa-star"></i>
+                </span>
+                <span class="dropdown-user-text">My Reviews</span>
+              </a>
+            </li>
+            <div class="dropdown-divider w-75 ms-auto me-auto" style="color: var(--text-sub-color) !important;"></div>
+            <li class="dropdown-user-item">
+              <a class="dropdown-item" href="#">
+                <span class="dropdown-user-text ms-0">Help</span>
+              </a>
+            </li>
+            <li class="dropdown-user-item">
+              <a class="dropdown-item" href="#">
+                <span class="dropdown-user-text ms-0">Sign out</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- <li class="nav-item header-text--active">
+            <a class="nav-link" href="#">
+              <div class="header-text header-text--active">
+                <span style="color: var(--primary-color);" class="">
+                  <i class="fas fa-sign-in"></i>
+                </span>
+                <span class="">Sign in</span>
+              </div>
+            </a>
+          </li> -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- end header -->
+  <!-- section landing image -->
+  <section class="landing container py-5 mt-5" style="background-color: #fff;">
+    <div class="row align-items-center mt-md-2 d-flex">
+      <div class="reveal-right-landing col-lg-7 order-lg-2 mb-lg-0 mb-4 pb-2 pb-lg-0">
+        <img src="resource/img/landingimg-4.png" alt="" class="d-block mx-auto img-fluid" width="80%">
+        <!-- <img src="resource/img/3075752.jpg" alt="" class="d-block mx-auto img-fluid" width="80%"> -->
+
+      </div>
+      <div class="col-lg-5 order-lg-1 pe-lg-0">
+        <h1 class="reveal-left-landing text-center text-lg-start mb-4 landing-title">Start <span
+            class="landing-title--active"
+            onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">Exchange</span>
+          <br class="d-lg-block d-none">around the World
+        </h1>
+        <p class="reveal-left-landing-text text-lg-start text-center mb-4 mb-lg-8 fs-lg landing-title-sub-text">Connect
+          friends from all over the
+          world, exchange your favorite items with just a few simple steps.</p>
+        <div class="text-lg-start text-center reveal-up-landing-button">
+          <button class="btn btn-primary btn-lg d-lg-block d-none ">Start exploring now!</button>
+          <button class="btn btn-primary d-lg-none">Start exploring now!</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end section landing image -->
+  <!-- start a category -->
+  <section class="container pb-5 mt-5 mb-lg-3 d-flex reveal-up-landing-button" style="flex-wrap: wrap">
+    <a class=" category-bg-blue d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+      0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-tshirt"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">Woman's fashion</h3>
+    </a>
+    <a class=" category-bg-yellow d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+      0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-tshirt"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">Woman's fashion</h3>
+    </a>
+    <a class=" category-bg-primary d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+    0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-tshirt"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">Woman</h3>
+    </a>
+    <a class=" category-bg-green d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+      0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-tshirt"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">Woman's fashion</h3>
+    </a>
+    <a class=" category-bg-yellow d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+      0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-tshirt"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">Woman's fashion</h3>
+    </a>
+    <a class=" category-bg-blue d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+    0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-ellipsis-h"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">More</h3>
+    </a>
+  </section>
+  <!-- start how it work -->
+  <section class="how-it-work container pb-5 mt-5 mb-lg-3">
+    <div class="row text-center mb-5 pb-lg-3">
+      <small class="reveal-section-sub-title text-sub-title-section mb-2">Exchange now!</small>
+      <h2 class="reveal-section-title text-title-section">How we works</h2>
+    </div>
+    <div class="how-it-work-all-item">
+      <div style="width: 190px;" class="reveal-hiw-1 d-inline-block how-it-work-img">
+        <img src="resource/img/post your product.png" alt="" width="190" class=" mb-4">
+        <div class="how-it-work-step text-center my-auto mx-auto"> <span>01<br>STEP</span></div>
+        <div class="text-center how-it-work-guideline">Post Your Items</div>
+      </div>
+      <span class="reveal-hiw-1 how-it-work-arrow d-none d-md-flex"><img src="resource/img/arrow-up-2.png" alt=""
+          width="85"></span>
+      <div style="width: 190px;" class="reveal-hiw-2 d-inline-block how-it-work-img">
+        <img src="resource/img/requestanexchange.png" alt="" width="190" class=" mb-4">
+        <div class="how-it-work-step text-center my-auto mx-auto"> <span>02<br>STEP</span></div>
+        <div class="text-center how-it-work-guideline">Request an Exchange</div>
+      </div>
+      <div class="reveal-hiw-2 how-it-work-arrow d-none d-xl-flex"><img src="resource/img/arrow-down.png" alt=""
+          width="85"></div>
+      <div class="break"></div>
+      <div style="width: 190px;" class="reveal-hiw-3 d-inline-block how-it-work-img">
+        <img src="resource/img/waitforaceeptance.png" alt="" width="190" class=" mb-4">
+        <div class="how-it-work-step text-center my-auto mx-auto"> <span>03<br>STEP</span></div>
+        <div class="text-center how-it-work-guideline">Wait for Acceptance</div>
+      </div>
+      <div class="reveal-hiw-3 how-it-work-arrow d-none d-lg-flex"><img src="resource/img/arrow-up-2.png" alt=""
+          width="85"></div>
+      <div class="reveal-hiw-3 how-it-work-arrow d-none d-md-flex d-lg-none"><img src="resource/img/arrow-down.png"
+          alt="" width="85"></div>
+      <div style="width: 190px;" class="reveal-hiw-4 d-inline-block how-it-work-img">
+        <img src="resource/img/exchangeandenjoy-2.png" style="-webkit-transform: scaleX(-1);transform: scaleX(-1);"
+          alt="" width="190" class=" mb-4">
+        <div class="how-it-work-step text-center my-auto mx-auto"> <span>04<br>STEP</span></div>
+        <div class="text-center how-it-work-guideline">Exchange and Enjoy</div>
+      </div>
+  </section>
+  <!-- star latest post -->
+  <section class="container ">
+    <div class="row text-center mb-2 pb-lg-3 align-items-center justify-content-between">
+      <h2 class="text-title text-start d-inline mb-0" style="width: auto">The Latest Post</h2>
+      <div class="view-all">
+        <a href="#">View all
+          <span>
+            <i class="far fa-long-arrow-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12 latest-post-product mb-md-4"
+        onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">
+        <div class="latest-post-img-cover">
+          <img src="resource/img/product-img/dam-ngu-tre-em.jpg" alt="" class="img-fluid">
+          <a href="#"><button class="like-button btn">
+              <span style="margin-top: 2px;">
+                <i class="far fa-heart"></i>
+              </span>
+            </button></a>
+        </div>
+        <div class="latest-product-content">
+          <h3 class="latest-post-title mt-2 mb-0"><span class="latest-post-username">Uyên Trang</span> muốn đổi <span
+              class="latest-post-product-name"></span> Váy ngủ trẻ em xinh xắn </h3>
+          <p class="latest-post-description">Chiếc váy trẻ em còn rất mới, phù hợp với mọi lứa tuổi, nay tôi muốn đổi
+          </p>
+          <ul class="list-description">
+            <li class="list-description-item">
+              <span><i class="far fa-eye"></i></span>
+              <span>348</span>
+            </li>
+            <li class="list-description-item">
+              <span><i class="far fa-clock"></i></span>
+              <span>15 minutes ago</span>
+            </li>
+            <li class="list-description-item">
+              <span><i class="far fa-tshirt"></i></span>
+              <span>Women's fashion</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12 latest-post-product mb-md-4"
+        onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">
+        <div class="latest-post-img-cover">
+          <img src="resource/img/product-img/dam-ngu-tre-em.jpg" alt="" class="img-fluid">
+          <a href="https://www.facebook.com/"><button class="like-button btn">
+              <span style="margin-top: 2px;">
+                <i class="far fa-heart"></i>
+              </span>
+            </button></a>
+        </div>
+        <div class="latest-product-content">
+          <h3 class="latest-post-title mt-2 mb-0"><span class="latest-post-username">Uyên Trang</span> muốn đổi <span
+              class="latest-post-product-name"></span> Váy ngủ trẻ em xinh xắn </h3>
+          <p class="latest-post-description">Chiếc váy trẻ em còn rất mới, phù hợp với mọi lứa tuổi, nay tôi muốn đổi
+          </p>
+          <ul class="list-description">
+            <li class="list-description-item">
+              <span><i class="far fa-eye"></i></span>
+              <span>348</span>
+            </li>
+            <li class="list-description-item">
+              <span><i class="far fa-clock"></i></span>
+              <span>15 minutes ago</span>
+            </li>
+            <li class="list-description-item">
+              <span><i class="far fa-tshirt"></i></span>
+              <span>Women's fashion</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 latest-post-product mb-md-4"
+        onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">
+        <div class="latest-post-img-cover">
+          <img src="resource/img/product-img/dam-ngu-tre-em.jpg" alt="" class="img-fluid">
+          <a href="https://www.facebook.com/"><button class="like-button btn">
+              <span style="margin-top: 2px;">
+                <i class="far fa-heart"></i>
+              </span>
+            </button></a>
+        </div>
+        <div class="latest-product-content">
+          <h3 class="latest-post-title mt-2 mb-0"><span class="latest-post-username">Uyên Trang</span> muốn đổi <span
+              class="latest-post-product-name"></span> Váy ngủ trẻ em xinh xắn </h3>
+          <p class="latest-post-description">Chiếc váy trẻ em còn rất mới, phù hợp với mọi lứa tuổi, nay tôi muốn đổi
+          </p>
+          <ul class="list-description">
+            <li class="list-description-item">
+              <span><i class="far fa-eye"></i></span>
+              <span>348</span>
+            </li>
+            <li class="list-description-item">
+              <span><i class="far fa-clock"></i></span>
+              <span>15 minutes ago</span>
+            </li>
+            <li class="list-description-item">
+              <span><i class="far fa-tshirt"></i></span>
+              <span>Women's fashion</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12 latest-post-product mb-md-4 d-lg-none"
+        onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">
+        <div class="latest-post-img-cover">
+          <img src="resource/img/product-img/dam-ngu-tre-em.jpg" alt="" class="img-fluid">
+          <a href="https://www.facebook.com/"><button class="like-button btn">
+              <span style="margin-top: 2px;">
+                <i class="far fa-heart"></i>
+              </span>
+            </button></a>
+        </div>
+        <div class="latest-product-content">
+          <h3 class="latest-post-title mt-2 mb-0"><span class="latest-post-username">Uyên Trang</span> muốn đổi <span
+              class="latest-post-product-name"></span> Váy ngủ trẻ em xinh xắn </h3>
+          <p class="latest-post-description">Chiếc váy trẻ em còn rất mới, phù hợp với mọi lứa tuổi, nay tôi muốn đổi
+          </p>
+          <ul class="list-description">
+            <li class="list-description-item">
+              <span><i class="far fa-eye"></i></span>
+              <span>348</span>
+            </li>
+            <li class="list-description-item">
+              <span><i class="far fa-clock"></i></span>
+              <span>15 minutes ago</span>
+            </li>
+            <li class="list-description-item">
+              <span><i class="far fa-tshirt"></i></span>
+              <span>Women's fashion</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- những con số ấn tuọngq impressive-number-->
+  <section class="impressive-number container pb-5 mt-5 mb-lg-3">
+    <div class="row text-center mb-5 pb-lg-3">
+      <small class="reveal-section-sub-title text-sub-title-section mb-2">Exchange now!</small>
+      <h2 class="reveal-section-title text-title-section">Impressive numbers</h2>
+    </div>
+
+    <div>
+      <ul class="d-flex justify-content-around text-center impressive-list" id="impressive-list"
+        style="flex-wrap: wrap;">
+        <li class="impressive-item">
+          <div><i class="far fa-users"></i></div>
+          <div class="impressive-item-number"><span class="impressive-item-number-count">1 200</span>+</div>
+          <div class="impressive-item-description">Total Users</div>
+        </li>
+        <li class="impressive-item">
+          <div><i class="far fa-barcode-read"></i></div>
+          <div class="impressive-item-number"><span class="impressive-item-number-count">16 500</span>+</div>
+          <div class="impressive-item-description">Total Items</div>
+        </li>
+        <li class="impressive-item">
+          <div><i class="far fa-handshake"></i></div>
+          <div class="impressive-item-number"><span class="impressive-item-number-count">3 200</span>+</div>
+          <div class="impressive-item-description">Total Exchange</div>
+        </li>
+        <li class="impressive-item">
+          <div><i class="far fa-heart"></i></div>
+          <div class="impressive-item-number"><span class="impressive-item-number-count">1 200 950</span>+</div>
+          <div class="impressive-item-description">Total Likes</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- top like post -->
+  <section class="container top-like-post">
+    <div class="row text-center mb-2 pb-lg-3 align-items-center justify-content-between">
+      <h2 class="text-title text-start d-inline mb-0" style="width: auto">The Top Like Post</h2>
+      <div class="view-all">
+        <a href="#">View all
+          <span>
+            <i class="far fa-long-arrow-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="my-slider">
+      <div class="slide-cover">
+        <div class="slide-cover-item">
+          <!-- <div class="slide-cover-item-img" style="background-image: url('resource/img/product-img/xinhDep.jpeg');"></div> -->
+          <div class="slide-cover-item-img"
+            style="background:linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,1)), url('resource/img/product-img/xinhDep.jpeg');">
+          </div>
+          <div class="top-like-item-like-cover">
+            <div class="top-like-item-like"><i class="far fa-heart"></i>
+              <div class="top-like-like-number">1680</div>
+            </div>
+          </div>
+          <div class="row position-absolute w-100 top-like-item-content">
+            <div class="col-4 pe-0">
+              <div class="top-like-item-title"
+                onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">Cô ny zui zẻ
+                xinh xắn dễ thương dễ thương đem ra đổi</div>
+            </div>
+            <div class="col-6 d-flex" style="justify-content: center; align-items: center;">
+              <div class="top-like-item-description">Cô người yêu zui zẻ xinh xắn dễ thương bla bla muốn đem ra đổi, ai
+                lấy thì lấy ko lấy lo lấy đạp giờ Cô người yêu zui zẻ xinh xắn dễ Cô người yêu zui zẻ xinh xắnCô người
+                yêu zui zẻ xinh xắn</div>
+            </div>
+            <div class="col-2 d-flex ps-0" style="justify-content: center; align-items: center;">
+              <div class="top-like-item-user">
+                <!-- <div> -->
+                <div class="text-center"><img style="border-radius: 50%; object-fit: cover;"
+                    src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="" width="40px" height="40px"></div>
+                <div class="text-center">Nhat Quang</div>
+                <!-- </div> -->
+
+              </div>
+            </div>
+            <ul class="list-description">
+              <li class="list-description-item">
+                <span><i class="far fa-eye"></i></span>
+                <span>348</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-clock"></i></span>
+                <span>23-05-2001</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-comment-alt-dots"></i></span>
+                <span>578</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-tshirt"></i></span>
+                <span>Women's fashion</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-hand-sparkles"></i></span>
+                <span>250 Request exchange</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-handshake"></i></span>
+                <span>Item Exchanged</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-cover">
+        <div class="slide-cover-item">
+          <!-- <div class="slide-cover-item-img" style="background-image: url('resource/img/product-img/xinhDep.jpeg');"></div> -->
+          <div class="slide-cover-item-img"
+            style="background:linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,1)), url('resource/img/product-img/khoa-hoc.jpg'); background-size: cover;">
+          </div>
+          <div class="top-like-item-like-cover">
+            <div class="top-like-item-like">
+              <i class="far fa-heart"></i>
+              <div class="top-like-like-number">1250</div>
+            </div>
+          </div>
+          <div class="row position-absolute w-100 top-like-item-content">
+            <div class="col-4">
+              <div class="top-like-item-title pe-0"
+                onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">Khóa học
+                MAS291, học 1 lần lấy Cóc Vàng luôn
+              </div>
+            </div>
+            <div class="col-6 d-flex" style="justify-content: center; align-items: center;">
+              <div class="top-like-item-description">Mình có một khóa học của anh Nhật Quang LNN muốn đem ra đổi</div>
+            </div>
+            <div class="col-2 d-flex ps-0" style="justify-content: center; align-items: center;">
+              <div class="top-like-item-user">
+                <!-- <div> -->
+                <div class="text-center"><img style="border-radius: 50%; object-fit: cover;"
+                    src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="" width="40px" height="40px"></div>
+                <div class="text-center">Nhat Quang</div>
+                <!-- </div> -->
+
+              </div>
+            </div>
+            <ul class="list-description">
+              <li class="list-description-item">
+                <span><i class="far fa-eye"></i></span>
+                <span>348</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-clock"></i></span>
+                <span>23-05-2001</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-comment-alt-dots"></i></span>
+                <span>578</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-tshirt"></i></span>
+                <span>Women's fashion</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-hand-sparkles"></i></span>
+                <span>250 Request exchange</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-handshake"></i></span>
+                <span>Item Exchanged</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-cover">
+        <div class="slide-cover-item">
+          <!-- <div class="slide-cover-item-img" style="background-image: url('resource/img/product-img/xinhDep.jpeg');"></div> -->
+          <div class="slide-cover-item-img"
+            style="background:linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,1)), url('resource/img/product-img/tui-deo-cheo-di-choi-03.jpg'); background-color: var(--primary-color);">
+          </div>
+          <div class="top-like-item-like-cover">
+            <div class="top-like-item-like"><i class="far fa-heart"></i>
+              <div class="top-like-like-number">1120</div>
+            </div>
+          </div>
+          <div class="row position-absolute w-100 top-like-item-content">
+            <div class="col-4">
+              <div class="top-like-item-title pe-0"
+                onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">Túi đeo chéo
+                đi chơi siêu cu te luôn nè</div>
+            </div>
+            <div class="col-6 d-flex" style="justify-content: center; align-items: center;">
+              <div class="top-like-item-description">Mình có một chiếc túi muốn đổi, bạn gái nào chưa có chủ mình tặng
+                người đổi luôn!!</div>
+            </div>
+            <div class="col-2 d-flex ps-0" style="justify-content: center; align-items: center;">
+              <div class="top-like-item-user">
+                <!-- <div> -->
+                <div class="text-center"><img style="border-radius: 50%; object-fit: cover;"
+                    src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="" width="40px" height="40px"></div>
+                <div class="text-center">Nhat Quang</div>
+                <!-- </div> -->
+
+              </div>
+            </div>
+            <ul class="list-description">
+              <li class="list-description-item">
+                <span><i class="far fa-eye"></i></span>
+                <span>348</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-clock"></i></span>
+                <span>23-05-2001</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-comment-alt-dots"></i></span>
+                <span>578</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-tshirt"></i></span>
+                <span>Women's fashion</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-hand-sparkles"></i></span>
+                <span>250 Request exchange</span>
+              </li>
+              <li class="list-description-item">
+                <span><i class="far fa-handshake"></i></span>
+                <span>Item Exchanged</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end top like post -->
+  <!-- start a category -->
+  <section class="container pb-5 mt-5 mb-lg-3 d-flex reveal-up-category"  style="flex-wrap: wrap">
+    <a class="category-bg-blue d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+      0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-tshirt"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">Woman's fashion</h3>
+    </a>
+    <a class=" category-bg-yellow d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+      0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-tshirt"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">Woman's fashion</h3>
+    </a>
+    <a class=" category-bg-primary d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+    0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-tshirt"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">Woman</h3>
+    </a>
+    <a class=" category-bg-green d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+      0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-tshirt"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">Woman's fashion</h3>
+    </a>
+    <a class=" category-bg-yellow d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+      0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-tshirt"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">Woman's fashion</h3>
+    </a>
+    <a class=" category-bg-blue d-inline-block flex-row align-items-center flex-shrink-0 border-0 rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4"
+      href="#" style=" box-shadow: 0 0.125rem 0.125rem -0.125rem rgba(31, 27, 45, 0.08),
+    0 0.25rem 0.75rem rgba(31, 27, 45, 0.08);">
+      <div class="d-inline-block"><span class="category-icon"><i class="far fa-ellipsis-h"></i></span></div>
+      <h3 class="category-name d-inline-block ps-1 pe-2 mb-0">More</h3>
+    </a>
+  </section>
+
+  <!-- the latest Exchange post -->
+  <section class="container the-latest-exchange-post">
+    <div class="row text-center mb-2 pb-lg-3 align-items-center justify-content-between">
+      <h2 class="text-title text-start d-inline mb-0" style="width: auto">The Latest Exchanged Post</h2>
+      <div class="view-all">
+        <a href="#">View all
+          <span>
+            <i class="far fa-long-arrow-right"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="my-slider-2">
+      <div class="slide-cover" style="max-height: 35rem; height: auto !important;">
+        <div class="slide-boder" style="border: solid 2px var(--primary-color); border-radius: 1.2rem; ">
+          <h3 class="the-latest-exchange-post-username pt-2"><span>Nhật Quang LNN</span> & <span>Uyên Trang</span></h3>
+          <div class="the-latest-exchange-post-item-name">Successfully exchanged<span> Giày thể thao Thượng Đình
+            </span>for <span> Tài khoản Nexflix</span>
+            <div style="text-align: center; color: var(--text-sub-color); font-size: 0.875rem;;">23-05-2001</div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-5">
+                <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
+                  <div class="latest-exchange-item-img"><img class="img-fluid"
+                      src="resource/img/product-img/dam-ngu-tre-em.jpg" alt=""></div>
+                  <div class="latest-exchange-user-img"><img src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                      alt=""></div>
+                  <div class="main-text">
+                    <h2 class="latest-exchange-username">Nhat Quang LN</h2>
+                    <h3 class="latest-exchange-title">TCP/IP and Advanced Topics of Quang</h3>
+                    <div class="icon-progress progress-red" title="258/2335 likes">
+                      <div class="icon-latest-post"><i class="far fa-heart"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 51.49201943095073%" role="progressbar"
+                          style="width: 100%" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-blue" title="258/2335 comments">
+                      <div class="icon-latest-post"><i class="far fa-comment-alt-dots"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 60%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-gray" title="258/2335 views">
+                      <div class="icon-latest-post"><i class="far fa-eye"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 80%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="div col-2 d-flex align-items-center justify-content-center">
+                <span class="latest-exchange-handshake-icon" style="font-size: 3rem;"><i
+                    class="far fa-handshake"></i></span>
+              </div>
+              <div class="col-5">
+                <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
+                  <div class="latest-exchange-item-img"><img class="img-fluid"
+                      src="resource/img/product-img/dam-ngu-tre-em.jpg" alt=""></div>
+                  <div class="latest-exchange-user-img"><img src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                      alt=""></div>
+                  <div class="main-text">
+                    <h2 class="latest-exchange-username">Nhat Quang LN</h2>
+                    <h3 class="latest-exchange-title">TCP/IP and Advanced Topics of Quang</h3>
+                    <div class="icon-progress progress-red" title="258/2335 likes">
+                      <div class="icon-latest-post"><i class="far fa-heart"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 51.49201943095073%" role="progressbar"
+                          style="width: 100%" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-blue" title="258/2335 comments">
+                      <div class="icon-latest-post"><i class="far fa-comment-alt-dots"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 60%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-gray" title="258/2335 views">
+                      <div class="icon-latest-post"><i class="far fa-eye"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 80%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="slide-cover" style="max-height: 35rem; height: auto !important;">
+        <div class="slide-boder" style="border: solid 2px var(--primary-color); border-radius: 1.2rem; ">
+          <h3 class="the-latest-exchange-post-username pt-2"><span>Nhật Quang LNN</span> & <span>Uyên Trang</span></h3>
+          <div class="the-latest-exchange-post-item-name">Successfully exchanged<span> Giày thể thao Thượng Đình
+            </span>for <span> Tài khoản Nexflix</span>
+            <div style="text-align: center; color: var(--text-sub-color); font-size: 0.875rem;;">23-05-2001</div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-5">
+                <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
+                  <div class="latest-exchange-item-img"><img class="img-fluid"
+                      src="resource/img/product-img/dam-ngu-tre-em.jpg" alt=""></div>
+                  <div class="latest-exchange-user-img"><img src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                      alt=""></div>
+                  <div class="main-text">
+                    <h2 class="latest-exchange-username">Nhat Quang LN</h2>
+                    <h3 class="latest-exchange-title">TCP/IP and Advanced Topics of Quang</h3>
+                    <div class="icon-progress progress-red" title="258/2335 likes">
+                      <div class="icon-latest-post"><i class="far fa-heart"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 51.49201943095073%" role="progressbar"
+                          style="width: 100%" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-blue" title="258/2335 comments">
+                      <div class="icon-latest-post"><i class="far fa-comment-alt-dots"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 60%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-gray" title="258/2335 views">
+                      <div class="icon-latest-post"><i class="far fa-eye"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 80%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="div col-2 d-flex align-items-center justify-content-center">
+                <span class="latest-exchange-handshake-icon" style="font-size: 3rem;"><i
+                    class="far fa-handshake"></i></span>
+              </div>
+              <div class="col-5">
+                <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
+                  <div class="latest-exchange-item-img"><img class="img-fluid"
+                      src="resource/img/product-img/AoNhieuMau.jfif" alt=""></div>
+                  <div class="latest-exchange-user-img"><img src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                      alt=""></div>
+                  <div class="main-text">
+                    <h2 class="latest-exchange-username">Nhat Quang LN</h2>
+                    <h3 class="latest-exchange-title">TCP/IP and Advanced Topics of Quang</h3>
+                    <div class="icon-progress progress-red" title="258/2335 likes">
+                      <div class="icon-latest-post"><i class="far fa-heart"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 51.49201943095073%" role="progressbar"
+                          style="width: 100%" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-blue" title="258/2335 comments">
+                      <div class="icon-latest-post"><i class="far fa-comment-alt-dots"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 60%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-gray" title="258/2335 views">
+                      <div class="icon-latest-post"><i class="far fa-eye"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 80%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-cover" style="max-height: 35rem; height: auto !important;">
+        <div class="slide-boder" style="border: solid 2px var(--primary-color); border-radius: 1.2rem; ">
+          <h3 class="the-latest-exchange-post-username pt-2"><span>Nhật Quang LNN</span> & <span>Uyên Trang</span></h3>
+          <div class="the-latest-exchange-post-item-name">Successfully exchanged<span> Giày thể thao Thượng Đình
+            </span>for <span> Tài khoản Nexflix</span>
+            <div style="text-align: center; color: var(--text-sub-color); font-size: 0.875rem;;">23-05-2001</div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-5">
+                <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
+                  <div class="latest-exchange-item-img"><img class="img-fluid"
+                      src="resource/img/product-img/xinhDep.jpeg" alt=""></div>
+                  <div class="latest-exchange-user-img"><img src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                      alt=""></div>
+                  <div class="main-text">
+                    <h2 class="latest-exchange-username">Nhat Quang LN</h2>
+                    <h3 class="latest-exchange-title">TCP/IP and Advanced Topics of Quang</h3>
+                    <div class="icon-progress progress-red" title="258/2335 likes">
+                      <div class="icon-latest-post"><i class="far fa-heart"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 51.49201943095073%" role="progressbar"
+                          style="width: 100%" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-blue" title="258/2335 comments">
+                      <div class="icon-latest-post"><i class="far fa-comment-alt-dots"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 60%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-gray" title="258/2335 views">
+                      <div class="icon-latest-post"><i class="far fa-eye"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 80%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="div col-2 d-flex align-items-center justify-content-center">
+                <span class="latest-exchange-handshake-icon" style="font-size: 3rem;"><i
+                    class="far fa-handshake"></i></span>
+              </div>
+              <div class="col-5">
+                <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
+                  <div class="latest-exchange-item-img"><img class="img-fluid"
+                      src="resource/img/product-img/tui-deo-cheo-di-choi-03.jpg" alt=""></div>
+                  <div class="latest-exchange-user-img"><img src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                      alt=""></div>
+                  <div class="main-text">
+                    <h2 class="latest-exchange-username">Nhat Quang LN</h2>
+                    <h3 class="latest-exchange-title">TCP/IP and Advanced Topics of Quang</h3>
+                    <div class="icon-progress progress-red" title="258/2335 likes">
+                      <div class="icon-latest-post"><i class="far fa-heart"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 51.49201943095073%" role="progressbar"
+                          style="width: 100%" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-blue" title="258/2335 comments">
+                      <div class="icon-latest-post"><i class="far fa-comment-alt-dots"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 60%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="icon-progress progress-gray" title="258/2335 views">
+                      <div class="icon-latest-post"><i class="far fa-eye"></i></div>
+                      <div class="progress w-75" style="height: 5px">
+                        <div class="progress-bar bg-danger" style="width: 80%" role="progressbar" style="width: 100%"
+                          aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- start footer -->
+  <footer class="footer pt-lg-5 pt-4 footer-bg-dark text-light mt-5">
+    <div class="container mb-4 py-4 pb-lg-5">
+      <div class="row gy-4">
+        <div class="col-lg-3 col-md-6 col-sm-4">
+          <div class="mb-4 pb-sm-3"><a class="d-inline-block" href="#"><img src="resource/img/logo.png" width="150"
+                alt="Logo"></a></div>
+          <ul class="nav nav-light flex-column">
+            <li class="nav-item mb-2"><a class="p-0 fw-normal text-nowrap" href="mailto:duniexchange@gmail.com"><i
+                  class="far fa-envelope me-1 " style="color: var(--primary-color);"></i>duniexchange@gmail.com</a></li>
+            <li class="nav-item mb-2"><a class="p-0 fw-normal text-nowrap" href="tel:4065550120"><i
+                  class="far fa-mobile me-1" style="color: var(--primary-color);"></i></i>(+84) 034-393-4215</a></li>
+          </ul>
+        </div>
+        <!-- Links-->
+        <div class="col-lg-2 col-md-3 col-sm-4">
+          <h3 class="text-footer-header">User Guideline</h3>
+          <ul class="list-unstyled fs-sm">
+            <li><a class="nav-link-light" href="#">Guide for Exchanging</a></li>
+            <li><a class="nav-link-light" href="#">Guide for Account Verification</a></li>
+            <li><a class="nav-link-light" href="#">Guide for Completing Profile</a></li>
+            <li><a class="nav-link-light" href="#">Guide for Avoiding Scam</a></li>
+          </ul>
+        </div>
+        <!-- Links-->
+        <div class="col-lg-2 col-md-3 col-sm-4">
+          <h3 class="text-footer-header">INFORMATION</h3>
+          <ul class="list-unstyled fs-sm">
+            <li><a class="nav-link-light" href="#">About us</a></li>
+            <li><a class="nav-link-light" href="#">Customer Service</a></li>
+            <li><a class="nav-link-light" href="#">Terms and Condition</a></li>
+            <li><a class="nav-link-light" href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <!-- Subscription form-->
+        <div class="col-lg-4 offset-lg-1">
+          <h3 class="h4 text-footer-header" style="font-size: 1.5rem;">Subscribe to our website</h3>
+          <p class="fs-sm mb-4 opacity-60 nav-link-light">Don’t miss any latest items!</p>
+          <form class="form-group-light rounded-pill" style="max-width: 500px;">
+            <div class="input-group "><span class="input-group-text text-muted"
+                style="border-top-left-radius: 50rem; border-bottom-left-radius: 50rem;"><i
+                  class="far fa-envelope"></i></span>
+              <input class="form-control-light" type="email" placeholder="Your email">
+            </div>
+            <button class="btn btn-primary btn-sm rounded-pill" type="button">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="py-4 border-top border-light">
+      <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between py-2">
+        <!-- Copyright-->
+        <p class="order-lg-1 order-2 fs-sm mb-2 mb-lg-0 text-center"><span class="nav-link-light opacity-60">&copy; All
+            rights
+            reserved.
+            Made by </span><a class="nav-link-light fw-bold" href="#" target="_blank" rel="noopener">DuniExchange
+            Website</a></p>
+        <div class="d-flex flex-lg-row flex-column align-items-center order-lg-2 order-1 ms-lg-4 mb-lg-0 mb-4">
+          <!-- Links-->
+          <div class="d-flex flex-wrap fs-sm mb-lg-0 mb-4 pe-lg-4"><a class="nav-link-light px-2 mx-1"
+              href="#">About</a><a class="nav-link-light px-2 mx-1" href="#">Blog</a><a class="nav-link-light px-2 mx-1"
+              href="#">Support</a><a class="nav-link-light px-2 mx-1" href="#">Contacts</a></div>
+          <div class="d-flex align-items-center">
+            <!-- Socials-->
+            <div class="ms-4 ps-lg-2 text-nowrap">
+              <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="#">
+                <i class="fab fa-facebook"></i></a>
+              <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="#">
+                <i class="fab fa-twitter"></i></a>
+              <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="#">
+                <i class="fab fa-youtube"></i></a>
+              <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="#">
+                <i class="fab fa-tiktok"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+  <!-- tiny slider -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script> -->
+  <script type="module">
+    import { tns } from './node_modules/tiny-slider/src/tiny-slider.js';
+    var slider = tns({
+      container: '.my-slider',
+      items: 2,
+      // slideBy: 'page',
+      autoplay: true,
+      center: true,
+      loop: true,
+      swipeAngle: false,
+      speed: 400,
+      gutter: 30,
+      edgePadding: -70,
+      controlsPosition: "bottom",
+      mouseDrag: true,
+      responsive: {
+        "300": {
+          "items": 1,
+          edgePadding: 0
+        },
+        "700": {
+          "items": 2,
+          edgePadding: -90
+        }
+      }
+    });
+    var sliders = tns({
+      container: '.my-slider-2',
+      items: 2,
+      // slideBy: 'page',
+      autoplay: true,
+      center: true,
+      loop: true,
+      swipeAngle: false,
+      speed: 400,
+      gutter: 30,
+      edgePadding: -70,
+      controlsPosition: "bottom",
+      responsive: {
+        "300": {
+          "items": 1,
+          edgePadding: 0
+        },
+        "950": {
+          "items": 2,
+          edgePadding: -90
+        }
+      }
+    });
+  </script>
+  <!-- <section style="height: 500px;"></section> -->
+  <!-- scroll reveal -->
+  <script src="node_modules/scrollreveal/dist/scrollreveal.js"></script>
+  <!-- bootstrap 5 -->
+  <script src="framework/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- home page js -->
+  <script src="resource/js/home.js"></script>
+  <!-- font awsomwe -->
+  <script src="resource/font-awesome-pro-master/js/all.min.js"></script>
+</body>
+
+</html>
