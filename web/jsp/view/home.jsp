@@ -345,7 +345,7 @@
               <div class="top-like-item-user">
                 <!-- <div> -->
                 <div class="text-center"><img style="border-radius: 50%; object-fit: cover;"
-                    src="/DuniExchange/resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="" width="40px" height="40px"></div>
+                    src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg" alt="" width="40px" height="40px"></div>
                 <div class="text-center">Nhat Quang</div>
                 <!-- </div> -->
 
@@ -406,7 +406,7 @@
               <div class="top-like-item-user">
                 <!-- <div> -->
                 <div class="text-center"><img style="border-radius: 50%; object-fit: cover;"
-                    src="/DuniExchange/resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="" width="40px" height="40px"></div>
+                    src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg" alt="" width="40px" height="40px"></div>
                 <div class="text-center">Nhat Quang</div>
                 <!-- </div> -->
 
@@ -466,7 +466,7 @@
               <div class="top-like-item-user">
                 <!-- <div> -->
                 <div class="text-center"><img style="border-radius: 50%; object-fit: cover;"
-                    src="/DuniExchange/resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="" width="40px" height="40px"></div>
+                    src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg" alt="" width="40px" height="40px"></div>
                 <div class="text-center">Nhat Quang</div>
                 <!-- </div> -->
 
@@ -570,7 +570,7 @@
                 <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
                   <div class="latest-exchange-item-img"><img class="img-fluid"
                       src="/DuniExchange/resource/img/product-img/dam-ngu-tre-em.jpg" alt=""></div>
-                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg"
                       alt=""></div>
                   <div class="main-text">
                     <h2 class="latest-exchange-username">Nhat Quang LN</h2>
@@ -607,7 +607,7 @@
                 <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
                   <div class="latest-exchange-item-img"><img class="img-fluid"
                       src="/DuniExchange/resource/img/product-img/dam-ngu-tre-em.jpg" alt=""></div>
-                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg"
                       alt=""></div>
                   <div class="main-text">
                     <h2 class="latest-exchange-username">Nhat Quang LN</h2>
@@ -655,7 +655,7 @@
                 <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
                   <div class="latest-exchange-item-img"><img class="img-fluid"
                       src="/DuniExchange/resource/img/product-img/dam-ngu-tre-em.jpg" alt=""></div>
-                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg"
                       alt=""></div>
                   <div class="main-text">
                     <h2 class="latest-exchange-username">Nhat Quang LN</h2>
@@ -692,7 +692,7 @@
                 <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
                   <div class="latest-exchange-item-img"><img class="img-fluid"
                       src="/DuniExchange/resource/img/product-img/AoNhieuMau.jfif" alt=""></div>
-                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg"
                       alt=""></div>
                   <div class="main-text">
                     <h2 class="latest-exchange-username">Nhat Quang LN</h2>
@@ -738,7 +738,7 @@
                 <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
                   <div class="latest-exchange-item-img"><img class="img-fluid"
                       src="/DuniExchange/resource/img/product-img/xinhDep.jpeg" alt=""></div>
-                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg"
                       alt=""></div>
                   <div class="main-text">
                     <h2 class="latest-exchange-username">Nhat Quang LN</h2>
@@ -775,7 +775,7 @@
                 <div class="card" style="margin: 12px 0;padding-bottom: 0.7rem;  border-radius: 1.2rem;">
                   <div class="latest-exchange-item-img"><img class="img-fluid"
                       src="/DuniExchange/resource/img/product-img/tui-deo-cheo-di-choi-03.jpg" alt=""></div>
-                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/DE150066_LuongNguyenNhatQuang_2.jpg"
+                  <div class="latest-exchange-user-img"><img src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg"
                       alt=""></div>
                   <div class="main-text">
                     <h2 class="latest-exchange-username">Nhat Quang LN</h2>

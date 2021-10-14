@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#"><img style="width: 160px; height: auto" src="/DuniExchange/resource/img/logo.png"
+      <a class="navbar-brand" href="/DuniExchange"><img style="width: 160px; height: auto" src="/DuniExchange/resource/img/logo.png"
           alt="DuniExchange Logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -199,12 +199,12 @@
           <a class="nav-link px-0 py-0 ms-lg-3 me-lg-2 mt-lg-0 mb-lg-0 ms-0 mt-3 mb-2" href="#" id="navbarDropdown"
             role="button">
             <img class="rounded-circle" width="40px" height="40px" alt=""
-              src="/DuniExchange/resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="Nhat Quang">
+              src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg" alt="Nhat Quang">
           </a>
           <ul class="dropdown-menu dropdown-menu-end mt-2 username--overflow" aria-labelledby="navbarDropdown">
             <div class="d-flex px-3 py-1 mb-2">
               <img class="rounded-circle" width="48px" height="48px" alt=""
-                src="/DuniExchange/resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="Nhat Quang">
+                src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg" alt="Nhat Quang">
               <div class=" ps-2">
                 <div class="dropdown-username-text">Nhat Quang</div>
                 <div>
@@ -235,7 +235,7 @@
             </div>
             <hr class="dropdown-divider" style="color: var(--text-sub-color) !important;">
             <li class="dropdown-user-item">
-              <a class="dropdown-item " href="#">
+              <a class="dropdown-item " href="account">
                 <span style="color: var(--text-sub-color);" class="dropdown-user-icon">
                   <i class="fal fa-user"></i>
                 </span>
