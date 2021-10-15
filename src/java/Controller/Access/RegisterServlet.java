@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.Login;
+package Controller.Access;
 
-import DAO.User.ManagerAcessDAO;
+import DAO.User.ManagerAccessDAO;
 import Entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,7 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author truon
  */
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "RegisterServlet", urlPatterns = {"/registerServlet"})
+public class RegisterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,7 +52,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("jsp/view/login.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/view/register.jsp").forward(request, response);
     }
 
     /**
@@ -65,37 +66,40 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String username = request.getParameter("username").trim();
-            String password = request.getParameter("password").trim();
-            
-            if (ManagerAcessDAO.isHaveUsename(username)) {
-                if (ManagerAcessDAO.checkPassword(username, password)) {
-//                    System.out.println("Dang nhap thanh cong");
-                    
-                    HttpSession session = request.getSession(); //tao session de luu phien dang nhap
-                    try {
-                        Account currentAccount = ManagerAcessDAO.getAccountByUserName(username);
+                try {
+            String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("passwordUser");
+        String re_password = request.getParameter("re_password");
+        String fullname = request.getParameter("fullname");
+        
+        if (ManagerAccessDAO.isHaveUsename(username)) {
+            request.setAttribute("MESSAGE", "Đã có tài khoản này");
+            request.getRequestDispatcher("displayRegisterServlet").forward(request, response);
+        }else{
+            if (password.trim().equals(re_password.trim())) {
+                System.out.println("Mat khau giong nhau");
+                boolean insert = ManagerAccessDAO.insertAccount(username, fullname, email, password);
+                if (insert) {
+                    System.out.println("thêm account thành công");
+                }else{
+                    System.out.println("Khong them account duoc");
+                }
+                HttpSession session = request.getSession();
+                try {
+                        Account currentAccount = ManagerAccessDAO.getAccountByUserName(username);
                         session.setAttribute("currentAccount", currentAccount);
                     } catch (Exception ex) {
                         Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    response.sendRedirect(request.getContextPath());
-                    
-                    
-                } else {
-//                    System.out.println("Sai mk");
-                    request.setAttribute("USERNAME", username);
-                    request.setAttribute("MESSAGE", "Sai mật khẩu");
-                    request.getRequestDispatcher("displayLoginServlet").forward(request, response);
-                }
-            } else {
-//                System.out.println("Người dùng không tồn tại");
-                request.setAttribute("MESSAGE", "Người dùng không tồn tại");
-                request.getRequestDispatcher("displayLoginServlet").forward(request, response);
+                response.sendRedirect(request.getContextPath());
+            }else{
+                request.setAttribute("MESSAGE", "Mật khẩu không khớp");
+                request.getRequestDispatcher("displayRegisterServlet").forward(request, response);
             }
+        }
         } catch (SQLException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -3,7 +3,7 @@
     Created on : Oct 14, 2021, 11:38:07 PM
     Author     : truon
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,36 +34,41 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Đăng ký</h2>
-                        <form method="POST" class="register-form" id="register-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" class="register-form" id="register-form" action="registerServlet">
                             <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Họ và tên"/>
+                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Username" value="${username}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="fullname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="fullname" id="fullname" placeholder="Fullname" value="${fullname}"/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Email"/>
+                                <input type="email" name="email" id="email" placeholder="Email" value="${email}"/>
                             </div>
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Mật khẩu"/>
+                                <input type="password" name="passwordUser" id="pass" placeholder="Password" ${passwordUser}/>
                             </div>
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Xác nhận mật khẩu"/>
+                                <label for="re_password"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="re_password" id="re_pass" placeholder="Repeat password"/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                             </div>
+                                <font color="red">${not empty requestScope.MESSAGE ? requestScope.MESSAGE : ""}</font>
                             <div class="form-group form-button ">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Đăng ký"/>
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Sign up"/>
                             </div>                            
                         </form>
                     </div>
                     <div class="signup-image">
                         <figure><img src="/DuniExchange/resource/img/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="displayLoginServlet" class="signup-image-link">Tôi đã có tài khoản</a>
+                        <a href="displayLoginServlet" class="signup-image-link">I already have Account</a>
                     </div>
                 </div>
             </div>
