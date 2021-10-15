@@ -10,16 +10,17 @@ create table UserAccount
 (
 userID int identity(1,1) not null,
 userUserName varchar(20) NOT NULL,
-userPassword char(20) NOT NULL,
+userPassword varchar(max) NOT NULL,
 userEmail char(50) NOT NULL,
 userFullname nvarchar(70) NOT NULL,
 userCreateDate datetime NOT NULL,
-userFacebookURL nvarchar(50) NULL,
-userAvatarURL nvarchar(50) NULL,
-userRatingID int NOT NULL,
+userFacebookURL nvarchar(max) NULL,
+userAvatarURL nvarchar(max) NULL,
+userRating float NOT NULL,
 isAdmin bit NULL,
 isValidate bit NOT NULL,
-constraint pk_Account primary key (userID)
+constraint pk_Account primary key (userID),
+constraint rating_check Check (userRating between 0 and 5)
 )
 go
 create table Category
@@ -30,6 +31,7 @@ categoryIcon nvarchar(50) NULL,
 constraint pk_Category primary key(categoryID)
 )
 go
+
 create table Post
 (
 postID int identity(1,1) NOT NULL,
@@ -67,7 +69,7 @@ create table PostLikeUser(
 postID int NOT NULL,
 userID int NOT NULL,
 constraint pk_PostLikeUser primary key (postID, userID),
-constraint fk_Post foreign key (PostID) references Post(postID),
+constraint fk_PostLike foreign key (PostID) references Post(postID),
 constraint fk_User foreign key (userID) references UserAccount(userID)
 )
 go
@@ -99,17 +101,17 @@ go
 
 
 
-
+--isvalidate: 1 là user đã xác nhận mail, 0 là user chưa xác nhận mail
 ---------------------------------------------------Bắt đầu thêm một vài bản ghi cho bảng User------------------------
-insert into UserAccount(userUserName,userPassword,userEmail,userFullname,isAdmin,usercreateDate,userfacebookURL, userAvatarURL) values
+insert into UserAccount(userUserName,userPassword,userEmail,userFullname,isAdmin,usercreateDate,userfacebookURL, userAvatarURL,isValidate,userRating) values
 ('quang','$2a$12$h5ig0gmoeE13KBu8Ji4wguSp1diqUKFytj5bVjJpdZom/RFNxQe4K','quanglnnde150066@fpt.edu.vn',N'Nhật Quang LNN',1,GETDATE(),
-'www.facebook.com/profile.php?id=100008194183640','/DuniExchange/resource/img/avatar/quang.png'),
+'www.facebook.com/profile.php?id=100008194183640','/DuniExchange/resource/img/avatar/quang.png',1,0),
 ('minky','$2a$12$HKf98jZ2JPg5CDCLH7/GuuPO4tRP0JAhe/jmakU.1JnO8Rz.sTJui','tinhhhde150357@fpt.edu.vn',N'Hồ Hữu Tình',1,GETDATE(),
-'www.facebook.com/minky.lg2d','/DuniExchange/resource/img/avatar/minky.png'),
+'www.facebook.com/minky.lg2d','/DuniExchange/resource/img/avatar/minky.png',1,0),
 ('trang','$2a$12$uEAYVuMEuSu6MhbIjHX.M.yWpt/Pd23O91LHXIlOdcbdl69hdw2xS','trangttude150338@fpt.edu.vn',N'Uyên Trang',1,GETDATE(),
-'www.facebook.com/profile.php?id=100009267167030','/DuniExchange/resource/img/avatar/trang.png'),
+'www.facebook.com/profile.php?id=100009267167030','/DuniExchange/resource/img/avatar/trang.png',1,0),
 ('khoi','$2a$12$BFtT6wdESrTNT4JMhROjnO83hDnCEIwCG1K4sIHCWx6kh2IwO0M06','khoinmde10323@fpt.edu.vn',N'Mạnh Khôi',1,GETDATE(),
-'www.facebook.com/profile.php?id=100011319337285','/DuniExchange/resource/img/avatar/khoi.png')
+'www.facebook.com/profile.php?id=100011319337285','/DuniExchange/resource/img/avatar/khoi.png',1,0)
 
 --quang 123
 --minky ykniM
@@ -137,45 +139,45 @@ insert into Category(categoryName,categoryIcon) values
 
 select * from Category
 ---------------------------------------------------Kết thúc thêm một vài bản ghi cho bảng Category------------------------
-
+--delete Post
 ---------------------------------------------------Bắt đầu thêm một vài bản ghi cho bảng Post------------------------
 insert into Post(postUserID,postTitle,postDate,postDescription,postLike,postThumbnailURL) values
 (1,N'Chiếc áo phông sặc sỡ, suýt nữa thành đồ gia truyền nhưng nay được đem ra đổi',GETDATE()
 ,N'Đây là chiếc áo có màu sắc sặc sỡ, được các chuyên gia Trung Quốc lấy cảm hứng từ các thương hiệu nổi tiếng như Gu Sì, Chà Neo,Luonvuituoi , bla bla (giới thiệu sản phẩm)',
-0,'/DuniExchange/img/product-img/AoNhieuMau.jfif'),
+0,'/DuniExchange/resource/img/product-img/AoNhieuMau.jfif'),
 (2,N'Combo sách làm giàu chưa đọc, còn nguyên tem',GETDATE(),
-N'Bộ sách "Dạy con làm giàu" gồm 13 cuốn được viết bởi Robert T.Kiyosaki được tái bản bằng tiếng Việt hướng dẫn cách làm giàu nhưng chưa đọc ',3,'images/Apollo-images/Big-images-C.png'),
-(3,N'Gói kẹo Chipchip ',GETDATE(),N'Gói kẹo Chipchip mới ăn được một nửa, còn HSD, rất ngon',2,'/DuniExchange/img/product-img/SachLamGiau.jpg'),
+N'Bộ sách "Dạy con làm giàu" gồm 13 cuốn được viết bởi Robert T.Kiyosaki được tái bản bằng tiếng Việt hướng dẫn cách làm giàu nhưng chưa đọc ',3,'/DuniExchange/resource/img/product-img/SachLamGiau.jpg'),
+(3,N'Gói kẹo Chipchip ',GETDATE(),N'Gói kẹo Chipchip mới ăn được một nửa, còn HSD, rất ngon',2,'/DuniExchange/resource/img/product-img/candyChip.jfif'),
 (4,N'Điện thoại siêu nhân Cuồng phong ',GETDATE(),N'Điện thoại để dành 10 năm nhưng vẫn còn mới không còn phát nhạc được nữa nhưng còn khả năng bắn đĩa',
-2,'/DuniExchange/img/product-img/DongHoSieuNhan.jfif'),
+2,'/DuniExchange/resource/img/product-img/DongHoSieuNhan.jfif'),
 (1,N'Giày thể thao Thượng Đình',GETDATE(),N'Giày bata màu trắng còn mới, mua được 2 tháng, đã xài 5 lần',
-2,'/DuniExchange/img/product-img/giaythuongdinh.jpg'),
+2,'/DuniExchange/resource/img/product-img/giaythuongdinh.jpg'),
 (2,N'Máy tính bảng Samsung Galaxy Tab 6',GETDATE(),N'Máy tính Bảng còn nguyên tem bảo hành, không xứt mẻ, còn mới',
-2,'/DuniExchange/img/product-img/taba6.jpg'),
+2,'/DuniExchange/resource/img/product-img/taba6.jpg'),
 (1,N'Người yêu cũ ',GETDATE(),N'Người yêu mới vừa chia tay 2 ngày trước, nữ, 20 tuổi, ăn nhiều, cao 1m68 thích màu hồng ghét sự giả dối nhưng cực kì giả giối :(',
-10,'/DuniExchange/img/product-img/xinhDep.jpeg'),
+10,'/DuniExchange/resource/img/product-img/xinhDep.jpeg'),
 (4,N'Lợn con ham ăn 2 tuần tuổi nhưng không đủ sức nuôi ',GETDATE(),N'lợn con 600g thông minh biết đi vệ sinh ngay giường chủ biết đòi thức ăn khi đói',
-6,'/DuniExchange/img/product-img/anh-con-heo-dang-yeu.jpg'),
+6,'/DuniExchange/resource/img/product-img/anh-con-heo-dang-yeu.jpg'),
 (1,N'Bộ móng đánh đàn tranh pass môn nhạc cũ dân tộc ',GETDATE(),N'ba chiếc móng huyền thoại giúp qua môn DRT103 một cách dễ dàng từ người mới biết chơi đàn hay ngươi chơi đàn lâu năm chỉ cần có bộ móng này thì skill tăng lên đáng kể',
-8,'/DuniExchange/img/product-img/mongDan.jfif'),
+8,'/DuniExchange/resource/img/product-img/mongDan.jfif'),
 (2,N'Bộ 3 cây sáo trúc giúp qua môn nhạc cụ dân tộc ',GETDATE(),N'3 cây sáo có khả năng giúp qua môn nhạc cụ dân tộc. Mỗi cây mang một màu sắc khác nhau nhưng thổi thì như nhau."Một cây làm chẳng nên non. Ba cây chụm lại nên hòn núi cao :)))',
-14,'/DuniExchange/img/product-img/sao.jpg'),
+14,'/DuniExchange/resource/img/product-img/sao.jpg'),
 (3,N'Áo Vovinam  ',GETDATE(),N'Áo Vovinam của nam, mặc vào dễ dàng pass môn, tặng kèm 2 đai ',
-6,'/DuniExchange/img/product-img/voPhuc.png'),
+6,'/DuniExchange/resource/img/product-img/voPhuc.png'),
 (4,N'Bộ sách tiếng Anh Top Notch ',GETDATE(),N'combo 4 cuốn sách tiếng Anh Top Notch 1,2,3,4  dành cho ai có nhu cầu học lại tiếng anh hay những bạn chưa học tiếng anh có thể trao đổi',
-6,'/DuniExchange/img/product-img/topnotch.jpg'),
+6,'/DuniExchange/resource/img/product-img/topnotch.jpg'),
 (2,N'5 viên đá chặn giấy ',GETDATE(),N'5 viên đá chặn giấy nhiều màu sắc có khả năng giúp giấy khỏi bay, gồm xanh lá, đỏ, xanh dương, vàng, tím, cam',
-6,'/DuniExchange/img/product-img/changiay.jfif'),
+6,'/DuniExchange/resource/img/product-img/changiay.jfif'),
 (2,N'Hộp bút chì màu ',GETDATE(),N'Gồm 1 bộ 12 cây bút chì màu khác nhau, còn mới ',
-6,'/DuniExchange/img/product-img/colormate-hop-go-12-thuong.jpg'),
+6,'/DuniExchange/resource/img/product-img/colormate-hop-go-12-thuong.jpg'),
 (3,N'Tài khoản Nexflix ',GETDATE(),N'Tài khoản Nexflix còn 2 tháng muốn đổi sang Disney+ vì hết phim để xem',
-6,'/DuniExchange/img/product-img/download.png'),
+6,'/DuniExchange/resource/img/product-img/download.png'),
 (1,N'Đồng hồ thông minh AppleWatch ',GETDATE(),N'Đồng hồ còn bảo hành, còn mới, chưa bị xứt mẻ',
-6,'/DuniExchange/img/product-img/DongHo.jpg'),
+6,'/DuniExchange/resource/img/product-img/DongHo.jpg'),
 (1,N'Váy ngủ trẻ em ',GETDATE(),N'váy ngủ trẻ em bỏ kho từ 10 năm trước nay được lôi ra ngoài ánh sáng, vẫn còn mặc được nhưng không bền, nên giặt trước khi mặc',
-6,'/DuniExchange/img/product-img/dam-ngu-tre-em.jpg'),
+6,'/DuniExchange/resource/img/product-img/dam-ngu-tre-em.jpg'),
 (2,N'Túi đeo chéo ',GETDATE(),N'Túi đeo chéo sành điệu, có thể đựng điện thoại, ví tiền hay các vật dụng khác, túi còn có thể đựng cả nghiệp của bạn',
-6,'/DuniExchange/img/product-img/tui-deo-cheo-di-choi-03.jpg')
+6,'/DuniExchange/resource/img/product-img/tui-deo-cheo-di-choi-03.jpg')
 
 select * from Post
 ---------------------------------------------------Kết thúc thêm một vài bản ghi cho bảng Post------------------------
