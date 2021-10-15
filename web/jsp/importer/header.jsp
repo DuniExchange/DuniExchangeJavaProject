@@ -47,7 +47,10 @@
           <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            
+        <c:if test="${not empty currentAccount}">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <div class="d-inline-flex align-items-center" style="height: 100%;">
               <a class="nav-link px-0 py-0 ms-lg-4 me-lg-2 mt-lg-0 mb-lg-0 ms-0 mt-3 mb-2" href="#" id="navbarDropdown"
@@ -195,18 +198,20 @@
         <!-- <img class="rounded-circle" width="40px" height="40px" alt="" src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="Nhat Quang">
                 </a>
               </li> -->
+        
+          
         <li class="nav-item dropdown">
           <a class="nav-link px-0 py-0 ms-lg-3 me-lg-2 mt-lg-0 mb-lg-0 ms-0 mt-3 mb-2" href="#" id="navbarDropdown"
             role="button">
             <img class="rounded-circle" width="40px" height="40px" alt=""
-              src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg" alt="Nhat Quang">
+              src="${currentAccount.userImage}" alt="${currentAccount.userUsername}">
           </a>
           <ul class="dropdown-menu dropdown-menu-end mt-2 username--overflow" aria-labelledby="navbarDropdown">
             <div class="d-flex px-3 py-1 mb-2">
               <img class="rounded-circle" width="48px" height="48px" alt=""
-                src="/DuniExchange/resource/img/avatar/DE150066_LuongNguyenNhatQuang_2.jpg" alt="Nhat Quang">
+                src="${currentAccount.userImage}" alt="${currentAccount.userUsername}">
               <div class=" ps-2">
-                <div class="dropdown-username-text">Nhat Quang</div>
+                <div class="dropdown-username-text">${currentAccount.userUsername}</div>
                 <div>
                   <span style="color: #fdbc31;">
                     <i class="fas fa-star fa-xs"></i>
@@ -228,8 +233,8 @@
                   </div>
                 </div>
                 <div class="py-2 dropdown-user-sub-text">
-                  <small class="d-block">(+84) 034 393 4215</small>
-                  <small>quanglnnde150066@fpt.edu.vn</small>
+                  <!--<small class="d-block">(+84) 034 393 4215</small>-->
+                  <small>${currentAccount.userEmail}</small>
                 </div>
               </div>
             </div>
@@ -273,23 +278,21 @@
               </a>
             </li>
             <li class="dropdown-user-item">
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="logout">
                 <span class="dropdown-user-text ms-0">Sign out</span>
               </a>
             </li>
           </ul>
         </li>
-        <c:if test="${not empty currentAccount}">
-            
         </c:if>
         <c:if test="${empty currentAccount}">
             <li class="nav-item header-text--active">
-               <a class="nav-link" href="#">
+               <a class="nav-link" href="displayLoginServlet">
                  <div class="header-text header-text--active">
                    <span style="color: var(--primary-color);" class="">
                      <i class="fas fa-sign-in"></i>
                    </span>
-                   <span class="">Sign in</span>
+                     <span class="">Sign in</span>
                  </div>
                </a>
              </li>             
