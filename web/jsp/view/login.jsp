@@ -63,7 +63,7 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="/DuniExchange/resource/img/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="register.jsp" class="signup-image-link">Tôi đã có tài khoản</a>
+                        <a href="displayRegisterServlet" class="signup-image-link">Tôi đã có tài khoản</a>
                     </div>
                 </div>
             </div>

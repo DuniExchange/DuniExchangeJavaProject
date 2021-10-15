@@ -36,7 +36,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="/DuniExchange/resource/img/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="login.jsp" class="signup-image-link">Tạo tài khoản</a>
+                        <a href="displayLoginServlet" class="signup-image-link">Tạo tài khoản</a>
                     </div>
 
                     <div class="signin-form">
