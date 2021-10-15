@@ -5,20 +5,26 @@
  */
 package Controller.User;
 
+import DAO.User.LoginDAO;
+import Entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author truon
  */
-@WebServlet(name = "DisplayLoginServlet", urlPatterns = {"/displayLoginServlet"})
-public class DisplayLoginServlet extends HttpServlet {
+@WebServlet(name = "LoginServlet", urlPatterns = {"/loginServlet"})
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,19 +38,6 @@ public class DisplayLoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-//        String previous = request.getHeader("referer"); //Lấy trang gửi request trước đó, ex: "/PreviousPage/subpath1/subpath2/"
-//        System.out.println(previous);
-//        if(previous == null){
-//            request.getRequestDispatcher("jsp/view/login.jsp").forward(request, response);
-//            return;
-//        }   
-//        
-//        if (previous.endsWith("DuniExchange/displayLoginServlet")){
-//            request.getRequestDispatcher("loginServlet").forward(request, response);
-//        } else {
-//            request.getRequestDispatcher("jsp/view/login.jsp").forward(request, response);
-//        }
-            request.getRequestDispatcher("jsp/view/login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -59,7 +52,7 @@ public class DisplayLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("jsp/view/login.jsp").forward(request, response);
     }
 
     /**
@@ -73,7 +66,40 @@ public class DisplayLoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            String username = request.getParameter("username").trim();
+            String password = request.getParameter("password").trim();
+            LoginDAO loginDAO = new LoginDAO();
+            
+            
+            if (loginDAO.isHaveUsename(username)) {
+                if (loginDAO.checkPassword(username, password)) {
+//                    System.out.println("Dang nhap thanh cong");
+                    
+                    HttpSession session = request.getSession(); //tao session de luu phien dang nhap
+                    try {
+                        Account currentAccount = loginDAO.getAccountByUserName(username);
+                        session.setAttribute("currentAccount", currentAccount);
+                    } catch (Exception ex) {
+                        Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    response.sendRedirect(request.getContextPath());
+                    
+                    
+                } else {
+//                    System.out.println("Sai mk");
+                    request.setAttribute("USERNAME", username);
+                    request.setAttribute("MESSAGE", "Sai mật khẩu");
+                    request.getRequestDispatcher("displayLoginServlet").forward(request, response);
+                }
+            } else {
+//                System.out.println("Người dùng không tồn tại");
+                request.setAttribute("MESSAGE", "Người dùng không tồn tại");
+                request.getRequestDispatcher("displayLoginServlet").forward(request, response);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

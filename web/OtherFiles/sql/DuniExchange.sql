@@ -1,4 +1,6 @@
-﻿﻿
+﻿
+
+--Hiện đang﻿ thiếu 1 trigger thay đổi số vote của user và trigger thay đổi isdisable của Postcategory
 ------------------------------------------------------------------Khởi tạo cơ sở dữ liệu---------------------------------------------
 create database DuniExchange
 go
@@ -28,7 +30,8 @@ create table Category
 categoryID int identity(1,1) NOT NULL,
 categoryName nvarchar(50) NOT NULL,
 categoryIcon nvarchar(50) NULL,
-constraint pk_Category primary key(categoryID)
+isDisable bit default 0 NOT NULL,
+constraint pk_Category primary key(categoryID,isDisable)
 )
 go
 
@@ -49,9 +52,11 @@ create table PostCategory
 (
 postID int NOT NULL,
 categoryID int NOT NULL,
+isDisable bit NOT NULL,
 constraint pk_CategoryPost primary key (postID,categoryID),
 constraint fk_Post foreign key (postID) references Post(postID),
-constraint fk_Category foreign key (categoryID) references Category(categoryID)
+constraint fk_Category foreign key (categoryID,isDisable) references Category(categoryID,isDisable)
+--constraint fk_CategoryDis foreign key (isDisableCate) references Category(isDisable)
 )
 go
 
@@ -195,11 +200,11 @@ select * from Post
 ------------------------------Bắt đầu thêm một vài bản ghi cho bảng CategoryPost------------------------
 select * from Post
 select * from Category
-insert into PostCategory(postID,categoryID) values
-(1,1),
-(2,4),
-(2,2),
-(3,5)
+insert into PostCategory(postID,categoryID,isDisable) values
+(1,1,0),
+(2,4,0),
+(2,2,0),
+(3,5,0)
 
 select * from PostCategory
 ------------------------------Kết thúc thêm một vài bản ghi cho bảng CategoryPost------------------------

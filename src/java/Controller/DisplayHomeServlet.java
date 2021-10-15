@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.User;
+package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author truon
  */
-@WebServlet(name = "DisplayLoginServlet", urlPatterns = {"/displayLoginServlet"})
-public class DisplayLoginServlet extends HttpServlet {
+@WebServlet(name = "DisplayHomeServlet", urlPatterns = {"/"})
+public class DisplayHomeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,19 +32,7 @@ public class DisplayLoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-//        String previous = request.getHeader("referer"); //Lấy trang gửi request trước đó, ex: "/PreviousPage/subpath1/subpath2/"
-//        System.out.println(previous);
-//        if(previous == null){
-//            request.getRequestDispatcher("jsp/view/login.jsp").forward(request, response);
-//            return;
-//        }   
-//        
-//        if (previous.endsWith("DuniExchange/displayLoginServlet")){
-//            request.getRequestDispatcher("loginServlet").forward(request, response);
-//        } else {
-//            request.getRequestDispatcher("jsp/view/login.jsp").forward(request, response);
-//        }
-            request.getRequestDispatcher("jsp/view/login.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/view/home.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

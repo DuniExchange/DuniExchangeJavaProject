@@ -3,7 +3,7 @@
     Created on : Oct 8, 2021, 7:24:09 PM
     Author     : Minky
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
@@ -279,16 +279,22 @@
             </li>
           </ul>
         </li>
-        <!-- <li class="nav-item header-text--active">
-            <a class="nav-link" href="#">
-              <div class="header-text header-text--active">
-                <span style="color: var(--primary-color);" class="">
-                  <i class="fas fa-sign-in"></i>
-                </span>
-                <span class="">Sign in</span>
-              </div>
-            </a>
-          </li> -->
+        <c:if test="${not empty currentAccount}">
+            
+        </c:if>
+        <c:if test="${empty currentAccount}">
+            <li class="nav-item header-text--active">
+               <a class="nav-link" href="#">
+                 <div class="header-text header-text--active">
+                   <span style="color: var(--primary-color);" class="">
+                     <i class="fas fa-sign-in"></i>
+                   </span>
+                   <span class="">Sign in</span>
+                 </div>
+               </a>
+             </li>             
+        </c:if>
+
       </div>
     </div>
   </nav>
