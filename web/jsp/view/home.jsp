@@ -118,7 +118,7 @@
         <div class="how-it-work-step text-center my-auto mx-auto"> <span>03<br>STEP</span></div>
         <div class="text-center how-it-work-guideline">Wait for Acceptance</div>
       </div>
-      <div class="reveal-hiw-3 how-it-work-arrow d-none d-lg-flex"><img src="resource/img/arrow-up-2.png" alt=""
+      <div class="reveal-hiw-3 how-it-work-arrow d-none d-lg-flex"><img src="/DuniExchange/resource/img/arrow-up-2.png" alt=""
           width="85"></div>
       <div class="reveal-hiw-3 how-it-work-arrow d-none d-md-flex d-lg-none"><img src="/DuniExchange/resource/img/arrow-down.png"
           alt="" width="85"></div>

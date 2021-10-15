@@ -7,7 +7,6 @@ go
 use DuniExchange
 go
 --drop database DuniExchange
-
 create table UserAccount
 (
 userID int identity(1,1) not null,
@@ -20,7 +19,8 @@ userFacebookURL nvarchar(max) NULL,
 userAvatarURL nvarchar(max) NULL,
 userRating float NOT NULL,
 isAdmin bit NULL,
-isValidate bit NOT NULL,
+isValidate bit default 0  NOT NULL,
+isDisable bit default 0 NOT NULL,
 constraint pk_Account primary key (userID),
 constraint rating_check Check (userRating between 0 and 5)
 )
@@ -43,7 +43,8 @@ postTitle nvarchar(MAX) NOT NULL,
 postDate datetime NOT NULL,
 postDescription nvarchar(MAX) NOT NULL,
 postLike int NOT NULL,
-postThumbnailURL nvarchar(MAX) NOT NULL 
+postThumbnailURL nvarchar(MAX) NOT NULL,
+isDisable bit default 0 NOT NULL,
 constraint pk_Post primary key (postID),
 constraint fk_PostAccount foreign key (postUserID) references UserAccount(userID)
 )
@@ -199,11 +200,11 @@ select * from Post
 ------------------------------Bắt đầu thêm một vài bản ghi cho bảng CategoryPost------------------------
 select * from Post
 select * from Category
-insert into PostCategory(postID,categoryID,isDisable) values
-(1,1,0),
-(2,4,0),
-(2,2,0),
-(3,5,0)
+insert into PostCategory(postID,categoryID) values
+(1,1),
+(2,4),
+(2,2),
+(3,5)
 
 select * from PostCategory
 ------------------------------Kết thúc thêm một vài bản ghi cho bảng CategoryPost------------------------
@@ -222,8 +223,8 @@ insert into Exchange(postExchangeDate,firstPostID,secondPostID,exchangeState) va
 
 -----------------------------------------P1-------View cho Post và category----------P1--------
 create view ViewPostAndCategory as
-select a.postID, accountID,postTitle,postDate,postDescription,postLike,thumbnailURL,categoryName 
-from Post a,CategoryPost b,Category c where a.postID = b.postID and b.categoryID = c.categoryID
+select a.postID, postUserID,postTitle,postDate,postDescription,postLike,postThumbnailURL,categoryName 
+from Post a,PostCategory b,Category c where a.postID = b.postID and b.categoryID = c.categoryID
 
 select * from ViewPostAndCategory
 -----Hết P1----------------------------------------------

@@ -192,15 +192,14 @@
               <hr class="dropdown-divider">
           </li>
         </ul>
+          </li>
         <!-- <li class="nav-item ">
                 <a class="nav-link px-0 py-0 ms-lg-3 me-lg-2 mt-lg-0 mb-lg-0 ms-0 mt-3 mb-2" href="#" > -->
         <!-- image auto have object-fit : cover  -->
         <!-- <img class="rounded-circle" width="40px" height="40px" alt="" src="resource/img/DE150066_LuongNguyenNhatQuang_2.jpg" alt="Nhat Quang">
                 </a>
               </li> -->
-        
-          
-        <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
           <a class="nav-link px-0 py-0 ms-lg-3 me-lg-2 mt-lg-0 mb-lg-0 ms-0 mt-3 mb-2" href="#" id="navbarDropdown"
             role="button">
             <img class="rounded-circle" width="40px" height="40px" alt=""
@@ -284,18 +283,17 @@
             </li>
           </ul>
         </li>
+         </ul>
         </c:if>
         <c:if test="${empty currentAccount}">
-            <li class="nav-item header-text--active">
-               <a class="nav-link" href="displayLoginServlet">
-                 <div class="header-text header-text--active">
-                   <span style="color: var(--primary-color);" class="">
-                     <i class="fas fa-sign-in"></i>
-                   </span>
-                     <span class="">Sign in</span>
-                 </div>
-               </a>
-             </li>             
+        <a class="nav-link" href="displayLoginServlet">
+          <div class="header-text header-text--active">
+            <span style="color: var(--primary-color);" class="">
+              <i class="fas fa-sign-in"></i>
+            </span>
+              <span class="">Sign in</span>
+          </div>
+        </a>             
         </c:if>
 
       </div>
