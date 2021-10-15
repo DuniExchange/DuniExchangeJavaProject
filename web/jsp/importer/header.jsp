@@ -286,7 +286,7 @@
          </ul>
         </c:if>
         <c:if test="${empty currentAccount}">
-        <a class="nav-link" href="displayLoginServlet">
+        <a class="nav-link" href="login">
           <div class="header-text header-text--active">
             <span style="color: var(--primary-color);" class="">
               <i class="fas fa-sign-in"></i>

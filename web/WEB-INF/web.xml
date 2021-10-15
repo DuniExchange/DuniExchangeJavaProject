@@ -21,6 +21,26 @@
         <url-pattern>/account</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Controller.Login.LoginServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Controller.Login.LogoutServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    
     <servlet-mapping>
             <servlet-name>default</servlet-name>
             <url-pattern>/resource/*</url-pattern>
