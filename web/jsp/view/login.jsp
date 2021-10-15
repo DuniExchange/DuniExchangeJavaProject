@@ -42,7 +42,7 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">Đăng nhập</h2>
-                        <form method="POST" class="register-form" id="login-form" action="loginServlet">
+                        <form method="POST" class="register-form" id="login-form" action="login">
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="username" id="username" placeholder="Tên tài khoản" value="${requestScope.USERNAME}"/>
