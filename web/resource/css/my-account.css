@@ -1,6 +1,6 @@
 #general-container{
 }
-#avatar-display{
+#avatar-section{
     height: 200px;
     margin-top: 120px;
     display: flex;
@@ -8,24 +8,12 @@
     align-items: center;
 }
 #information-display{
-    color: #ffffff;
 }
 #function-display{
-    flex: 1 1 0;
 }
 
 /*avatar section*/
-.avaname-container{
-
-}
-
-p.avatar-name{
-    display: block;
-    font-size: 2.5rem !important;
-    color: #ffffff;
-    font-weight: 600;
-}
-.avatar-container{
+#avatar-display{
     width: 208px;
     height: 208px;
     display: block;
@@ -33,19 +21,23 @@ p.avatar-name{
     top: 30px;
 }
 
-.avatar-container:hover .avatar-border{
-    background-color: rgba(255, 255, 255, 1);
-}
-
-.avatar-container *{
+#avatar-display *{
     width: 100%;
     height: 100%;
 }
+
+p.avatar-name{
+    display: block;
+    font-size: 2.5rem !important;
+    font-weight: 600;
+}
+
 .avatar-link{
     display: block;
 }
+
 .avatar-border{
-    background-color: rgba(255, 255, 255, 0.5);
+    background: linear-gradient(35deg, var(--primary-color) 0%, rgba(128,0,128,1) 100%);
     padding: 4px;
     border-radius: 50%;
     z-index: 1;
@@ -71,10 +63,6 @@ p.avatar-name{
 }
 
 /*function section*/
-.tabs{
-    color: var(--text-light);
-}
-
 .tablinks{
     min-width: 60px;
     position: relative;
@@ -88,10 +76,18 @@ p.avatar-name{
     position: absolute;
     height: 4px;
     width: 100%;
-    background: linear-gradient(to left, var(--secondary-light-color) 50%, var(--text-light) 50%) right;
+    background: linear-gradient(to left, purple 50%, var(--primary-color) 50%) right;
     background-size: 200%;
     transition: .3s ease-out;  
     bottom: 0px;
+}
+.post-container{
+    width: 1728px;
+}
+
+.tabcontents{
+    width: 200%;
+    transition: 0.5s cubic-bezier(.18,1.14,.5,1.18);
 }
 
 /*post*/
@@ -101,30 +97,31 @@ p.avatar-name{
 }
 
 .active .tab-underline{
-    background: var(--text-light);
+    background: var(--primary-color);
 }
 
 .date-n-author{
     font-size: 0.7rem;
 }
 
-.contentp p{
+.contentp > *{
+    max-width: 600px;
+}
+
+.contentp * {
     color: var(--text-light);
 }
 
-.contentp > *{
-    max-width: 568px;
+.contentp a:hover{
+    color: var(--text-light-hover);
 }
 
 .title{
   max-height: 48.8px;
   white-space: nowrap;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.icon-heart i{
-    color: red;
 }
 
 .author{
@@ -132,26 +129,37 @@ p.avatar-name{
 }
 
 .decription{
-    max-height: 83px;
-    overflow: scroll;
+    max-height: 72px;
+    /*overflow: scroll;*/
     overflow-wrap: break-word;
+    overflow-y: auto;
+    /*overflow-y: auto;*/
 }
 
-.decription::-webkit-scrollbar {
-  display: none;
+::-webkit-scrollbar-track
+{
+	background-color: #d7492a;
+}
+::-webkit-scrollbar
+{
+	width: 5px;	
 }
 
-a{
-    color: var(--text-light);
+::-webkit-scrollbar-thumb
+{
+	background-color: var(--text-light);
 }
 
+::-webkit-scrollbar-thumb:active
+{
+	background-color: var(--text-light-hover);
+}
 /*create*/
 .create-label{
     font-weight: 600;
 }
 .img-preview{
     width: 200px;
-    height: 200px;
     object-fit: cover;
 }
 #category-items{
@@ -161,7 +169,46 @@ a{
     overflow-y: auto;
 }
 
-.preview-upload{
-    overflow-x: auto;
+.upload-preview{
+    height: 210px;
+    padding: 10px;
+    outline: 2px dashed var(--primary-color);
+    outline-offset: -10px;
 }
+
+.upload-preview i{
+    font-size: 100px;
+    color: var(--primary-color);
+}
+
+.upload-icon{
+    display: inline-block;
+    padding: 50px 374px;
+}
+
+.preview{
+    max-height: 200px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.move-out{
+    outline-offset: 0px;
+    animation: outline-moveout 0.5s
+}
+
+.move-in{
+    animation: outline-movein 0.5s;
+}
+
+@keyframes outline-moveout{
+    0%   {outline-offset: -10px;}
+    100% {outline-offset: 0px;}
+}
+
+@keyframes outline-movein{
+    0%   {outline-offset: 0;}
+    100% {outline-offset: -10px;}
+}
+/*function section*/
 /*-------------*/

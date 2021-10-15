@@ -1,9 +1,10 @@
     :root {
   --primary-color: #fd5631;
+  --opaque-primary-color: #ffeeee;
   --secondary-color: #412845;
   --secondary-light-color: #523b55;
   --light-1-color: rgba(252, 255, 255,.3);
-  --light-2-color: rgba(252, 255, 255,.5);
+  --light-2-color: rgba(252, 255, 255,.5);  
   --bg-light: #fff0f0;
   /* màu của icon */
   --selector: #c93cfb;
@@ -12,7 +13,8 @@
   /* (màu của chữ nổi bật như H1, tiêu đề, h2…). */
   --text-bold: #1f1b2d;
   --text-header: #454056;
-  --text-light: #e4e6eb;
+  --text-light: #f8f9fa;
+  --text-light-hover: #f8d1d1;
   /* (màu của chữ bình thường). */
   --text-color: #666276;
   /* (màu của những chữ thêm thông tin phụ đi kèm), icon color */
@@ -195,6 +197,14 @@ link: https://lingtalfi.com/bootstrap4-color-generator#
     background-color: var(--secondary-light-color) !important;
 }
 
+.bg-primary-gradient{
+    background: linear-gradient(var(--primary-color), purple);
+}
+
+.bg-opaque-primary{
+    background-color: var(--opaque-primary-color);
+}
+
 a.bg-primary:hover,
 a.bg-primary:focus,
 button.bg-primary:hover,
@@ -317,6 +327,14 @@ button.bg-primary:focus {
   color: var(--primary_t1) !important;
 }
 
+.text-light{
+    color: var(--text--light);
+}
+
+.text-regular{
+    color: var(--text-color);
+}
+
 a.text-primary:hover,
 a.text-primary:focus {
   color: var(--primary_t2) !important;
@@ -389,10 +407,6 @@ a.text-primary:focus {
 
 .border-container{
     border-radius: 0.6rem;
-}
-
-.text-light{
-    color: var(--text--light);
 }
 /* foooter  */
 #general-container{
