@@ -31,7 +31,7 @@ categoryID int identity(1,1) NOT NULL,
 categoryName nvarchar(50) NOT NULL,
 categoryIcon nvarchar(50) NULL,
 isDisable bit default 0 NOT NULL,
-constraint pk_Category primary key(categoryID,isDisable)
+constraint pk_Category primary key(categoryID)
 )
 go
 
@@ -52,10 +52,9 @@ create table PostCategory
 (
 postID int NOT NULL,
 categoryID int NOT NULL,
-isDisable bit NOT NULL,
 constraint pk_CategoryPost primary key (postID,categoryID),
 constraint fk_Post foreign key (postID) references Post(postID),
-constraint fk_Category foreign key (categoryID,isDisable) references Category(categoryID,isDisable)
+constraint fk_Category foreign key (categoryID) references Category(categoryID)
 --constraint fk_CategoryDis foreign key (isDisableCate) references Category(isDisable)
 )
 go
