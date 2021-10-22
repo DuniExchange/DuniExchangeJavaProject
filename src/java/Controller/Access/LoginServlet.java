@@ -68,19 +68,6 @@ public class LoginServlet extends HttpServlet {
         try {
             String username = request.getParameter("username").trim();
             String password = request.getParameter("password").trim();
-<<<<<<< HEAD
-            
-            if (ManagerAccessDAO.isHaveUsename(username)) {
-                if (ManagerAccessDAO.checkPassword(username, password)) {
-//                    System.out.println("Dang nhap thanh cong");
-                    
-                    HttpSession session = request.getSession(); //tao session de luu phien dang nhap
-                    try {
-                        UserAccount currentAccount = ManagerAccessDAO.getAccountByUserName(username);
-                        session.setAttribute("currentAccount", currentAccount);
-                    } catch (Exception ex) {
-                        Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-=======
             boolean flag = false;
 
             if (password.length() == 0) {
@@ -99,7 +86,7 @@ public class LoginServlet extends HttpServlet {
                     if (ManagerAccessDAO.checkPassword(username, password)) {
                         HttpSession session = request.getSession(); //tao session de luu phien dang nhap
                         try {
-                            Account currentAccount = ManagerAccessDAO.getAccountByUserName(username);
+                            UserAccount currentAccount = ManagerAccessDAO.getAccountByUserName(username);
                             session.setAttribute("currentAccount", currentAccount);
                         } catch (Exception ex) {
                             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,7 +98,6 @@ public class LoginServlet extends HttpServlet {
                         request.setAttribute("USERNAME", username);
                         request.setAttribute("MESSAGE", "Wrong password");
                         request.getRequestDispatcher("displayLoginServlet").forward(request, response);
->>>>>>> 643e99339e634f854ab49f2dbe03dbdcd4112dd5
                     }
                 } else {
                     request.setAttribute("MESSAGE", "Username does not exist");
