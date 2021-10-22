@@ -34,7 +34,7 @@
             <div class="container border-container container-shadow bg-opaque-primary" id="avatar-section">
                 <div class="basic-container" id="avatar-display">
                     <div class="avatar-container">
-                        <a href="/DuniExchange/resource/img/avatar/minky.png" class="avatar-link" aria-hidden="true">
+                        <a href="${ACCOUNT.userAvatarURL}" class="avatar-link" aria-hidden="true">
                             <div class="avatar-border">
                                 <img src="/DuniExchange/resource/img/avatar/minky.png" id="avatar-img">
                                 <div class="avatar-mask"></div>
