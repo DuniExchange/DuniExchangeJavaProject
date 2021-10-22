@@ -36,7 +36,7 @@
                     <div class="avatar-container">
                         <a href="${ACCOUNT.userAvatarURL}" class="avatar-link" aria-hidden="true">
                             <div class="avatar-border">
-                                <img src="/DuniExchange/resource/img/avatar/minky.png" id="avatar-img">
+                                <img src="${ACCOUNT.userAvatarURL}" id="avatar-img">
                                 <div class="avatar-mask"></div>
                             </div>
                         </a>
