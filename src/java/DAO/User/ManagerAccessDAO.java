@@ -6,7 +6,7 @@
 package DAO.User;
 
 import DBConnection.DBConnection;
-import Entity.Account;
+import Entity.UserAccount;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -93,7 +93,7 @@ public class ManagerAccessDAO {
         return BCrypt.checkpw(password, pass);
     }
 
-    public static Account getAccountByUserName(String username) throws SQLException {
+    public static UserAccount getAccountByUserName(String username) throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -109,7 +109,7 @@ public class ManagerAccessDAO {
 
                 rs = stm.executeQuery();
                 while (rs.next()) {
-                    return new Account(rs.getInt(1),
+                    return new UserAccount(rs.getInt(1),
                             rs.getString(2),
                             rs.getString(3),
                             rs.getString(4),
@@ -190,7 +190,7 @@ public class ManagerAccessDAO {
         if (dao.isHaveUsename(username)) {
             if (dao.checkPassword(username, password)) {
                 System.out.println("Dang nhap thanh cong");
-                Account temp = dao.getAccountByUserName(username);
+                UserAccount temp = dao.getAccountByUserName(username);
                 System.out.println(temp.toString());
             } else {
                 System.out.println("Sai mk");

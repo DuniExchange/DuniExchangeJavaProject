@@ -4,9 +4,11 @@
     Author     : Minky
 --%>
 
+<%@page import="DAO.User.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix ="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<c:set value="${sessionScope.currentAccount}" var="ACCOUNT"></c:set>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +20,10 @@
   <jsp:include  page="/jsp/importer/base-css.jsp"></jsp:include>
   <!-- home css -->
   <link rel="stylesheet" href="/DuniExchange/resource/css/my-account.css">
-  <title>Document</title>
+  <title>${ACCOUNT.userFullname} | DuniExchange</title>
 </head>
 
-<body>
+<body>    
     <!-- header import -->
     <jsp:include page="/jsp/importer/header.jsp"></jsp:include>
     <!-- header import -->
@@ -42,7 +44,7 @@
                 </div>
                 <div class="basic-container" id="name-display">
                     <div class="name-container d-flex ms-3">
-                        <p class="avatar-name mt-auto mb-0">Hồ Hữu Tình</p>
+                        <p class="avatar-name mt-auto mb-0">${ACCOUNT.userFullname}</p>
                     </div>
                 </div>
             </div>
@@ -53,9 +55,8 @@
             <div class="basic-container col-4 pt-3 pe-3 d-flex" id="information-display">
                 <div class="info-container border-container container-shadow col-12 bg-opaque-primary">
                     <div class="info ml-5 px-3 py-2">
-                        <span class="d-block mb-2">Gmail: <div class="gmail info-text">minkyshinyu@gmail.com</div></span>
-                        <span class="d-block mb-2">Address: <div class="address info-text"> Hoa Hai - Ngu Hanh Son </div></span>
-                        <span class="d-block mb-2">Phone: <div class="phone info-text"> 0368569127 </div></span>
+                        <span class="d-block mb-2">Gmail: <div class="gmail info-text">${ACCOUNT.userEmail}</div></span>
+                        <span class="d-block mb-2">Facebook: <div class="phone info-text">${ACCOUNT.userFacebookURL}</div></span>
                         <button class="btn btn-primary col-12">Edit profile <i class="fas fa-pencil-alt"></i></button>
                     </div>
                 </div>
@@ -64,35 +65,40 @@
             <div class="basic-container col-8 py-3" id="function-display">
                 <div class="function-container border-container container-shadow col-12 bg-opaque-primary overflow-hidden">
                     <!--tab-->
-                    <div class="tabs px-4 py-3 d-flex">
-                        <div class="tablinks py-2 mx-2 d-flex flex-column" id="tab-post">
+                    <div class="tablinks px-4 py-3 d-flex" id="post-tablinks">
+                        <div class="tablink py-2 mx-2 d-flex flex-column" id="tab-post">
                             Your Post 
                             <div class="tab-underline"></div>
                         </div>
-                        <div class="tablinks py-2 mx-2 d-flex flex-column active" id="tab-create">
+                        <div class="tablink py-2 mx-2 d-flex flex-column" id="tab-create">
                             Upload Post
                             <div class="tab-underline"></div>
                         </div>                       
                     </div>
                     
                     <!--content-->
-                    <div class="tabcontents d-flex" id="tabcontents">
-                        <div class="tabcontent col-6 p-3 d-flex flex-column" id="post">
-                            <div class="post d-flex bg-primary px-3 border-container">
-                                <div class="imgp">
-                                    <img src="https://dienmaythienhoa.vn/static/images/4.%20hinh%20sp/3.%20Hinh%20SP%202/laptop-asus-s330fn-ey037t-1.png" style="" alt="anh san pham">
-                                </div>
-                                <div class="contentp ms-3 flex-grow-1 d-flex flex-column">
-                                    <a class="title" href="" style="font-size: 30px;font-weight: bold ;"> laptop-asus-s330fn-ey037t-1</a>
-                                    <div class="date-n-author d-flex"><p class="date">Mon, 31/05/2021 -</p> <a class="author ms-1" href="">Uyen Trang</a></div>
-                                    <div class="decription pe-2"><p class="m-0">CPU core i51135G7; Graphic card: Intel Iris XE; Ram 8GBzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzCPU core i51135G7; Graphic card: Intel Iris XE; Ram 8GBzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzCPU core i51135G7; Graphic card: Intel Iris XE; Ram 8GBzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzCPU core i51135G7; Graphic card: Intel Iris XE; Ram 8GBzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</p></div>
-                                    <div class="like-progress d-flex my-auto">
-                                        <div class="icon-heart me-2"><i class="far fa-heart"></i></div>
-                                        <div>
-                                            <p class="m-0">NaN</p>
+                    <div class="tabcontents d-flex" id="post-tabcontents">
+                        
+                        <div class="tabcontent col-6 p-3 d-flex flex-column overflow-auto" id="post">
+                            <div>
+                                <c:forEach items="${POSTLIST}" var="post">
+                                    <div class="post d-flex bg-primary px-3 border-container mb-3">
+                                        <div class="imgp">
+                                            <img src="${post.postThumbnailURL}" style="" alt="anh san pham">
+                                        </div>
+                                        <div class="contentp ms-3 flex-grow-1 d-flex flex-column">
+                                            <a class="title" href="" style="font-size: 30px;font-weight: bold ;">${post.postTitle}</a>
+                                            <div class="date-n-author d-flex"><p class="date">Mon, 31/05/2021 -</p> <a class="author ms-1" href="">${post.postUserFullname}</a></div>
+                                            <div class="decription pe-2"><p class="m-0">${post.postDescription}</p></div>
+                                            <div class="like-progress d-flex my-auto">
+                                                <div class="icon-heart me-2"><i class="far fa-heart"></i></div>
+                                                <div>
+                                                    <p class="m-0">${post.postLike}</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </c:forEach>
                             </div>
                         </div>
                     
@@ -224,72 +230,8 @@
   <jsp:include page="/jsp/importer/base-js.jsp"></jsp:include>
   
     <script src="/DuniExchange/resource/js/tab-toggle.js"></script>
-    
-    <script type="text/javascript">
-        var $img = $('#img');
-        var $preview = $('.upload-preview');
-        
-        console.log($preview);
-        
-        var loadFile = function(event) {
-            console.log('call');
-            if(event === null) return;
-            var preview = document.getElementById('preview');
-            preview.innerHTML = "";
-            var files = event.target.files;
-            var fileNames = "";
-            var n = 0;
-
-            if(files.length > 0){
-                destroyError("img-container");
-                console.log($('.preview-upload'));
-                $('.upload-preview').addClass('move-out');
-                $('.upload-icon').addClass('d-none');
-            } else {
-//                label.innerHTML = "Chọn tệp";
-                $('.upload-preview').removeClass('move-out');
-                $('.upload-preview').addClass('move-in');
-                setTimeout(function(){
-                    $('.upload-preview').removeClass('move-in');
-                }, 600);
-                $('.upload-icon').removeClass('d-none');
-                return;
-            }
-            for(const file of files){
-                n++;
-                fileNames += '"' +  file.name + '"' + ', ';
-                preview.innerHTML += '<img src="/DuniExchange/resource/img/bubble-loading.gif" class="img-preview me-2" id="output-'+ n +'"></img>';
-                var output = document.getElementById("output-" + n);                
-                output.src = URL.createObjectURL(file);
-            }
-            fileNames = fileNames.substring(0, fileNames.length-2);
-            output.onload = function() {
-               URL.revokeObjectURL(output.src); // free memory
-            };
-        };
-        
-        $img.change(function(e){loadFile(e);});
-        
-        $preview.on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        })
-        .on('dragover dragenter', function( ) {
-            $preview.addClass('move-out');
-        })
-        .on('dragleave dragend drop', function() {             
-            $preview.removeClass('move-out');
-            $preview.addClass('move-in');
-            setTimeout(function(){
-                $preview.removeClass('move-in');
-            }, 600);
-        })
-        .on('drop', function(e) {
-            droppedFiles = e.originalEvent.dataTransfer.files;
-            console.log(droppedFiles);
-            console.log(preview)
-        });
-    </script>
+    <script>addTabToggleEvent('post');</script>
+    <script src="/DuniExchange/resource/js/upload.js"></script>
     
     <script type="text/javascript">
         var isError = false;

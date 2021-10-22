@@ -11,31 +11,31 @@ import java.sql.Date;
  *
  * @author truon
  */
-public class Account {
-    private int accountID;
+public class UserAccount {
+    private int userID;
     private String userUsername;
     private String userPassword;
     private String userEmail;
     private String userFullname;
-    private Date createDate;
-    private String facebookURL;
-    private String userImage;
+    private Date userCreateDate;
+    private String userFacebookURL;
+    private String userAvatarURL;
     private float userRating;
     private boolean isAdmin;
     private boolean isValidate;
 
-    public Account() {
+    public UserAccount() {
     }
 
-    public Account(int accountID, String userUsername, String userPassword, String userEmail, String userFullname, Date createDate, String facebookURL, String userImage, float userRating, boolean isAdmin, boolean isValidate) {
-        this.accountID = accountID;
+    public UserAccount(int userID, String userUsername, String userPassword, String userEmail, String userFullname, Date userCreateDate, String userFacebookURL, String userAvatarURL, float userRating, boolean isAdmin, boolean isValidate) {
+        this.userID = userID;
         this.userUsername = userUsername;
         this.userPassword = userPassword;
         this.userEmail = userEmail;
         this.userFullname = userFullname;
-        this.createDate = createDate;
-        this.facebookURL = facebookURL;
-        this.userImage = userImage;
+        this.userCreateDate = userCreateDate;
+        this.userFacebookURL = userFacebookURL;
+        this.userAvatarURL = userAvatarURL;
         this.userRating = userRating;
         this.isAdmin = isAdmin;
         this.isValidate = isValidate;
@@ -52,12 +52,12 @@ public class Account {
 
 
 
-    public int getAccountID() {
-        return accountID;
+    public int getUserID() {
+        return userID;
     }
 
-    public void setAccountID(int accountID) {
-        this.accountID = accountID;
+    public void setUserID(int accountID) {
+        this.userID = accountID;
     }
 
     public String getUserUsername() {
@@ -108,34 +108,32 @@ public class Account {
         this.isValidate = isValidate;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getUserCreateDate() {
+        return userCreateDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setUserCreateDate(Date userCreateDate) {
+        this.userCreateDate = userCreateDate;
     }
 
-    public String getFacebookURL() {
-        return facebookURL;
+    public String getUserFacebookURL() {
+        return userFacebookURL;
     }
 
-    public void setFacebookURL(String facebookURL) {
-        this.facebookURL = facebookURL;
+    public void setUserFacebookURL(String userFacebookURL) {
+        this.userFacebookURL = userFacebookURL;
     }
 
-    public String getUserImage() {
-        return userImage;
+    public String getUserAvatarURL() {
+        return userAvatarURL;
     }
 
-    public void setUserImage(String userImage) {
-        this.userImage = userImage;
+    public void setUserAvatarURL(String userAvatarURL) {
+        this.userAvatarURL = userAvatarURL;
     }
 
     @Override
     public String toString() {
-        return "Account{" + "accountID=" + accountID + ", userUsername=" + userUsername + ", userPassword=" + userPassword + ", userEmail=" + userEmail + ", userFullname=" + userFullname + ", createDate=" + createDate + ", facebookURL=" + facebookURL + ", userImage=" + userImage + ", userRating=" + userRating + ", isAdmin=" + isAdmin + ", isValidate=" + isValidate + '}';
+        return "UserAccount{" + "userID=" + userID + ", userUsername=" + userUsername + ", userPassword=" + userPassword + ", userEmail=" + userEmail + ", userFullname=" + userFullname + ", userCreateDate=" + userCreateDate + ", userFacebookURL=" + userFacebookURL + ", userAvatarURL=" + userAvatarURL + ", userRating=" + userRating + ", isAdmin=" + isAdmin + ", isValidate=" + isValidate + '}';
     }
-
-    
 }

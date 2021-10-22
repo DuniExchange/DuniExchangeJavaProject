@@ -6,11 +6,11 @@
         </session-timeout>
     </session-config>
     <servlet>
-        <servlet-name>Account</servlet-name>
-        <jsp-file>/jsp/view/my-account.jsp</jsp-file>
+        <servlet-name>DisplayAccountServelt</servlet-name>
+        <servlet-class>Controller.Account.DisplayAccountServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Account</servlet-name>
+        <servlet-name>DisplayAccountServelt</servlet-name>
         <url-pattern>/account</url-pattern>
     </servlet-mapping>
     <servlet>
