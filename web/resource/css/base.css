@@ -417,19 +417,21 @@ a.text-primary:focus {
 /*scrollbar custom*/
 ::-webkit-scrollbar-track
 {
-	background-color: #d7492a;
+    background-color: #d7492a;
+    border-radius: 2rem;
 }
 ::-webkit-scrollbar
 {
-	width: 8px;	
+    width: 8px;	
 }
 
 ::-webkit-scrollbar-thumb
 {
-	background-color: purple;
+    background-color: purple;
+    border-radius: 2rem;
 }
 
 ::-webkit-scrollbar-thumb:active
 {
-	background-color: var(--text-light-hover);
+    background-color: var(--text-light-hover);
 }
