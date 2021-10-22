@@ -413,3 +413,23 @@ a.text-primary:focus {
     position: relative;
     top: var(--header-height);
 }
+
+/*scrollbar custom*/
+::-webkit-scrollbar-track
+{
+	background-color: #d7492a;
+}
+::-webkit-scrollbar
+{
+	width: 8px;	
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: purple;
+}
+
+::-webkit-scrollbar-thumb:active
+{
+	background-color: var(--text-light-hover);
+}

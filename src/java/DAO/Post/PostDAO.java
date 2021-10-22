@@ -73,7 +73,7 @@ public class PostDAO {
                 stm.setString(1, userID);
 
                 rs = stm.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     int postID = rs.getInt(1);
                     int postUserID = rs.getInt(2);
                     String postUserFullname = UserDAO.getUserFullnameByID(postUserID+"");

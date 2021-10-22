@@ -91,7 +91,7 @@ p.avatar-name{
 
 .tabcontents{
     width: 200%;
-    transition: 0.5s cubic-bezier(.18,1.14,.5,1.18);
+    transition: 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 /*post*/
@@ -138,25 +138,6 @@ p.avatar-name{
     overflow-wrap: break-word;
     overflow-y: auto;
     /*overflow-y: auto;*/
-}
-
-::-webkit-scrollbar-track
-{
-	background-color: #d7492a;
-}
-::-webkit-scrollbar
-{
-	width: 5px;	
-}
-
-::-webkit-scrollbar-thumb
-{
-	background-color: purple;
-}
-
-::-webkit-scrollbar-thumb:active
-{
-	background-color: var(--text-light-hover);
 }
 /*create*/
 .create-label{

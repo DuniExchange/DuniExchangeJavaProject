@@ -88,7 +88,7 @@
                                         </div>
                                         <div class="contentp ms-3 flex-grow-1 d-flex flex-column">
                                             <a class="title" href="" style="font-size: 30px;font-weight: bold ;">${post.postTitle}</a>
-                                            <div class="date-n-author d-flex"><p class="date">Mon, 31/05/2021 -</p> <a class="author ms-1" href="">${post.postUserFullname}</a></div>
+                                            <div class="date-n-author d-flex"><p class="date">${post.postDate} -</p> <a class="author ms-1" href="">${post.postUserFullname}</a></div>
                                             <div class="decription pe-2"><p class="m-0">${post.postDescription}</p></div>
                                             <div class="like-progress d-flex my-auto">
                                                 <div class="icon-heart me-2"><i class="far fa-heart"></i></div>
@@ -230,7 +230,10 @@
   <jsp:include page="/jsp/importer/base-js.jsp"></jsp:include>
   
     <script src="/DuniExchange/resource/js/tab-toggle.js"></script>
-    <script>addTabToggleEvent('post');</script>
+    <script>
+        addTabToggleEvent('post');
+        $("#tab-post").trigger('click');
+    </script>
     <script src="/DuniExchange/resource/js/upload.js"></script>
     
     <script type="text/javascript">
@@ -283,6 +286,9 @@
 
             if(img.files.length === 0){
                 insertError(document.getElementById("img-container"), "Must choose file");
+            } else {
+                for(file in files){ 
+                }
             }
 
             if(descr.value === "" || descr.value === null){
