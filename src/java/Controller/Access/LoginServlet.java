@@ -68,6 +68,7 @@ public class LoginServlet extends HttpServlet {
         try {
             String username = request.getParameter("username").trim();
             String password = request.getParameter("password").trim();
+<<<<<<< HEAD
             
             if (ManagerAccessDAO.isHaveUsename(username)) {
                 if (ManagerAccessDAO.checkPassword(username, password)) {
@@ -79,21 +80,45 @@ public class LoginServlet extends HttpServlet {
                         session.setAttribute("currentAccount", currentAccount);
                     } catch (Exception ex) {
                         Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    response.sendRedirect(request.getContextPath());
-                    
-                    
-                } else {
-//                    System.out.println("Sai mk");
-                    request.setAttribute("USERNAME", username);
-                    request.setAttribute("MESSAGE", "Sai mật khẩu");
-                    request.getRequestDispatcher("displayLoginServlet").forward(request, response);
-                }
-            } else {
-//                System.out.println("Người dùng không tồn tại");
-                request.setAttribute("MESSAGE", "Người dùng không tồn tại");
-                request.getRequestDispatcher("displayLoginServlet").forward(request, response);
+=======
+            boolean flag = false;
+
+            if (password.length() == 0) {
+                request.setAttribute("MESSAGE", "Please enter password");
+                request.setAttribute("USERNAME", username);
+                flag = true;
             }
+            if (username.length() == 0) {
+                request.setAttribute("MESSAGE", "Please enter username");
+                flag = true;
+            }
+            if (flag) {
+                request.getRequestDispatcher("displayLoginServlet").forward(request, response);
+            }else{
+                if (ManagerAccessDAO.isHaveUsename(username)) {
+                    if (ManagerAccessDAO.checkPassword(username, password)) {
+                        HttpSession session = request.getSession(); //tao session de luu phien dang nhap
+                        try {
+                            Account currentAccount = ManagerAccessDAO.getAccountByUserName(username);
+                            session.setAttribute("currentAccount", currentAccount);
+                        } catch (Exception ex) {
+                            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        response.sendRedirect(request.getContextPath());
+
+
+                    } else {
+                        request.setAttribute("USERNAME", username);
+                        request.setAttribute("MESSAGE", "Wrong password");
+                        request.getRequestDispatcher("displayLoginServlet").forward(request, response);
+>>>>>>> 643e99339e634f854ab49f2dbe03dbdcd4112dd5
+                    }
+                } else {
+                    request.setAttribute("MESSAGE", "Username does not exist");
+                    request.getRequestDispatcher("displayLoginServlet").forward(request, response);
+                }                
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

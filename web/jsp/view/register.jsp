@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Đăng ký</title>
+    <title>Register</title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="/DuniExchange/fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -38,23 +38,23 @@
                         <form method="POST" class="register-form" id="register-form" action="registerServlet">
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="username" placeholder="Username" value="${username}"/>
+                                <input type="text" name="username" id="username" placeholder="Username" value="${username}" required=""/>
                             </div>
                             <div class="form-group">
                                 <label for="fullname"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="fullname" id="fullname" placeholder="Fullname" value="${fullname}"/>
+                                <input type="text" name="fullname" id="fullname" placeholder="Fullname" value="${fullname}" required=""/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Email" value="${email}"/>
+                                <input type="email" name="email" id="email" placeholder="Email" value="${email}" />
                             </div>
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="passwordUser" id="pass" placeholder="Password" ${passwordUser}/>
+                                <input type="password" name="passwordUser" id="pass" placeholder="Password" value ="${passwordUser}" required=""/>
                             </div>
                             <div class="form-group">
                                 <label for="re_password"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_password" id="re_pass" placeholder="Repeat password"/>
+                                <input type="password" name="re_password" id="re_pass" placeholder="Repeat password" required=""/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
