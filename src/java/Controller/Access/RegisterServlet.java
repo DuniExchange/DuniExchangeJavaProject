@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -67,24 +68,30 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
                 try {
-            String username = request.getParameter("username");
-        String email = request.getParameter("email");
-        String password = request.getParameter("passwordUser");
-        String re_password = request.getParameter("re_password");
-        String fullname = request.getParameter("fullname");
-        
+            String username = request.getParameter("username").trim();
+        String email = request.getParameter("email").trim();
+        String password = request.getParameter("passwordUser").trim();
+        String re_password = request.getParameter("re_password").trim();
+        String fullname = request.getParameter("fullname").trim();
         if (ManagerAccessDAO.isHaveUsename(username)) {
-            request.setAttribute("MESSAGE", "Đã có tài khoản này");
+            request.setAttribute("MESSAGE", "Already have this account");
+            request.setAttribute("email", email);
+            request.setAttribute("username", username);
+            request.setAttribute("fullname", fullname);
             request.getRequestDispatcher("displayRegisterServlet").forward(request, response);
         }else{
+            String grex = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\\\.[A-Za-z0-9]+)$";
+            Pattern pat;
+            
             if (password.trim().equals(re_password.trim())) {
-                System.out.println("Mat khau giong nhau");
-                boolean insert = ManagerAccessDAO.insertAccount(username, fullname, email, password);
-                if (insert) {
-                    System.out.println("thêm account thành công");
-                }else{
-                    System.out.println("Khong them account duoc");
-                }
+//                System.out.println("Mat khau giong nhau");
+//                boolean insert = ManagerAccessDAO.insertAccount(username, fullname, email, password);
+                ManagerAccessDAO.insertAccount(username, fullname, email, password);
+//                if (insert) {
+//                    System.out.println("thêm account thành công");
+//                }else{
+//                    System.out.println("Khong them account duoc");
+//                }
                 HttpSession session = request.getSession();
                 try {
                         Account currentAccount = ManagerAccessDAO.getAccountByUserName(username);
@@ -94,7 +101,11 @@ public class RegisterServlet extends HttpServlet {
                     }
                 response.sendRedirect(request.getContextPath());
             }else{
-                request.setAttribute("MESSAGE", "Mật khẩu không khớp");
+                request.setAttribute("email", email);
+                request.setAttribute("username", username);
+                request.setAttribute("fullname", fullname);
+                request.setAttribute("passwordUser", password);
+                request.setAttribute("MESSAGE", "Password does not match");
                 request.getRequestDispatcher("displayRegisterServlet").forward(request, response);
             }
         }

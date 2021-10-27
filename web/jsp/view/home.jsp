@@ -4,6 +4,7 @@
     Author     : Minky
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -142,10 +143,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-12 latest-post-product mb-md-4"
+    <c:forEach items="${listPost_Account}" var="o" begin="0" end="2">
+         <div class="col-lg-4 col-md-6 col-sm-12 latest-post-product mb-md-4"
         onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">
         <div class="latest-post-img-cover">
-          <img src="/DuniExchange/resource/img/product-img/dam-ngu-tre-em.jpg" alt="" class="img-fluid">
+          <img src="${o.postThumbnailURL}" alt="" class="img-fluid">
           <a href="#"><button class="like-button btn">
               <span style="margin-top: 2px;">
                 <i class="far fa-heart"></i>
@@ -153,9 +155,9 @@
             </button></a>
         </div>
         <div class="latest-product-content">
-          <h3 class="latest-post-title mt-2 mb-0"><span class="latest-post-username">Uyên Trang</span> muốn đổi <span
-              class="latest-post-product-name"></span> Váy ngủ trẻ em xinh xắn </h3>
-          <p class="latest-post-description">Chiếc váy trẻ em còn rất mới, phù hợp với mọi lứa tuổi, nay tôi muốn đổi
+          <h3 class="latest-post-title mt-2 mb-0"><span class="latest-post-username">${o.userFullname}</span> muốn đổi <span
+              class="latest-post-product-name"></span> ${o.postTitle} </h3>
+          <p class="latest-post-description">${o.postDescription}
           </p>
           <ul class="list-description">
             <li class="list-description-item">
@@ -173,70 +175,8 @@
           </ul>
         </div>
       </div>
-
-      <div class="col-lg-4 col-md-6 col-sm-12 latest-post-product mb-md-4"
-        onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">
-        <div class="latest-post-img-cover">
-          <img src="/DuniExchange/resource/img/product-img/dam-ngu-tre-em.jpg" alt="" class="img-fluid">
-          <a href="https://www.facebook.com/"><button class="like-button btn">
-              <span style="margin-top: 2px;">
-                <i class="far fa-heart"></i>
-              </span>
-            </button></a>
-        </div>
-        <div class="latest-product-content">
-          <h3 class="latest-post-title mt-2 mb-0"><span class="latest-post-username">Uyên Trang</span> muốn đổi <span
-              class="latest-post-product-name"></span> Váy ngủ trẻ em xinh xắn </h3>
-          <p class="latest-post-description">Chiếc váy trẻ em còn rất mới, phù hợp với mọi lứa tuổi, nay tôi muốn đổi
-          </p>
-          <ul class="list-description">
-            <li class="list-description-item">
-              <span><i class="far fa-eye"></i></span>
-              <span>348</span>
-            </li>
-            <li class="list-description-item">
-              <span><i class="far fa-clock"></i></span>
-              <span>15 minutes ago</span>
-            </li>
-            <li class="list-description-item">
-              <span><i class="far fa-tshirt"></i></span>
-              <span>Women's fashion</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12 latest-post-product mb-md-4"
-        onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">
-        <div class="latest-post-img-cover">
-          <img src="/DuniExchange/resource/img/product-img/dam-ngu-tre-em.jpg" alt="" class="img-fluid">
-          <a href="https://www.facebook.com/"><button class="like-button btn">
-              <span style="margin-top: 2px;">
-                <i class="far fa-heart"></i>
-              </span>
-            </button></a>
-        </div>
-        <div class="latest-product-content">
-          <h3 class="latest-post-title mt-2 mb-0"><span class="latest-post-username">Uyên Trang</span> muốn đổi <span
-              class="latest-post-product-name"></span> Váy ngủ trẻ em xinh xắn </h3>
-          <p class="latest-post-description">Chiếc váy trẻ em còn rất mới, phù hợp với mọi lứa tuổi, nay tôi muốn đổi
-          </p>
-          <ul class="list-description">
-            <li class="list-description-item">
-              <span><i class="far fa-eye"></i></span>
-              <span>348</span>
-            </li>
-            <li class="list-description-item">
-              <span><i class="far fa-clock"></i></span>
-              <span>15 minutes ago</span>
-            </li>
-            <li class="list-description-item">
-              <span><i class="far fa-tshirt"></i></span>
-              <span>Women's fashion</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
+    </c:forEach>
+     
       <div class="col-lg-4 col-md-6 col-sm-12 latest-post-product mb-md-4 d-lg-none"
         onclick="window.location.href = 'https://fontawesome.com/v5.15/icons/bell?style=duotone'">
         <div class="latest-post-img-cover">

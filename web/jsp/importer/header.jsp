@@ -19,7 +19,7 @@
             <a class="nav-link header-text header-text--active" aria-current="page" href="#">Home Page</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link header-text" href="#">All Product</a>
+            <a class="nav-link header-text" href="DisplayAllProduct">All Product</a>
           </li>
           <li class="nav-item">
             <a class="nav-link header-text" href="#">Exchanged Product</a>
@@ -208,9 +208,9 @@
           <ul class="dropdown-menu dropdown-menu-end mt-2 username--overflow" aria-labelledby="navbarDropdown">
             <div class="d-flex px-3 py-1 mb-2">
               <img class="rounded-circle" width="48px" height="48px" alt=""
-                src="${currentAccount.userImage}" alt="${currentAccount.userUsername}">
+                src="${currentAccount.userImage}" alt="${currentAccount.userFullname}">
               <div class=" ps-2">
-                <div class="dropdown-username-text">${currentAccount.userUsername}</div>
+                <div class="dropdown-username-text">${currentAccount.userFullname}</div>
                 <div>
                   <span style="color: #fdbc31;">
                     <i class="fas fa-star fa-xs"></i>
