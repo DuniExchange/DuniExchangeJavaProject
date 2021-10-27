@@ -20,7 +20,7 @@
 
   <!-- tiny slider -->
   <link rel="stylesheet" href="/DuniExchange/node_modules/tiny-slider/dist/tiny-slider.css">
-  <title>Document</title>
+  <title>DuniExchange</title>
 </head>
 
 <body>

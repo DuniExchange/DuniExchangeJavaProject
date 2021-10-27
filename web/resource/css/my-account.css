@@ -63,12 +63,12 @@ p.avatar-name{
 }
 
 /*function section*/
-.tablinks{
+.tablink{
     min-width: 60px;
     position: relative;
 }
 
-.tablinks:hover .tab-underline{
+.tablink:hover .tab-underline{
     background-position: left;
 }
 
@@ -85,9 +85,13 @@ p.avatar-name{
     width: 1728px;
 }
 
+#post-tabcontents{
+    height: 842px;
+}
+
 .tabcontents{
     width: 200%;
-    transition: 0.5s cubic-bezier(.18,1.14,.5,1.18);
+    transition: 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 /*post*/
@@ -134,25 +138,6 @@ p.avatar-name{
     overflow-wrap: break-word;
     overflow-y: auto;
     /*overflow-y: auto;*/
-}
-
-::-webkit-scrollbar-track
-{
-	background-color: #d7492a;
-}
-::-webkit-scrollbar
-{
-	width: 5px;	
-}
-
-::-webkit-scrollbar-thumb
-{
-	background-color: var(--text-light);
-}
-
-::-webkit-scrollbar-thumb:active
-{
-	background-color: var(--text-light-hover);
 }
 /*create*/
 .create-label{

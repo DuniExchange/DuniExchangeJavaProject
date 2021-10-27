@@ -6,7 +6,7 @@
 package Controller.Access;
 
 import DAO.User.ManagerAccessDAO;
-import Entity.Account;
+import Entity.UserAccount;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -86,7 +86,8 @@ public class LoginServlet extends HttpServlet {
                     if (ManagerAccessDAO.checkPassword(username, password)) {
                         HttpSession session = request.getSession(); //tao session de luu phien dang nhap
                         try {
-                            Account currentAccount = ManagerAccessDAO.getAccountByUserName(username);
+
+                            UserAccount currentAccount = ManagerAccessDAO.getAccountByUserName(username);
                             session.setAttribute("currentAccount", currentAccount);
                         } catch (Exception ex) {
                             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);

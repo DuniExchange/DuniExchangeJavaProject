@@ -13,6 +13,7 @@ import java.util.Date;
 public class Post {
     private int postID;
     private int postUserID;
+    private String postUserFullname;
     private String postTitle;
     private Date postDate;
     private String postDescription;
@@ -23,9 +24,10 @@ public class Post {
     public Post() {
     }
 
-    public Post(int postID, int postUserID, String postTitle, Date postDate, String postDescription, int postLike, String postThumbnailURL, boolean isDisable) {
+    public Post(int postID, int postUserID, String postUserFullname, String postTitle, Date postDate, String postDescription, int postLike, String postThumbnailURL, boolean isDisable) {
         this.postID = postID;
         this.postUserID = postUserID;
+        this.postUserFullname = postUserFullname;
         this.postTitle = postTitle;
         this.postDate = postDate;
         this.postDescription = postDescription;
@@ -50,6 +52,14 @@ public class Post {
         this.postUserID = postUserID;
     }
 
+    public String getPostUserFullname() {
+        return postUserFullname;
+    }
+
+    public void setPostUserFullname(String postUserFullname) {
+        this.postUserFullname = postUserFullname;
+    }
+    
     public String getPostTitle() {
         return postTitle;
     }
@@ -100,8 +110,6 @@ public class Post {
 
     @Override
     public String toString() {
-        return "Post{" + "postID=" + postID + ", postUserID=" + postUserID + ", postTitle=" + postTitle + ", postDate=" + postDate + ", postDescription=" + postDescription + ", postLike=" + postLike + ", postThumbnailURL=" + postThumbnailURL + ", isDisable=" + isDisable + '}';
+        return "Post{" + "postID=" + postID + ", postUserID=" + postUserID + ", postUserFullname=" + postUserFullname + ", postTitle=" + postTitle + ", postDate=" + postDate + ", postDescription=" + postDescription + ", postLike=" + postLike + ", postThumbnailURL=" + postThumbnailURL + ", isDisable=" + isDisable + '}';
     }
-    
-    
 }

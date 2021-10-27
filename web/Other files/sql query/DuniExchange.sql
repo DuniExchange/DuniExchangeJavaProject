@@ -100,11 +100,32 @@ constraint pk_Exchange primary key(exchangeID),
 constraint fk_ApostID foreign key (firstPostID) references Post(postID),
 constraint fk_BpostID foreign key (secondPostID) references Post(postID),
 )
+
+create table ProductComment
+(
+ProductCommentID int identity(1,1) NOT NULL,
+ProductCommentText nvarchar(MAX) NOT NULL,
+ProductCommentDate datetime NOT NULL,
+postID int NOT NULL,
+userID  int NOT NULL,
+constraint pk_ProductComment primary key(ProductCommentID),
+constraint fk_PostCommentID foreign key (postID) references Post(postID),
+constraint fk_UserCommentID foreign key (userID) references UserAccount(userID),
+)
 go
 
 
 ---------------------------------------------------Kết thúc khởi tạo cơ sở dữ liệu-----------------------------------------------
 
+---------------------------------------------------Bắt đầu thêm một vài bản ghi cho bảng ProductComment------------------------
+insert into ProductComment(ProductCommentText, ProductCommentDate, postID, userID) values
+(N'Gất Kảm Động',GETDATE(),'1','1'),
+(N'Sản phẩm thật tuyệt vời',GETDATE(),'2','2'),
+(N'Nhìn rất tốt nhưng không muốn đổi',GETDATE(),'3','3')
+--delete from ProductComment
+Select * from ProductComment
+
+---------------------------------------------------Kết thúc thêm một vài bản ghi cho bảng ProductComment------------------------
 
 
 
