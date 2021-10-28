@@ -20,13 +20,7 @@ var $img = $('#img');
             $('.upload-preview').addClass('move-out');
             $('.upload-icon').addClass('d-none');
         } else {
-            $('.upload-preview').removeClass('move-out');
-            $('#preview').html("");
-            $('.upload-preview').addClass('move-in');
-            setTimeout(function(){
-                $('.upload-preview').removeClass('move-in');
-            }, 600);
-            $('.upload-icon').removeClass('d-none');
+            clearPreview();
             return;
         }
         
@@ -42,6 +36,16 @@ var $img = $('#img');
         output.onload = function() {
            URL.revokeObjectURL(output.src); // free memory
         };
+    }
+    
+    function clearPreview(){
+        $('.upload-preview').removeClass('move-out');
+        $('#preview').html("");
+        $('.upload-preview').addClass('move-in');
+        setTimeout(function(){
+            $('.upload-preview').removeClass('move-in');
+        }, 600);
+        $('.upload-icon').removeClass('d-none');
     }
     
     var handleChooseFile = function(event) {

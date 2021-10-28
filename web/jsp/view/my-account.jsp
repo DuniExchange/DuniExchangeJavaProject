@@ -217,6 +217,21 @@
 
             return !isError;
         }
+        
+        function clearForm(){
+            var title = $("#title");
+            var img = $("#img");
+            var descr = $("#decription");
+            var cat = $('#category-items input[type=checkbox]:checked');
+            
+            title.val('');
+            img.val('');
+            clearPreview();
+            descr.val('');
+            cat.each(function(){
+                if(this.checked) this.checked = false;
+            });
+        }
     </script>
 </body>
 
