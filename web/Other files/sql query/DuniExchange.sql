@@ -61,12 +61,13 @@ constraint fk_Category foreign key (categoryID) references Category(categoryID)
 go
 
 
-create table ProductImage
+
+create table PostImage
 (
 postID int NOT NULL,
-imageURL nvarchar(50) NOT NULL,
+postImageURL nvarchar(1000) NOT NULL,
 constraint fk_PostImage foreign key (postID) references Post(postID),
-constraint pk_ProductImage primary key (postID, imageURL)
+constraint pk_ProductImage primary key (postID, postImageURL)
 )
 go
 

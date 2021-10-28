@@ -86,7 +86,7 @@ p.avatar-name{
 }
 
 #post-tabcontents{
-    height: 842px;
+    height: 914px;
 }
 
 .tabcontents{
@@ -194,6 +194,10 @@ p.avatar-name{
 @keyframes outline-movein{
     0%   {outline-offset: 0;}
     100% {outline-offset: -10px;}
+}
+
+.category-item{
+    width: 169px;
 }
 /*function section*/
 /*-------------*/

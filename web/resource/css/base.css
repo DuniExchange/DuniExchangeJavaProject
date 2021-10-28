@@ -227,10 +227,12 @@ button.bg-primary:focus {
   background-color: var(--primary_t7);
   border-color: var(--primary_t2);
 }
-
 .btn-primary:focus,
 .btn-primary.focus {
-  box-shadow: 0 0 0 0.2rem var(--primary_shadow);
+  box-shadow: none;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--primary_text_color_dark_bright);
 }
 
 .btn-primary.disabled,

@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,12 +27,12 @@ public class PostDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
         
-        String query = "select top 3 * from Post";
         List<Post> posts = new ArrayList();
         try {
             con = DBConnection.makeConnection();
 
             if (con != null) {
+                String query = "select top 3 * from Post";
                 stm = con.prepareStatement(query);                
 
                 rs = stm.executeQuery();
@@ -63,12 +65,12 @@ public class PostDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
         
-        String query = "select * from Post where postUserID=?";
         List<Post> posts = new ArrayList();
         try {
             con = DBConnection.makeConnection();
 
             if (con != null) {
+                String query = "select * from Post where postUserID=?";
                 stm = con.prepareStatement(query);  
                 stm.setString(1, userID);
 
@@ -95,5 +97,48 @@ public class PostDAO {
             if (con != null) con.close();
         }
         return posts;
+    }
+    
+    public static int insertPost(int postUserID, String postTitle, Timestamp postDate, String postDescription, String postThumbnailURL) throws Exception {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        
+        int postID = -1; //postid for the return value
+        try {
+            con = DBConnection.makeConnection();
+                    
+            if (con != null) {
+                String query = "insert into\n"
+                + "Post(postUserID,postTitle,postDate,postDescription,postLike,postThumbnailURL)\n"
+                + "values(?,?,?,?,0,?)";
+                stm = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+                stm.setInt(1, postUserID);
+                stm.setString(2, postTitle);
+                stm.setTimestamp(3, postDate);
+                stm.setString(4, postDescription);
+                stm.setString(5, postThumbnailURL);
+
+                int row = stm.executeUpdate();
+
+                if (row == 0) {
+                    return -1; //if add product failed, key return is -1
+                }
+
+                ResultSet generatedKeys = stm.getGeneratedKeys(); //get the key result set of added items
+
+                if (generatedKeys.next()) {
+                    postID = generatedKeys.getInt(1); //get the key of the row after inserting
+                    System.out.println("postID: " + postID);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) rs.close();
+            if (stm != null) stm.close();
+            if (con != null) con.close();
+        }
+        return postID; //return the postID
     }
 }

@@ -81,13 +81,13 @@
                         
                         <div class="tabcontent col-6 p-3 d-flex flex-column overflow-auto" id="post">
                             <div>
-                                <c:forEach items="${POSTLIST}" var="post">
+                                <c:forEach items="${POST_LIST}" var="post">
                                     <div class="post d-flex bg-primary px-3 border-container mb-3">
                                         <div class="imgp">
                                             <img src="${post.postThumbnailURL}" style="" alt="anh san pham">
                                         </div>
                                         <div class="contentp ms-3 flex-grow-1 d-flex flex-column">
-                                            <a class="title" href="" style="font-size: 30px;font-weight: bold ;">${post.postTitle}</a>
+                                            <a class="title" href="" style="font-size: 30px;font-weight: bold ;" title="${post.postTitle}">${post.postTitle}</a>
                                             <div class="date-n-author d-flex"><p class="date">${post.postDate} -</p> <a class="author ms-1" href="">${post.postUserFullname}</a></div>
                                             <div class="decription pe-2"><p class="m-0">${post.postDescription}</p></div>
                                             <div class="like-progress d-flex my-auto">
@@ -104,15 +104,15 @@
                     
                         <div class="tabcontent col-6 p-3" id="create">
                             <div id="form-container" class="form-container flex-fill">
-                                <form action="AddPostServlet" method="post" enctype='multipart/form-data' onsubmit="return validate()">
+                                <form method="post" enctype='multipart/form-data' id="create-post-form">
                                     <div id="title-container" class="form-group input-container mb-2">
-                                        <label for="title" class="create-label">Tiêu đề:</label>
+                                        <label for="title" class="create-label">Title:</label>
                                         <input type="text" name="title" id="title" class="form-control">                                    
                                     </div>
                                     <div id="img-container" class="form-group input-container mb-2">
-                                        <label for="custom-file" class="create-label">Ảnh đính kèm:</label>
+                                        <label for="custom-file" class="create-label">Photo attached:</label>
                                         <div class="custom-file mb-2">
-                                            <input accept="image/*" type="file" name="img" id="img" hidden multiple>
+                                            <input accept="image/png, image/jpeg, image/bmp" type="file" name="img" id="img" hidden multiple>
                                             <label class="btn btn-primary" for="img">Choose File</label>
                                         </div>
                                         <div class="upload-preview bg-white">
@@ -121,100 +121,21 @@
                                         </div>
                                     </div>
                                     <div id="category-container" class="form-group input-container mb-2">
-                                        <label for="category-items" class="create-label">Phân loại:</label>
+                                        <label for="category-items" class="create-label">Category:</label>
                                         <div id="category-items" class="category-items d-flex flex-wrap">
-    <%--                                        <sql:setDataSource var="db" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-                                                url="jdbc:sqlserver://localhost:1433;databaseName=DuniExchange"  
-                                                user="sa"  password="admin"/>  
-                                            <sql:query dataSource="${db}" var="rs">  
-                                            select * from Category;  
-                                            </sql:query>
-                                            <c:forEach var="cat" items="${rs.rows}" varStatus="count">  
-                                                <div id="category-item-${count.index + 1}" class="category-item">
-                                                    <label for="category">${cat.categoryName}</label>
-                                                    <input type="checkbox" name="category" value="${cat.categoryID}">
-                                                </div>
-                                            </c:forEach> --%>
-
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
-                                                <div id="category-item-0" class="category-item me-5">
-                                                    <label for="category">category-1</label>
-                                                    <input type="checkbox" name="category" value="category-1">
-                                                </div>
+                                            <c:forEach var="cat" items="${CATEGORY_LIST}" varStatus="count">  
+                                                 <div id="category-item-${count.index + 1}" class="category-item d-flex align-items-center">
+                                                     <input type="checkbox" name="category" value="${cat.categoryID}" class="me-1">
+                                                     <label for="category" style="max-width: 100px" class="text-truncate" title="${cat.categoryName}">${cat.categoryName}</label>
+                                                 </div>
+                                            </c:forEach> 
                                         </div>
                                     </div>
                                     <div id="decription-container" class="form-group input-container mb-2">
                                         <label for="decription" class="create-label">Mô tả:</label>
                                         <textarea name="decription" id="decription" class="form-control" rows="10" style="resize:none;"></textarea>
                                     </div>
-                                    <input type="submit" value="Đăng" class="mr-auto btn btn-primary">
+                                    <input type="button" role="button" value="Đăng" class="mr-auto btn btn-primary" id="create-post-button">
                                 </form>
                             </div>
                         </div>
@@ -230,11 +151,9 @@
   <jsp:include page="/jsp/importer/base-js.jsp"></jsp:include>
   
     <script src="/DuniExchange/resource/js/tab-toggle.js"></script>
-    <script>
-        addTabToggleEvent('post');
-        $("#tab-post").trigger('click');
-    </script>
-    <script src="/DuniExchange/resource/js/upload.js"></script>
+    <<script src="/DuniExchange/resource/js/my-account.js"></script>
+    <script src="/DuniExchange/resource/js/upload-preview.js"></script>
+    <script src="/DuniExchange/resource/js/multipart-form.js"></script>
     
     <script type="text/javascript">
         var isError = false;
@@ -276,22 +195,23 @@
         function validate(){
             destroyAllError();
             isError = false;
-            var title = document.getElementById("title");
-            var img = document.getElementById("img");
-            var descr = document.getElementById("decription");
-
-            if(title.value === "" || title.value === null){
+            var title = $("#title");
+            var img = $("#img");
+            var descr = $("#decription");
+            var cat = $('#category-items input[type=checkbox]:checked');
+            if(title[0].value === "" || title[0].value === null){
                 insertError(document.getElementById("title-container"), "Must fill this field");
             }
 
-            if(img.files.length === 0){
+            if(img[0].files.length === 0){
                 insertError(document.getElementById("img-container"), "Must choose file");
-            } else {
-                for(file in files){ 
-                }
             }
-
-            if(descr.value === "" || descr.value === null){
+            
+            if(cat.length === 0){
+                insertError(document.getElementById("category-container"), "Must choose at least a category");
+            }
+            
+            if(descr[0].value === "" || descr[0].value === null){
                 insertError(document.getElementById("decription-container"), "Must fill this field");
             }
 

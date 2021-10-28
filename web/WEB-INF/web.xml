@@ -6,9 +6,25 @@
         </session-timeout>
     </session-config>
     <servlet>
+        <servlet-name>CreatePost</servlet-name>
+        <servlet-class>Controller.Account.CreatePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreatePost</servlet-name>
+        <url-pattern>/create-post</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>DisplayAccountServelt</servlet-name>
         <servlet-class>Controller.Account.DisplayAccountServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TestSendForm</servlet-name>
+        <servlet-class>Controller.Account.TestSendForm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestSendForm</servlet-name>
+        <url-pattern>/TestSendForm</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DisplayAccountServelt</servlet-name>
         <url-pattern>/account</url-pattern>

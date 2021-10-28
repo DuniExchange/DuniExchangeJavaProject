@@ -4,17 +4,8 @@
  */
 package Controller.Account;
 
-import DAO.Category.CategoryDAO;
-import DAO.Post.PostDAO;
-import Entity.Category;
-import Entity.Post;
-import Entity.UserAccount;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Minky
  */
-public class DisplayAccountServlet extends HttpServlet {
+public class TestSendForm extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,18 +27,11 @@ public class DisplayAccountServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        UserAccount currentAccount = (UserAccount)request.getSession().getAttribute("currentAccount");
-        if(currentAccount == null) {
-            response.sendRedirect(this.getServletContext().getContextPath());
-            return;
+        try (PrintWriter out = response.getWriter()) {
+            out.print("Send!");
         }
-        List<Post> postList = PostDAO.getPostByUserID(currentAccount.getUserID()+"");
-        List<Category> categoryList = CategoryDAO.getAllCategory();
-        request.setAttribute("POST_LIST", postList);
-        request.setAttribute("CATEGORY_LIST", categoryList);
-        request.getRequestDispatcher("jsp/view/my-account.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,11 +46,7 @@ public class DisplayAccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(DisplayAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -80,11 +60,7 @@ public class DisplayAccountServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(DisplayAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
