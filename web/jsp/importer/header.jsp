@@ -208,11 +208,7 @@
           <ul class="dropdown-menu dropdown-menu-end mt-2 username--overflow" aria-labelledby="navbarDropdown">
             <div class="d-flex px-3 py-1 mb-2">
               <img class="rounded-circle" width="48px" height="48px" alt=""
-<<<<<<< HEAD
                 src="${currentAccount.userImage}" alt="${currentAccount.userFullname}">
-=======
-                src="${currentAccount.userAvatarURL}" alt="${currentAccount.userUsername}">
->>>>>>> efbf79692520448b7acee72305f4d17188a9d54b
               <div class=" ps-2">
                 <div class="dropdown-username-text">${currentAccount.userFullname}</div>
                 <div>
