@@ -91,19 +91,42 @@ constraint fk_userID foreign key (userID) references UserAccount(userID)
 create table Exchange
 (
 exchangeID int identity(1,1) NOT NULL,
-postExchangeDate datetime NOT NULL,
+postRequestDate datetime NOT NULL,
 firstPostID int NOT NULL,
 secondPostID int NOT NULL,
 exchangeState int NOT NULL,
+responseDate datetime,
+seen int,
 constraint pk_Exchange primary key(exchangeID),
 constraint fk_ApostID foreign key (firstPostID) references Post(postID),
 constraint fk_BpostID foreign key (secondPostID) references Post(postID),
+)
+
+create table ProductComment
+(
+ProductCommentID int identity(1,1) NOT NULL,
+ProductCommentText nvarchar(MAX) NOT NULL,
+ProductCommentDate datetime NOT NULL,
+postID int NOT NULL,
+userID  int NOT NULL,
+constraint pk_ProductComment primary key(ProductCommentID),
+constraint fk_PostCommentID foreign key (postID) references Post(postID),
+constraint fk_UserCommentID foreign key (userID) references UserAccount(userID),
 )
 go
 
 
 ---------------------------------------------------Kết thúc khởi tạo cơ sở dữ liệu-----------------------------------------------
 
+---------------------------------------------------Bắt đầu thêm một vài bản ghi cho bảng ProductComment------------------------
+insert into ProductComment(ProductCommentText, ProductCommentDate, postID, userID) values
+(N'Gất Kảm Động',GETDATE(),'1','1'),
+(N'Sản phẩm thật tuyệt vời',GETDATE(),'2','2'),
+(N'Nhìn rất tốt nhưng không muốn đổi',GETDATE(),'3','3')
+--delete from ProductComment
+Select * from ProductComment
+
+---------------------------------------------------Kết thúc thêm một vài bản ghi cho bảng ProductComment------------------------
 
 
 
@@ -130,18 +153,18 @@ select * from UserAccount
 
 ---------------------------------------------------Bắt đầu thêm một vài bản ghi cho bảng Category------------------------
 insert into Category(categoryName,categoryIcon) values
-(N'Thời trang','fa fa-shopping-bag'),
-(N'Điện tử','fas fa-tv'),
-(N'Đồ gia dụng','fa fa-shopping-basket'),
-(N'Giải trí','fa fa-gamepad'),
-(N'Thực phẩm','fa fa-cutlery'),
-(N'Sách','fa fa-book'),
-(N'Mỹ phẩm','fa fa-cosmetic'),
-(N'Đồng hồ','fa fa-clock'),
-(N'Cây, hạt giống & củ' , 'fa fa-tree'),
-(N'Phụ kiện' , 'fas fa-gem'),
-(N'Người yêu' , 'fas fa-heart'),
-(N'Thú cưng' , 'fas fa-paw')
+(N'Thời trang','far fa-shopping-bag'),
+(N'Điện tử','far fa-tv'),
+(N'Đồ gia dụng','far fa-shopping-basket'),
+(N'Giải trí','far fa-gamepad'),
+(N'Thực phẩm','far fa-burger-soda'),
+(N'Sách','far fa-book'),
+(N'Mỹ phẩm','far fa-air-freshener'),
+(N'Đồng hồ','far fa-clock'),
+(N'Cây, hạt giống & củ' , 'far fa-salad'),
+(N'Phụ kiện' , 'far fa-gem'),
+(N'Người yêu' , 'far fa-heart'),
+(N'Thú cưng' , 'far fa-paw')
 
 select * from Category
 ---------------------------------------------------Kết thúc thêm một vài bản ghi cho bảng Category------------------------
@@ -204,17 +227,19 @@ select * from Category
 insert into PostCategory(postID,categoryID) values
 (1,1),
 (2,4),
-(2,2),
-(3,5)
+(2,2)
+
 
 select * from PostCategory
 ------------------------------Kết thúc thêm một vài bản ghi cho bảng CategoryPost------------------------
 
 
 ------------------------------Bắt đầu thêm một vài bản ghi cho bảng Exchange------------------------
-insert into Exchange(postExchangeDate,firstPostID,secondPostID,exchangeState) values
+insert into Exchange(postRequestDate,firstPostID,secondPostID,exchangeState) values
 (GETDATE(),14,5,1),
-(GETDATE(),7,2,0)
+(GETDATE(),7,2,0),
+(GETDATE(),8,7,0),
+(GETDATE(),12,3,0)
 ------------------------------Kết thúc thêm một vài bản ghi cho bảng Exchange------------------------
 
 -----------------------------------------------------Tạo view và Trigger-----------------------------------------------

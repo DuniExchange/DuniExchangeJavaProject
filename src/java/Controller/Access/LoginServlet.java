@@ -86,6 +86,7 @@ public class LoginServlet extends HttpServlet {
                     if (ManagerAccessDAO.checkPassword(username, password)) {
                         HttpSession session = request.getSession(); //tao session de luu phien dang nhap
                         try {
+
                             UserAccount currentAccount = ManagerAccessDAO.getAccountByUserName(username);
                             session.setAttribute("currentAccount", currentAccount);
                         } catch (Exception ex) {

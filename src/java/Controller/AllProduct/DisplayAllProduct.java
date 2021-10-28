@@ -1,8 +1,9 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package Controller.HomePage;
+package Controller.AllProduct;
 
 import static DAO.Post_Account.Post_AccountDAO.getListPost_Account;
 import Entity.Post_Account;
@@ -13,17 +14,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Minky
+ * @author ADMIN
  */
-@WebServlet(name = "DisplayHomeServlet", urlPatterns = {"/DisplayHomeServlet"})
-public class DisplayHomeServlet extends HttpServlet {
+public class DisplayAllProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,13 +36,12 @@ public class DisplayHomeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-        
         List<Post_Account> listPost_Account = new ArrayList<>();
               listPost_Account = getListPost_Account();
         
         request.setAttribute("listPost_Account", listPost_Account);
         
-        request.getRequestDispatcher("jsp/view/home.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/view/all-product.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,7 +59,7 @@ public class DisplayHomeServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(DisplayHomeServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DisplayAllProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -79,7 +77,7 @@ public class DisplayHomeServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(DisplayHomeServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DisplayAllProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
