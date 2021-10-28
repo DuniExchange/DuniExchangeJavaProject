@@ -22,19 +22,9 @@
         <servlet-class>Controller.Account.DisplayAccountServlet</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
-        <servlet-name>TestSendForm</servlet-name>
-        <servlet-class>Controller.Account.TestSendForm</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>TestSendForm</servlet-name>
-        <url-pattern>/TestSendForm</url-pattern>
-    </servlet-mapping>
-=======
         <servlet-name>DisplayAllProduct</servlet-name>
         <servlet-class>Controller.AllProduct.DisplayAllProduct</servlet-class>
     </servlet>
->>>>>>> 7683591203b4e9648dbf2d55a7db7bb6a089cfc7
     <servlet-mapping>
         <servlet-name>DisplayAccountServelt</servlet-name>
         <url-pattern>/account</url-pattern>
