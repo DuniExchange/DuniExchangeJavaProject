@@ -8,4 +8,6 @@ $('#create-post-button').on('click', function(){
     clearForm();
 });
 
-
+$('.delete-button').on('click', function(){
+    console.log($(this).data('id'));
+});

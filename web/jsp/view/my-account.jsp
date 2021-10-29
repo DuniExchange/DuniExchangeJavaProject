@@ -98,8 +98,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="edit-n-delete d-flex">
-                                                    <div class="edit-icon me-2"><i class="far fa-edit text-hover " data-bs-toggle="modal" data-bs-target="#edit-modal"></i></div>
-                                                    <div class="delete-icon"><i class="far fa-trash-alt text-hover" data-bs-toggle="modal" data-bs-target="#delete-modal"></i></div>
+                                                    <div class="edit-button me-2" data-id="${post.postID}" data-bs-toggle="modal" data-bs-target="#edit-modal"><i class="far fa-edit text-hover"></i></div>
+                                                    <div class="delete-button" data-id="${post.postID}" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="far fa-trash-alt text-hover"></i></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -154,6 +154,7 @@
         <!-- footer import -->
     </div>
         
+    <!--   delete modal  -->
     <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -166,7 +167,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary">Delete</button>
+              <button type="button" class="btn btn-primary"l>Delete</button>
             </div>
           </div>
         </div>
@@ -200,6 +201,7 @@
     <script type="text/javascript">
         var isError = false;
 
+        //add an error
         function insertError(container, msg){
             isError = true;
             console.log(container.getAttribute("id"));
@@ -209,7 +211,8 @@
             font.setAttribute("id", container.id +"-error");
             container.appendChild(font);
         }
-
+        
+        //destroy an error
         function destroyError(containerID){
             var container = document.getElementById(containerID);
 
@@ -220,7 +223,8 @@
             console.log("remove " + error.id + " at "  + container.tagName + " id="+ container.id);
             container.removeChild(error);
         }
-
+        
+        //destroy all error
         function destroyAllError(){
             var inputContainers = document.getElementsByClassName("input-container");
 
@@ -233,7 +237,8 @@
                 ip.removeChild(error);
             }
         }
-
+        
+        //validate create post form
         function validate(){
             destroyAllError();
             isError = false;
@@ -260,6 +265,7 @@
             return !isError;
         }
         
+        //reset data in create post form after send request
         function clearForm(){
             var title = $("#title");
             var img = $("#img");
