@@ -141,4 +141,29 @@ public class PostDAO {
         }
         return postID; //return the postID
     }
+    
+    public static boolean disablePost(int postID) throws SQLException{
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        
+        try{
+            con = DBConnection.makeConnection();
+            
+            if (con != null) {
+                String query = "update Post set isDisable=1 where postId=?";
+                stm = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+                stm.setInt(1, postID);
+
+                return stm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) rs.close();
+            if (stm != null) stm.close();
+            if (con != null) con.close();
+        }
+        return false;
+    }
 }
