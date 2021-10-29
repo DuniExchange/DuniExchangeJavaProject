@@ -13,13 +13,30 @@ public class Category {
     private int categoryID;
     private String categoryName;
     private String categoryIcon;
-    
-    public Category(){};
+    private boolean isDisable;
+
+    public Category() {
+    }
+
+    public Category(int categoryID, String categoryName, String categoryIcon, boolean isDisable) {
+        this.categoryID = categoryID;
+        this.categoryName = categoryName;
+        this.categoryIcon = categoryIcon;
+        this.isDisable = isDisable;
+    }
 
     public Category(int categoryID, String categoryName, String categoryIcon) {
         this.categoryID = categoryID;
         this.categoryName = categoryName;
         this.categoryIcon = categoryIcon;
+    }
+
+    public boolean isIsDisable() {
+        return isDisable;
+    }
+
+    public void setIsDisable(boolean isDisable) {
+        this.isDisable = isDisable;
     }
 
     public int getCategoryID() {
@@ -48,6 +65,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category{" + "categoryID=" + categoryID + ", categoryName=" + categoryName + ", categoryIcon=" + categoryIcon + '}';
+        return "Category{" + "categoryID=" + categoryID + ", categoryName=" + categoryName + ", categoryIcon=" + categoryIcon + ", isDisable=" + isDisable + '}';
     }
+
 }

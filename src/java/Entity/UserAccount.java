@@ -41,6 +41,16 @@ public class UserAccount {
         this.isValidate = isValidate;
     }
 
+    public UserAccount(int userID, String userUsername, String userEmail, String userFullname, String userAvatarURL, boolean isAdmin) {
+        this.userID = userID;
+        this.userUsername = userUsername;
+        this.userEmail = userEmail;
+        this.userFullname = userFullname;
+        this.userAvatarURL = userAvatarURL;
+        this.isAdmin = isAdmin;
+    }
+    
+
     public float getUserRating() {
         return userRating;
     }
