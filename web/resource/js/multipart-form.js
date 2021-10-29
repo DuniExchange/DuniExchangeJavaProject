@@ -1,14 +1,38 @@
 function sendFormData(url, formdata){
-    jQuery.ajax({
+    
+//    const formdata = new FormData($('#form-id')[0]);
+    
+jQuery.ajax({
     url: url,
-    data: formdata,
+    data: formdata, 
     cache: false,
     contentType: false,
     processData: false,
     method: 'POST',
     type: 'POST', // For jQuery < 1.9
-    success: function(data){
-        alert(data);
+    success: function(response){
+        alert(response);
+    }
+});
+}
+
+function sendData(url, data){
+    
+//    const data = {
+//        item1 : itemValue1,
+//        item2 : itemValue2
+//    }
+    
+jQuery.ajax({
+    url: url,
+    data: data,
+    cache: false,
+    contentType: false,
+    processData: false,
+    method: 'POST',
+    type: 'POST', // For jQuery < 1.9
+    success: function(response){
+        alert(response);
     }
 });
 }

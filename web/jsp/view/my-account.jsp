@@ -87,13 +87,19 @@
                                             <img src="${post.postThumbnailURL}" style="" alt="anh san pham">
                                         </div>
                                         <div class="contentp ms-3 flex-grow-1 d-flex flex-column">
-                                            <a class="title" href="" style="font-size: 30px;font-weight: bold ;" title="${post.postTitle}">${post.postTitle}</a>
+                                            <a class="title text-hover" href="" style="font-size: 30px;font-weight: bold ;" title="${post.postTitle}">${post.postTitle}</a>
                                             <div class="date-n-author d-flex"><p class="date">${post.postDate} -</p> <a class="author ms-1" href="">${post.postUserFullname}</a></div>
                                             <div class="decription pe-2"><p class="m-0">${post.postDescription}</p></div>
-                                            <div class="like-progress d-flex my-auto">
-                                                <div class="icon-heart me-2"><i class="far fa-heart"></i></div>
-                                                <div>
-                                                    <p class="m-0">${post.postLike}</p>
+                                            <div class="post-button my-auto d-flex  justify-content-between">
+                                                <div class="like-progress d-flex">
+                                                    <div class="icon-heart me-2"><i class="far fa-heart"></i></div>
+                                                    <div>
+                                                        <p class="m-0">${post.postLike}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="edit-n-delete d-flex">
+                                                    <div class="edit-icon me-2"><i class="far fa-edit text-hover " data-bs-toggle="modal" data-bs-target="#edit-modal"></i></div>
+                                                    <div class="delete-icon"><i class="far fa-trash-alt text-hover" data-bs-toggle="modal" data-bs-target="#delete-modal"></i></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,11 +153,47 @@
           <jsp:include page="/jsp/importer/footer.jsp"></jsp:include>
         <!-- footer import -->
     </div>
+        
+    <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Do you want to delete this post?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary">Delete</button>
+            </div>
+          </div>
+        </div>
+    </div>
+        
+    <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            Delete
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+    </div>    
   
-  <jsp:include page="/jsp/importer/base-js.jsp"></jsp:include>
+    <jsp:include page="/jsp/importer/base-js.jsp"></jsp:include>
   
     <script src="/DuniExchange/resource/js/tab-toggle.js"></script>
-    <<script src="/DuniExchange/resource/js/my-account.js"></script>
+    <script src="/DuniExchange/resource/js/my-account.js"></script>
     <script src="/DuniExchange/resource/js/upload-preview.js"></script>
     <script src="/DuniExchange/resource/js/multipart-form.js"></script>
     
