@@ -16,13 +16,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item ">
-            <a class="nav-link header-text header-text--active" aria-current="page" href="#">Home Page</a>
+            <a class="nav-link header-text header-text--active" aria-current="page" href="DisplayHomeServlet">Home Page</a>
           </li>
           <li class="nav-item">
             <a class="nav-link header-text" href="DisplayAllProduct">All Product</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link header-text" href="#">Exchanged Product</a>
+            <a class="nav-link header-text" href="DisplayAllProductExchange">Exchanged Product</a>
           </li>
           <!-- <li class="nav-item dropdown" >
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,31 +39,9 @@
           <!-- <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li> -->
-          <c:if test="${currentAccount.isAdmin == true}">
-            <li class="nav-item dropdown">
-              <a class="nav-link header-text" href="#">Manager</a>
-                <ul class="dropdown-menu dropdown-menu-end mt-2 username--overflow" aria-labelledby="navbarDropdown">
-            <li class="dropdown-user-item">
-              <a class="dropdown-item " href="displayAccountManager">
-                <span class="dropdown-user-text ">Account</span>
-              </a>
-            </li>
-            <li class="dropdown-user-item">
-              <a class="dropdown-item" href="#">
-                <span class="dropdown-user-text">Post</span>
-              </a>
-            </li>
-            <li class="dropdown-user-item">
-              <a class="dropdown-item" href="displayCategoryManager">
-                <span class="dropdown-user-text">Category</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-         </ul>                
-            </li>
-
-          </c:if>
+          <li class="nav-item">
+            <a class="nav-link header-text" href="#">About Us</a>
+          </li>
         </ul>
         <form class="d-flex" action="#">
           <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
@@ -229,7 +207,12 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end mt-2 username--overflow" aria-labelledby="navbarDropdown">
             <div class="d-flex px-3 py-1 mb-2">
-              <img class="rounded-circle" width="48px" height="48px" src="${currentAccount.userAvatarURL}" alt="${currentAccount.userUsername}">
+              <img class="rounded-circle" width="48px" height="48px" alt=""
+<<<<<<< HEAD
+                src="${currentAccount.userImage}" alt="${currentAccount.userFullname}">
+=======
+                src="${currentAccount.userAvatarURL}" alt="${currentAccount.userUsername}">
+>>>>>>> efbf79692520448b7acee72305f4d17188a9d54b
               <div class=" ps-2">
                 <div class="dropdown-username-text">${currentAccount.userFullname}</div>
                 <div>

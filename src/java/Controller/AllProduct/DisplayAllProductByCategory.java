@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ADMIN
  */
-public class DisplayAllProduct extends HttpServlet {
+@WebServlet(name = "DisplayAllProductByCategory", urlPatterns = {"/DisplayAllProductByCategory"})
+public class DisplayAllProductByCategory extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,23 +40,23 @@ public class DisplayAllProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
+        String PostByCate = request.getParameter("caid");
         Post_AccountDAO PAD = new Post_AccountDAO();
-        List<Post_Account> listPost_Account = new ArrayList<>();
-              listPost_Account = getListPost_Account();
+        List<Post_Account> listPostbyCate = new ArrayList<>();
+        listPostbyCate = PAD.getListPostByCategory(PostByCate);
               
               //get category
         List<Category> listCategory = new ArrayList<>();
         listCategory = PAD.getAllCategory();
+        int numberOfProductByCategory = PAD.getNumberOfAllProductByCategory(PostByCate);
         
         
-        //get number item not exchange
-        int numberItemNotExchange = PAD.getNumberOfAllProductNotExChange();
-        
-        request.setAttribute("listPost_Account", listPost_Account);
         
         request.setAttribute("listC", listCategory);
         
-        request.setAttribute("numberItem", numberItemNotExchange);
+        request.setAttribute("listPost_Account", listPostbyCate);
+        
+        request.setAttribute("numberItem", numberOfProductByCategory);
         
         request.getRequestDispatcher("jsp/view/all-product.jsp").forward(request, response);
     }
@@ -74,7 +76,7 @@ public class DisplayAllProduct extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(DisplayAllProduct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DisplayAllProductByCategory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -92,7 +94,7 @@ public class DisplayAllProduct extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(DisplayAllProduct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DisplayAllProductByCategory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -30,6 +30,7 @@ public class Post_Account {
     private float userRating;
     private boolean isAdmin;
     private boolean isValidate;
+    
 
     public Post_Account() {
     }
@@ -72,6 +73,14 @@ public class Post_Account {
         this.userRating = userRating;
         this.isAdmin = isAdmin;
         this.isValidate = isValidate;
+    }
+
+    public Post_Account(int postID, String postTitle, Date postDate, int postLike, String postThumbnailURL) {
+        this.postID = postID;
+        this.postTitle = postTitle;
+        this.postDate = postDate;
+        this.postLike = postLike;
+        this.postThumbnailURL = postThumbnailURL;
     }
 
     
@@ -218,6 +227,11 @@ public class Post_Account {
 
     public void setIsValidate(boolean isValidate) {
         this.isValidate = isValidate;
+    }
+
+    @Override
+    public String toString() {
+        return "Post_Account{" + "postID=" + postID + ", post_AccountID=" + post_AccountID + ", postTitle=" + postTitle + ", postDate=" + postDate + ", postDescription=" + postDescription + ", postLike=" + postLike + ", postThumbnailURL=" + postThumbnailURL + ", isDisable=" + isDisable + ", userUsername=" + userUsername + ", userPassword=" + userPassword + ", userEmail=" + userEmail + ", userFullname=" + userFullname + ", createDate=" + createDate + ", facebookURL=" + facebookURL + ", userImage=" + userImage + ", userRating=" + userRating + ", isAdmin=" + isAdmin + ", isValidate=" + isValidate + '}';
     }
     
     

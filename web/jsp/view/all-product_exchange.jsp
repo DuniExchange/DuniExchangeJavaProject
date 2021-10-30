@@ -70,7 +70,7 @@
                                 <ul class="aside-category-list">
 
                                     <li class="aside-category-item">
-                                        <a href="DisplayAllProductByCategory?caid=${c.categoryID} ${tag == c.categoryID ? " active":""}">
+                                        <a href="DisplayAllProductExchangeByCategory?caid=${c.categoryID} ${tag == c.categoryID ? " active":""}">
                                             <span class="aside-category-icon"><i class="${c.categoryIcon}"></i></span>
                                             <span class="aside-category-title">${c.categoryName}</span>
                                         </a>

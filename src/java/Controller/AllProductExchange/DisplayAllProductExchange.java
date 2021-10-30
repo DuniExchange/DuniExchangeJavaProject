@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.AllProduct;
+package Controller.AllProductExchange;
 
 import DAO.Post_Account.Post_AccountDAO;
-import static DAO.Post_Account.Post_AccountDAO.getListPost_Account;
 import Entity.Category;
 import Entity.Post_Account;
 import java.io.IOException;
@@ -16,15 +15,17 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ADMIN
+ * @author acer
  */
-public class DisplayAllProduct extends HttpServlet {
+@WebServlet(name = "DisplayAllProductExchange", urlPatterns = {"/DisplayAllProductExchange"})
+public class DisplayAllProductExchange extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,29 +38,30 @@ public class DisplayAllProduct extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
+
         response.setContentType("text/html;charset=UTF-8");
         Post_AccountDAO PAD = new Post_AccountDAO();
-        List<Post_Account> listPost_Account = new ArrayList<>();
-              listPost_Account = getListPost_Account();
-              
-              //get category
+
+        List<Post_Account> listPost_AccountExchange = new ArrayList<>();
+        listPost_AccountExchange = PAD.getListPost_AccountExchange();
+
+        //get category
         List<Category> listCategory = new ArrayList<>();
         listCategory = PAD.getAllCategory();
-        
-        
-        //get number item not exchange
-        int numberItemNotExchange = PAD.getNumberOfAllProductNotExChange();
-        
-        request.setAttribute("listPost_Account", listPost_Account);
-        
+
+        //get number item  exchange
+        int numberItemExchange = PAD.getNumberOfAllProductExChange();
+
+        request.setAttribute("listPost_Account", listPost_AccountExchange);
+
         request.setAttribute("listC", listCategory);
-        
-        request.setAttribute("numberItem", numberItemNotExchange);
-        
-        request.getRequestDispatcher("jsp/view/all-product.jsp").forward(request, response);
+
+        request.setAttribute("numberItem", numberItemExchange);
+
+        request.getRequestDispatcher("jsp/view/all-product_exchange.jsp").forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -74,7 +76,7 @@ public class DisplayAllProduct extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(DisplayAllProduct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DisplayAllProductExchange.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -92,7 +94,7 @@ public class DisplayAllProduct extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(DisplayAllProduct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DisplayAllProductExchange.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
