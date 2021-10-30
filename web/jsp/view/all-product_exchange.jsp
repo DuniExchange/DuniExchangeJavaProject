@@ -86,9 +86,9 @@
                 <div class="col-lg-9 col-md-8 overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5" style="flex:1">
                     <nav class="breadcrumb mb-3 pt-md-2">
                         <ol class="breadcrumb-list">
-                            <li class="breadcrumb-items breadcrumb-prev"><a href="">Home</a></li>
+                            <li class="breadcrumb-items breadcrumb-prev"><a href="DisplayHomeServlet">Home</a></li>
                             <span><i class="far fa-chevron-right"></i></span>
-                            <li class="breadcrumb-items breadcrumb-current"><a href="">All Product</a></li>
+                            <li class="breadcrumb-items breadcrumb-current"><a href="DisplayAllProduct">All Product</a></li>
                         </ol>
                     </nav>
                     <div class="pb-3 pb-sm-4">

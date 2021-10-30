@@ -43,8 +43,8 @@
             <a class="nav-link header-text" href="#">About Us</a>
           </li>
         </ul>
-        <form class="d-flex" action="#">
-          <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" action="SearchProduct">
+            <input name="searchtxt" class="form-control me-2 " type="text"  placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
 

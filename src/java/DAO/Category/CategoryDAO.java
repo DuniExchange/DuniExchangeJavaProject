@@ -21,6 +21,7 @@ import java.util.List;
  * @author Minky
  */
 public class CategoryDAO {
+
     public  List<Category> getAllCategory() throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -56,5 +57,11 @@ public class CategoryDAO {
             }
         }
         return categories;
+    }
+    public static void main(String[] args) throws SQLException {
+        CategoryDAO d = new CategoryDAO();
+        List<Category> categories = d.getAllCategory();
+        System.out.println(categories);
+        
     }
 }

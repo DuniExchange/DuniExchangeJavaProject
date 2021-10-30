@@ -354,7 +354,7 @@ public class Post_AccountDAO {
         }
         return 0;
     }
-    
+
     public int getNumberOfAllProductExchangeByCategory(String ID) throws Exception {
         try {
             con = DBConnection.makeConnection();
@@ -363,6 +363,86 @@ public class Post_AccountDAO {
 
                 stm = con.prepareStatement(sql);
                 stm.setString(1, ID);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return 0;
+    }
+
+    public List<Post_Account> getListPost_AccountBySearch(String txt) throws Exception {
+        List<Post_Account> listPost_Account = new ArrayList<>();
+        try {
+            con = DBConnection.makeConnection();
+
+            if (con != null) {
+                String sql = "select * from [dbo].[Post] a, [dbo].UserAccount b\n"
+                        + " where a.postUserID = b.userID and a.postTitle like ?";
+
+                stm = con.prepareStatement(sql);
+                stm.setString(1, '%' + txt + '%');
+                rs = stm.executeQuery();
+                while (rs.next()) {
+                    listPost_Account.add(new Post_Account(rs.getInt(1),
+                            rs.getInt(2),
+                            rs.getString(3),
+                            rs.getDate(4),
+                            rs.getString(5),
+                            rs.getInt(6),
+                            rs.getString(7),
+                            rs.getBoolean(8),
+                            rs.getString(10),
+                            rs.getString(12),
+                            rs.getString(13),
+                            rs.getDate(14),
+                            rs.getString(15),
+                            rs.getString(16),
+                            rs.getFloat(17),
+                            rs.getBoolean(18),
+                            rs.getBoolean(19)
+                    ));
+                }
+                return listPost_Account;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return null;
+    }
+
+    public int getNumberOfAllProductBySearch(String txt) throws Exception {
+        try {
+            con = DBConnection.makeConnection();
+            if (con != null) {
+                String sql = "select count(*) from [dbo].[Post] a, [dbo].UserAccount b\n"
+                        + " where a.postUserID = b.userID and a.postTitle like ?";
+
+                stm = con.prepareStatement(sql);
+                stm.setString(1, '%' + txt + '%');
                 rs = stm.executeQuery();
                 if (rs.next()) {
                     return rs.getInt(1);
@@ -396,7 +476,9 @@ public class Post_AccountDAO {
 //        System.out.println(d.getNumberOfAllProductNotExChange());
 //        List<Post_Account> listPostbyCate = new ArrayList<>();
 //        listPostbyCate = d.getListPostByCategory("1");
-        System.out.println(d.getNumberOfAllProductByCategory("1"));
+//        System.out.println(d.getNumberOfAllProductByCategory("1"));
+//        System.out.println(d.getListPost_AccountBySearch("a"));
+        System.out.println(d.getNumberOfAllProductBySearch("a"));
     }
 
 }
