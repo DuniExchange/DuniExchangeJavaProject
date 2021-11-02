@@ -2926,7 +2926,7 @@ body{margin-top:20px;
     margin-left: 12px;
 }
 .review-section {
-    border-bottom: 1px solid #dadbdd;
+    padding-right: 7px;
     padding-bottom: 24px;
     margin-bottom: 30px;
     padding-top: 64px;

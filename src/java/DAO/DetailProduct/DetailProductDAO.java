@@ -153,7 +153,7 @@ public class DetailProductDAO {
 
                 stm = con.prepareStatement(sql);
                 stm.setString(1, '%' + name + '%');
-                stm.setString(2, id );
+                stm.setString(2, id);
                 rs = stm.executeQuery();
                 while (rs.next()) {
                     list.add(new Post_Account(rs.getInt(1),
@@ -181,6 +181,8 @@ public class DetailProductDAO {
 
     }
 
+    
+
     public static void main(String[] args) throws SQLException {
         DetailProductDAO d = new DetailProductDAO();
         //System.out.println(d.showPostDetail("1"));
@@ -189,5 +191,6 @@ public class DetailProductDAO {
 //        List<Post_Account> list = new ArrayList<>();
 //        list = d.suggestPostSameCategory("a", "1");
 //        System.out.println(list);
+        
     }
 }
