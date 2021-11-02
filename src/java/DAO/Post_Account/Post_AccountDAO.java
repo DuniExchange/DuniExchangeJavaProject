@@ -45,15 +45,16 @@ public class Post_AccountDAO {
                             rs.getInt(6),
                             rs.getString(7),
                             rs.getBoolean(8),
-                            rs.getString(10),
-                            rs.getString(12),
+                            rs.getInt(9),
+                            rs.getString(11),
                             rs.getString(13),
-                            rs.getDate(14),
-                            rs.getString(15),
+                            rs.getString(14),
+                            rs.getDate(15),
                             rs.getString(16),
-                            rs.getFloat(17),
-                            rs.getBoolean(18),
-                            rs.getBoolean(19)
+                            rs.getString(17),
+                            rs.getFloat(18),
+                            rs.getBoolean(19),
+                            rs.getBoolean(20)
                     ));
                 }
                 return listPost_Account;
@@ -76,6 +77,8 @@ public class Post_AccountDAO {
 
     }
     
-    
+    public static void main(String[] args) throws Exception {
+        System.out.println(Post_AccountDAO.getListPost_Account());
+    }
    
 }

@@ -5,8 +5,11 @@
  */
 package Controller.AllProduct;
 
+import DAO.Post.PostDAO;
 import static DAO.Post_Account.Post_AccountDAO.getListPost_Account;
+import Entity.Post;
 import Entity.Post_Account;
+import Entity.UserAccount;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -37,10 +40,17 @@ public class DisplayAllProduct extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         List<Post_Account> listPost_Account = new ArrayList<>();
-              listPost_Account = getListPost_Account();
-        
+        listPost_Account = getListPost_Account();
+
+        UserAccount currentAccount = (UserAccount) request.getSession().getAttribute("currentAccount");
+
+        if (currentAccount != null) {
+            List<Post> listPostByCurrentAccount = PostDAO.getPostByUserID(currentAccount.getUserID());
+            request.setAttribute("listPostByCurrentAccount", listPostByCurrentAccount);
+        }
+
         request.setAttribute("listPost_Account", listPost_Account);
-        
+
         request.getRequestDispatcher("jsp/view/all-product.jsp").forward(request, response);
     }
 

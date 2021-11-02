@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>ExchangeServlet</servlet-name>
+        <servlet-class>Controller.Exchange.ExchangeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NotificationServlet</servlet-name>
+        <servlet-class>Controller.Notification.NotificationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateSeenServlet</servlet-name>
+        <servlet-class>Controller.Notification.UpdateSeenServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AcceptExchangeServlet</servlet-name>
+        <servlet-class>Controller.Exchange.AcceptExchangeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DenyExchangeServlet</servlet-name>
+        <servlet-class>Controller.Exchange.DenyExchangeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DisplayAllProduct</servlet-name>
         <url-pattern>/DisplayAllProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExchangeServlet</servlet-name>
+        <url-pattern>/ExchangeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NotificationServlet</servlet-name>
+        <url-pattern>/NotificationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSeenServlet</servlet-name>
+        <url-pattern>/UpdateSeenServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AcceptExchangeServlet</servlet-name>
+        <url-pattern>/AcceptExchangeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DenyExchangeServlet</servlet-name>
+        <url-pattern>/DenyExchangeServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -52,6 +92,6 @@
         <url-pattern>/node_modules/*</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>DisplayHomeServlet</welcome-file>
+        <welcome-file>NotificationServlet</welcome-file>
     </welcome-file-list>
 </web-app>

@@ -41,7 +41,7 @@ public class DisplayAccountServlet extends HttpServlet {
             response.sendRedirect(this.getServletContext().getContextPath());
             return;
         }
-        List<Post> postList = PostDAO.getPostByUserID(currentAccount.getUserID()+"");
+        List<Post> postList = PostDAO.getPostByUserID(currentAccount.getUserID());
         request.setAttribute("POSTLIST", postList);
         request.getRequestDispatcher("jsp/view/my-account.jsp").forward(request, response);
     }
