@@ -21,14 +21,6 @@
         <servlet-class>Controller.Exchange.DenyExchangeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>DisplayAllProduct</servlet-name>
-        <url-pattern>/DisplayAllProduct</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ExchangeServlet</servlet-name>
-        <url-pattern>/ExchangeServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>NotificationServlet</servlet-name>
         <url-pattern>/NotificationServlet</url-pattern>
     </servlet-mapping>
