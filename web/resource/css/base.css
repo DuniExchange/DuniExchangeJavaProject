@@ -23,17 +23,13 @@
   --header-height: 69.83px;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 html {
   /* font-size: 62.5%; */
   line-height: 1.6rem;
   font-family: "Noto Sans", sans-serif !important;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Noto Sans", sans-serif !important;
 }

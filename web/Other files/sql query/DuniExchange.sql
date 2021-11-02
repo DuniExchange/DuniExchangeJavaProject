@@ -162,7 +162,7 @@ insert into UserAccount(userUserName,userPassword,userEmail,userFullname,isAdmin
 ('trang','$2a$12$uEAYVuMEuSu6MhbIjHX.M.yWpt/Pd23O91LHXIlOdcbdl69hdw2xS','trangttude150338@fpt.edu.vn',N'Uyên Trang',1,GETDATE(),
 'www.facebook.com/profile.php?id=100009267167030','/DuniExchange/resource/img/avatar/trang.png',1,0),
 ('khoi','$2a$12$BFtT6wdESrTNT4JMhROjnO83hDnCEIwCG1K4sIHCWx6kh2IwO0M06','khoinmde10323@fpt.edu.vn',N'Mạnh Khôi',1,GETDATE(),
-'www.facebook.com/profile.php?id=100011319337285','/DuniExchange/resource/img/avatar/khoi.png',1,0)
+'www.facebook.com/profile.php?id=100011319337285','/DuniExchange/resource/img/avatar/khoi.png',1,0),
 ('dat','$2a$12$h5ig0gmoeE13KBu8Ji4wguSp1diqUKFytj5bVjJpdZom/RFNxQe4K','dathdde150170@fpt.edu.vn',N'Đắc Đạt',1,GETDATE(),
 'www.facebook.com/profile.php?id=100042160700182','/DuniExchange/resource/img/avatar/Avt-Dat.jpg',1,0)
 --quang 123
@@ -196,197 +196,197 @@ select * from Category
 insert into Post(postUserID,postTitle,postDate,postDescription,postLike,postThumbnailURL) values
 (1,N'Chiếc áo phông sặc sỡ, suýt nữa thành đồ gia truyền nhưng nay được đem ra đổi',GETDATE()
 ,N'Đây là chiếc áo có màu sắc sặc sỡ, được các chuyên gia Trung Quốc lấy cảm hứng từ các thương hiệu nổi tiếng như Gu Sì, Chà Neo,Luonvuituoi , bla bla (giới thiệu sản phẩm)',
-3467,'/DuniExchange/resource/images/Product-images/AoNhieuMau.jfif'),
+3467,'/DuniExchange/resource/img/product-img/AoNhieuMau.jfif'),
 
 (2,N'Combo sách làm giàu chưa đọc, còn nguyên tem',GETDATE(),
 N'Bộ sách "Dạy con làm giàu" gồm 13 cuốn được viết bởi Robert T.Kiyosaki được tái bản bằng tiếng Việt hướng dẫn cách làm giàu nhưng chưa đọc ',
-1742,'/DuniExchange/resource/images/Product-images/SachLamGiau.jpg'),
+1742,'/DuniExchange/resource/img/product-img/SachLamGiau.jpg'),
 
 (3,N'Gói kẹo Chipchip ',GETDATE(),N'Gói kẹo Chipchip mới ăn được một nửa, còn HSD, rất ngon',
-4257,'/DuniExchange/resource/images/Product-images/candyChip.jfif'),
+4257,'/DuniExchange/resource/img/product-img/candyChip.jfif'),
 
 (4,N'Điện thoại siêu nhân Cuồng phong ',GETDATE(),N'Điện thoại để dành 10 năm nhưng vẫn còn mới không còn phát nhạc được nữa nhưng còn khả năng bắn đĩa',
-6864,'/DuniExchange/resource/images/Product-images/DongHoSieuNhan.jfif'),
+6864,'/DuniExchange/resource/img/product-img/DongHoSieuNhan.jfif'),
 
 (1,N'Giày thể thao Thượng Đình',GETDATE(),N'Giày bata màu trắng còn mới, mua được 2 tháng, đã xài 5 lần',
-4212,'/DuniExchange/resource/images/Product-images/giaythuongdinh.jpg'),
+4212,'/DuniExchange/resource/img/product-img/giaythuongdinh.jpg'),
 
 (2,N'Máy tính bảng Samsung Galaxy Tab 6',GETDATE(),N'Máy tính Bảng còn nguyên tem bảo hành, không xứt mẻ, còn mới',
-6363,'/DuniExchange/resource/images/Product-images/taba6.jpg'),
+6363,'/DuniExchange/resource/img/product-img/taba6.jpg'),
 
 (1,N'Người yêu cũ ',GETDATE(),N'Người yêu mới vừa chia tay 2 ngày trước, nữ, 20 tuổi, ăn nhiều, cao 1m68 thích màu hồng ghét sự giả dối nhưng cực kì giả giối 🙁',
-51022,'/DuniExchange/resource/images/Product-images/xinhDep.jpeg'),
+51022,'/DuniExchange/resource/img/product-img/xinhDep.jpeg'),
 
 (4,N'Lợn con ham ăn 2 tuần tuổi nhưng không đủ sức nuôi ',GETDATE(),N'lợn con 600g thông minh biết đi vệ sinh ngay giường chủ biết đòi thức ăn khi đói',
-5694,'/DuniExchange/resource/images/Product-images/anh-con-heo-dang-yeu.jpg'),
+5694,'/DuniExchange/resource/img/product-img/anh-con-heo-dang-yeu.jpg'),
 
 (1,N'Bộ móng đánh đàn tranh pass môn nhạc cũ dân tộc ',GETDATE(),N'ba chiếc móng huyền thoại giúp qua môn DRT103 một cách dễ dàng từ người mới biết chơi đàn hay ngươi chơi đàn lâu năm chỉ cần có bộ móng này thì skill tăng lên đáng kể',
-4873,'/DuniExchange/resource/images/Product-images/mongDan.jfif'),
+4873,'/DuniExchange/resource/img/product-img/mongDan.jfif'),
 
 (2,N'Bộ 3 cây sáo trúc giúp qua môn nhạc cụ dân tộc ',GETDATE(),N'3 cây sáo có khả năng giúp qua môn nhạc cụ dân tộc. Mỗi cây mang một màu sắc khác nhau nhưng thổi thì như nhau."Một cây làm chẳng nên non. Ba cây chụm lại nên hòn núi cao :)))',
-71441,'/DuniExchange/resource/images/Product-images/sao.jpg'),
+71441,'/DuniExchange/resource/img/product-img/sao.jpg'),
 
 (3,N'Áo Vovinam  ',GETDATE(),N'Áo Vovinam của nam, mặc vào dễ dàng pass môn, tặng kèm 2 đai ',
-8660,'/DuniExchange/resource/images/Product-images/voPhuc.png'),
+8660,'/DuniExchange/resource/img/product-img/voPhuc.png'),
 
 (4,N'Bộ sách tiếng Anh Top Notch ',GETDATE(),N'combo 4 cuốn sách tiếng Anh Top Notch 1,2,3,4  dành cho ai có nhu cầu học lại tiếng anh hay những bạn chưa học tiếng anh có thể trao đổi',
-9671,'/DuniExchange/resource/images/Product-images/topnotch.jpg'),
+9671,'/DuniExchange/resource/img/product-img/topnotch.jpg'),
 
 (2,N'5 viên đá chặn giấy ',GETDATE(),N'5 viên đá chặn giấy nhiều màu sắc có khả năng giúp giấy khỏi bay, gồm xanh lá, đỏ, xanh dương, vàng, tím, cam',
-7505,'/DuniExchange/resource/images/Product-images/daChanGiay.jpg'),
+7505,'/DuniExchange/resource/img/product-img/daChanGiay.jpg'),
 
 (2,N'Hộp bút chì màu ',GETDATE(),N'Gồm 1 bộ 12 cây bút chì màu khác nhau, còn mới ',
-6441,'/DuniExchange/resource/images/Product-images/colormate-hop-go-12-thuong.jpg'),
+6441,'/DuniExchange/resource/img/product-img/colormate-hop-go-12-thuong.jpg'),
 
 (3,N'Tài khoản Nexflix ',GETDATE(),N'Tài khoản Nexflix còn 2 tháng muốn đổi sang Disney+ vì hết phim để xem',
-5363,'/DuniExchange/resource/images/Product-images/netflix.png'),
+5363,'/DuniExchange/resource/img/product-img/netflix.png'),
 
 (1,N'Đồng hồ thông minh AppleWatch ',GETDATE(),N'Đồng hồ còn bảo hành, còn mới, chưa bị xứt mẻ',
-4222,'/DuniExchange/resource/images/Product-images/DongHo.jpg'),
+4222,'/DuniExchange/resource/img/product-img/DongHo.jpg'),
 
 (1,N'Váy ngủ trẻ em ',GETDATE(),N'váy ngủ trẻ em bỏ kho từ 10 năm trước nay được lôi ra ngoài ánh sáng, vẫn còn mặc được nhưng không bền, nên giặt trước khi mặc',
-14113,'/DuniExchange/resource/images/Product-images/dam-ngu-tre-em.jpg'),
+14113,'/DuniExchange/resource/img/product-img/dam-ngu-tre-em.jpg'),
 
 (2,N'Túi đeo chéo ',GETDATE(),N'Túi đeo chéo sành điệu, có thể đựng điện thoại, ví tiền hay các vật dụng khác, túi còn có thể đựng cả nghiệp của bạn',
-3751,'images/Product-images/tui-deo-cheo-di-choi-03.jpg'),
+3751,'images/product-img/tui-deo-cheo-di-choi-03.jpg'),
 
 (5,N'Đồng hồ đeo tay ',GETDATE(),N'Đồng hồ điện tử của hãng casio dành cho học sinh, sinh viên có thể hẹn giờ ,đặt báo thức ',
-2219,'/DuniExchange/resource/images/Product-images/dongHoCasio.jpg'),
+2219,'/DuniExchange/resource/img/product-img/dongHoCasio.jpg'),
 
 (4,N'Đồng hồ thông minh ',GETDATE(),N'Đồng hồ điện tử samsung Samsung Galaxy Watch 4 màu đen, thời trang, sành đẹu, thích hợp cho mấy bạn ế cần có bồ',
-1569,'/DuniExchange/resource/images/Product-images/dongHoSamsung.jpg'),
+1569,'/DuniExchange/resource/img/product-img/dongHoSamsung.jpg'),
 
 (1,N'Chậu xương rồng ',GETDATE(),N'Chậu xương rồng mini dùng để trang trí phòng, chậu xương rồng có gai chạm vào đau như cảm giác crush bơ mình, a chưa thử nên thử 1 lần',
-3453,'/DuniExchange/resource/images/Product-images/chauXuongRong.jpg'),
+3453,'/DuniExchange/resource/img/product-img/chauXuongRong.jpg'),
 
 (3,N'Sạc dự phòng ',GETDATE(),N'Sạc dự phòng 10000mah còn mới',
-3323,'/DuniExchange/resource/images/Product-images/sacDuPhong.jpg'),
+3323,'/DuniExchange/resource/img/product-img/sacDuPhong.jpg'),
 
 (5,N'RAM Laptop ',GETDATE(),N'RAM Laptop Kingston 8G bus 2666MHz. Dung lượng: 8GB Kiểu Ram: DDRam 4 Bus Ram hỗ trợ: 2400 MHz . Độ trễ: N/A. Tản nhiệt: Không. Điện áp: 1.2V. ',
-2859,'/DuniExchange/resource/images/Product-images/ramLaptop.jpg'),
+2859,'/DuniExchange/resource/img/product-img/ramLaptop.jpg'),
 
 (4,N'Dây cáp HDMI ',GETDATE(),N'Bạn đang tìm kiếm 1 dòng cáp có khả năng kết nối 2 thiết bị có khoảng cách từ xa? Cáp HDMI 10m giúp kết nối dễ dàng giữa TV Box, DVD, Laptop,… và máy chiếu, smart TV, PC,… ở những không gian rộng rãi, mang đến độ phân giải vô cùng tuyệt vời.',
-6244,'/DuniExchange/resource/images/Product-images/capHdmi.jpg'),
+6244,'/DuniExchange/resource/img/product-img/capHdmi.jpg'),
 
 (2,N'Đồng hồ báo thức ',GETDATE(),N'Nhác dậy sớm nên không dùng nữa. Đồng hồ nhỏ gọn, xin xắn, tiện lợi.',
-56329,'/DuniExchange/resource/images/Product-images/dongHoBaoThuc.jpg'),
+56329,'/DuniExchange/resource/img/product-img/dongHoBaoThuc.jpg'),
 
 (1,N'Điện thoại di động ',GETDATE(),N'Điện thoại di động Vsmart joy 3 chính hãng còn mới, kiểu dáng sành điệu, trai gái đều có thể sử dụng ',
-4123,'/DuniExchange/resource/images/Product-images/dienThoaiDiDong.jpg'),
+4123,'/DuniExchange/resource/img/product-img/dienThoaiDiDong.jpg'),
 
 (2,N'Giá để điện thoại',GETDATE(),N'Giá để điện thoại đơn giản, bạn nào ko có chỗ gác đt hãy đổi với mình ',
-8269,'/DuniExchange/resource/images/Product-images/giaDeDienThoai.png'),
+8269,'/DuniExchange/resource/img/product-img/giaDeDienThoai.png'),
 
 (3,N'Thẻ ghi nhớ',GETDATE(),N'Thẻ ghi nhớ tiếng Nhật cho bạn nào khó học thuộc từ vựng',
-7452,'/DuniExchange/resource/images/Product-images/theGhiNhoTuVung.jfif'),
+7452,'/DuniExchange/resource/img/product-img/theGhiNhoTuVung.jfif'),
 
 (4,N'Tủ lạnh',GETDATE(),N'Tủ lạn mini đã cũ nhưng còn dùng tốt',
-9844,'/DuniExchange/resource/images/Product-images/tuLanhMini.jpg'),
+9844,'/DuniExchange/resource/img/product-img/tuLanhMini.jpg'),
 
 (5,N'Tai nghe ',GETDATE(),N'Tai nghe huyền thoại hiệu con trâu vàng, dù có thâm niên khá lâu năm nhưng còn dùng được ',
-1547,'/DuniExchange/resource/images/Product-images/taiNghe.jpg'),
+1547,'/DuniExchange/resource/img/product-img/taiNghe.jpg'),
 
 (1,N'Son môi ',GETDATE(),N'Son dưỡng môi mua ngoài chợ, xài không được ưng cho lắm, còn mới',
-8874,'/DuniExchange/resource/images/Product-images/sonMoi.jfif'),
+8874,'/DuniExchange/resource/img/product-img/sonMoi.jfif'),
 
 (2,N'Bút chì',GETDATE(),N'Bút chì ielts mới dùng được một nửa, bạn nào thi ielts hãy lấy chiếc bút chì này ngay để buff may mắn',
-8754,'/DuniExchange/resource/images/Product-images/butChi.jfif'),
+8754,'/DuniExchange/resource/img/product-img/butChi.jfif'),
 
 (3,N'Phấn mắt',GETDATE(),N'Phấn mắt nhiều màu còn mới, nhỏ gọn, giúp người sử dụng xinh đẹp hơn trong mắt crush',
-7345,'/DuniExchange/resource/images/Product-images/phanMat.jfif'),
+7345,'/DuniExchange/resource/img/product-img/phanMat.jfif'),
 
 (4,N'Lược',GETDATE(),N'Nhìn bề ngoài như lược nhựa nhưng thực ra đây là chiếc lược ngà mà bố con ông Sáu đã trao nhau, sau đó được truyền qua nhiều thế hệ và bây giờ đã đến tay mình. Chiếc lược có giá trị lịch sử, văn học vô cùng quan trọng',
-6844,'/DuniExchange/resource/images/Product-images/luocNga.jfif'),
+6844,'/DuniExchange/resource/img/product-img/luocNga.jfif'),
 
 (5,N'Bút máy ',GETDATE(),N'Bút máy điểm 10, làm môn nào môn đó 10 điểm ',
-1547,'/DuniExchange/resource/images/Product-images/butMay.jfif'),
+1547,'/DuniExchange/resource/img/product-img/butMay.jfif'),
 
 (1,N'Bóng rổ ',GETDATE(),N'Bóng rổ loại 5, còn tâng tốt',
-8874,'/DuniExchange/resource/images/Product-images/bongRo.jfif'),
+8874,'/DuniExchange/resource/img/product-img/bongRo.jfif'),
 
 (2,N'Bút mực',GETDATE(),N'Do không quen xài bút mực nên trade cho bạn nào muốn dùng, còn 3 cây mới toanh',
-7554,'/DuniExchange/resource/images/Product-images/butChi.jfif'),
+7554,'/DuniExchange/resource/img/product-img/butChi.jfif'),
 
 (3,N'Phấn mắt',GETDATE(),N'Phấn mắt nhiều màu còn mới, nhỏ gọn, giúp người sử dụng xinh đẹp hơn trong mắt crush',
-2345,'/DuniExchange/resource/images/Product-images/phanMat.jfif'),
+2345,'/DuniExchange/resource/img/product-img/phanMat.jfif'),
 
 (4,N'Vợt bóng bàn',GETDATE(),N'Dành cho những bạn có niềm đam mê bóng bàn là một cặp vợt đến từ Nhật, còn zin, chưa sứt mẻ gì.',
-1844,'/DuniExchange/resource/images/Product-images/votBongBan.jfif'),
+1844,'/DuniExchange/resource/img/product-img/votBongBan.jfif'),
 
 (5,N'Đồ bơi',GETDATE(),N'Combo đồ bơi cho những bạn thích đi boi. Thiếu mỗi cái quần.',
-1547,'/DuniExchange/resource/images/Product-images/doBoi.jfif'),
+1547,'/DuniExchange/resource/img/product-img/doBoi.jfif'),
 
 (1,N'Vợt cầu lông',GETDATE(),N'Chiếc vợt gia truyền qua hai đời được anh để lại. Hàng chất lượng cao còn dùng tốt.',
-8874,'/DuniExchange/resource/images/Product-images/votCauLong.jfif'),
+8874,'/DuniExchange/resource/img/product-img/votCauLong.jfif'),
 
 (2,N'Bóng đá',GETDATE(),N'Quả bóng đá UHV 2.05 số 4 Động Lực.Trái này tuy đã lâu nhưng cong dùng tốt',
-7541,'/DuniExchange/resource/images/Product-images/bongDa.jfif'),
+7541,'/DuniExchange/resource/img/product-img/bongDa.jfif'),
 
 (3,N'Gậy Bida',GETDATE(),N'Cơ thủ nào ở đây có cần gậy bida thì hãy trade ngay con hàng nóng này. Gậy bida Supreme được nhập từ Trung Quốc với số lượng có hạn, hàng mới xài 1 lần còn tốt.',
-3456,'/DuniExchange/resource/images/Product-images/gayBida.jfif'),
+3456,'/DuniExchange/resource/img/product-img/gayBida.jfif'),
 
 (4,N'Súng nước',GETDATE(),N'Súng nước mini, bắn gì cũng trúng:3',
-8454,'/DuniExchange/resource/images/Product-images/sungNuoc.jfif'),
+8454,'/DuniExchange/resource/img/product-img/sungNuoc.jfif'),
 
 (5,N'Chổi',GETDATE(),N'Phải lìa xa căn phòng trọ nên tặng cho bạn nào cần. Một cây chổi cọ còn tốt.',
-1547,'/DuniExchange/resource/images/Product-images/doBoi.jfif'),
+1547,'/DuniExchange/resource/img/product-img/doBoi.jfif'),
 
 (1,N'Cọ bồn cầu',GETDATE(),N'Cọ bồn cầu là vật dụng không thể thiếu trong các dụng cụ làm sạch nhà vệ sinh. Nếu bạn muốn giữ cho nhà vệ sinh sạch sẽ thì hãy đổi ngay lấy chiếc cọ này',
-8874,'/DuniExchange/resource/images/Product-images/coBonCau.jfif'),
+8874,'/DuniExchange/resource/img/product-img/coBonCau.jfif'),
 
 (2,N'Khuyên tai',GETDATE(),N'Bộ khuyên tai thiết kế đơn giản được đính ngọc trai cực kì đẹ dành cho bạn nào muốn. ',
-7654,'/DuniExchange/resource/images/Product-images/khuyenTai.jfif'),
+7654,'/DuniExchange/resource/img/product-img/khuyenTai.jfif'),
 
 (3,N'Máy ảnh',GETDATE(),N'Bạn cần lưu giữ những bức ảnh một cách rõ nét nhất? đã có chiếc máy ảnh canon550D giúp chụp những bức ảnh cực kì chất lượng.',
-3445,'/DuniExchange/resource/images/Product-images/mayAnh.jfif'),
+3445,'/DuniExchange/resource/img/product-img/mayAnh.jfif'),
 
 (4,N'Sách',GETDATE(),N'Nhắc đến cuốn sách Đắc Nhân Tâm, chắc hẳn bạn nào cũng đã một lần được đọc qua và nghe đến cái tên này. Giờ đây bạn có thể sở hữu cuốn sách này ngay trên kệ sách của bạn.',
-8244,'/DuniExchange/resource/images/Product-images/sachDacNhanTam.jfif'),
+8244,'/DuniExchange/resource/img/product-img/sachDacNhanTam.jfif'),
 
 (5,N'Truyện',GETDATE(),N'Cuốn truyện conan tập một dành cho những bạn nào muốn đọc cũng như trang trí thêm vào tủ sách của bạn.',
-1547,'/DuniExchange/resource/images/Product-images/truyenConan.jfif'),
+1547,'/DuniExchange/resource/img/product-img/truyenConan.jfif'),
 
 (1,N'Xe điều khiển',GETDATE(),N'Xe điều khiển từ xa',
-8874,'/DuniExchange/resource/images/Product-images/xeDieuKhien.jfif'),
+8874,'/DuniExchange/resource/img/product-img/xeDieuKhien.jfif'),
 
 (2,N'Gấu bông',GETDATE(),N'Gấu bông dành tặng cho bồ hoặc crush',
-7554,'/DuniExchange/resource/images/Product-images/gauBong.jfif'),
+7554,'/DuniExchange/resource/img/product-img/gauBong.jfif'),
 
 (3,N'Áo khoác',GETDATE(),N'Áo khoác cũ, hết trend nên không mặc nữa.',
-3445,'/DuniExchange/resource/images/Product-images/aoKhoac.jfif'),
+3445,'/DuniExchange/resource/img/product-img/aoKhoac.jfif'),
 
 (4,N'Máy sấy',GETDATE(),N'Máy sấy tóc Funrin với công suất lớn gấp 10 lần máy sấy thường, luôn giúp bạn dễ dàng tạo kiểu tóc đẹp ưng ý. Với công nghệ cao đến từ Nhật Bản giúp bảo vệ tóc bạn tối đa trong quá trình sử dụng.',
-844,'/DuniExchange/resource/images/Product-images/maySayToc.jfif'),
+844,'/DuniExchange/resource/img/product-img/maySayToc.jfif'),
 
 (5,N'Máy tính bảng',GETDATE(),N'Máy tính bảng Huewei dành cho bạn nào cần cho chơi game hay học tập đều được. Vì không cần dùng nữa nên muốn cho đi, ai cần liên hệ em nha. Máy còn khá mới.',
-1547,'/DuniExchange/resource/images/Product-images/mayTinhBang.jfif'),
+1547,'/DuniExchange/resource/img/product-img/mayTinhBang.jfif'),
 
 (1,N'Máy ảnh kỹ thuật số',GETDATE(),N'Một thiết bị cực kì hữu ích dành cho bạn nào hay đi du lịch.',
-8874,'/DuniExchange/resource/images/Product-images/mayAnhKyThuatSo.jfif'),
+8874,'/DuniExchange/resource/img/product-img/mayAnhKyThuatSo.jfif'),
 
 (2,N'Chuột Gaming ',GETDATE(),N'Bạn nào cần chuột để chơi game thì hãy liên hệ ngay vs mình để đổi chuột nhá.',
-4754,'/DuniExchange/resource/images/Product-images/chuotGaming.jfif'),
+4754,'/DuniExchange/resource/img/product-img/chuotGaming.jfif'),
 
 (3,N'Chuột không dây',GETDATE(),N'chuột không dây thiết kế nhỏ gọn, áp dụng động cơ sinh học linh hoạt nhậy bén độ chính xác cao lên đến 1600DPI tạo ra môi trường yên tĩnh khi trong phòng học hay làm việc',
-6345,'/DuniExchange/resource/images/Product-images/chuotKhongDay.jfif'),
+6345,'/DuniExchange/resource/img/product-img/chuotKhongDay.jfif'),
 
 (4,N'Chuột máy tính',GETDATE(),N'Chuột quang Nec cổng USB, mặt hàng huyền thoại đến từ nhật, vẫn còn dùng được. Dành cho bạn nào muốn trải nghiệm cảm giác xưa cũ.',
-2844,'/DuniExchange/resource/images/Product-images/chuotMayTinh.jfif'),
+2844,'/DuniExchange/resource/img/product-img/chuotMayTinh.jfif'),
 
 (5,N'Lót chuột cỡ lớn',GETDATE(),N'Miếng Lót Chuột Overwacth có thiết kế bắt mắt, độc đáo với màu sắc vô cùng ấn tượng. Giúp tăng cường độ chính xác cảm biến cho người sử dụng, đặc biệt là các game thủ',
-31547,'/DuniExchange/resource/images/Product-images/lotChuotCoLon.jfif'),
+31547,'/DuniExchange/resource/img/product-img/lotChuotCoLon.jfif'),
 
 (1,N'Lót chuột',GETDATE(),N'Có dư một miếng lót chuột đã cũ nhưng còn dùng được. Dành cho bạn nào đang thiếu.',
-18874,'/DuniExchange/resource/images/Product-images/lotChuot.jfif'),
+18874,'/DuniExchange/resource/img/product-img/lotChuot.jfif'),
 
 (2,N'Xe đạp',GETDATE(),N'Chiếc xe đạp mang nhãn hiệu huyền thoại Phượng Hoàng. Dù đã qua sử dụng nhưng bảo quản tốt nên còn chạy khỏe. ',
-3754,'/DuniExchange/resource/images/Product-images/xeDap.jfif'),
+3754,'/DuniExchange/resource/img/product-img/xeDap.jfif'),
 
 (3,N'Playstation 2',GETDATE(),N'Máy chơi game playstation2 dành cho bạn nào muốn relax sau những ngày học tập căng thẳng.',
-1345,'/DuniExchange/resource/images/Product-images/playstation2.jfif'),
+1345,'/DuniExchange/resource/img/product-img/playstation2.jfif'),
 
 (4,N'FidgetSpinner',GETDATE(),N'Con quay Fidget Spinner có thể giúp giảm stress và bồn chồn. ',
-8244,'/DuniExchange/resource/images/Product-images/fidgetSpinner.jfif')
+8244,'/DuniExchange/resource/img/Product-images/fidgetSpinner.jfif')
 select * from Post
 ---------------------------------------------------Kết thúc thêm một vài bản ghi cho bảng Post------------------------
 
@@ -401,7 +401,7 @@ Select * from ProductComment
 ---------------------------------------------------Kết thúc thêm một vài bản ghi cho bảng ProductComment------------------------
 
 ------------------------------Bắt đầu thêm một vài bản ghi cho bảng ProductImage------------------------
-insert into ProductImage(postID,imageURL) values 
+insert into PostImage(postID,postImageURL) values 
 (3,'/DuniExchange/resource/img/product-img/Big-images-B.png'),
 (3,'/DuniExchange/resource/img/product-img/Big-images-A.png'),
 (3,'/DuniExchange/resource/img/product-img/Big-images-C.png'),
@@ -433,18 +433,17 @@ insert into PostCategory(postID,categoryID) values
 (1,1),
 (2,4),
 (2,2)
-<<<<<<< HEAD
-select *
-                       from Post a, UserAccount b
-                        where a.postUserID = b.userID
 
-=======
+select *
+from Post a, UserAccount b
+where a.postUserID = b.userID
+
 
 insert into PostCategory(categoryID,postID) values
 (1,5),(1,11),(1,16),(1,17),(1,18),(2,4),(2,6),(2,15),
 (2,16),(4,9),(4,15),(4,10),(6,2),(6,13),(6,12),
 (8,16),(10,13),(10,9),(11,7),(12,8)
->>>>>>> 63c49d6b21b92cc5388dafff5b0bb8ac0b8d66a8
+
 select * from PostCategory
 ------------------------------Kết thúc thêm một vài bản ghi cho bảng CategoryPost------------------------
 

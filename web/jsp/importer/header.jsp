@@ -39,40 +39,34 @@
                 <!-- <li class="nav-item">
                       <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                     </li> -->
-                <li class="nav-item">
-                    <a class="nav-link header-text" href="#">About Us</a>
-                </li>
+                        <c:if test="${currentAccount.isAdmin == true}">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link header-text" href="#">Manager</a>
+                              <ul class="dropdown-menu dropdown-menu-end mt-2 username--overflow" aria-labelledby="navbarDropdown">
+                              <li class="dropdown-user-item">
+                                <a class="dropdown-item " href="displayAccountManager">
+                                  <span class="dropdown-user-text ">Account</span>
+                                </a>
+                              </li>
+                              <li class="dropdown-user-item">
+                                <a class="dropdown-item" href="displayPostManager">
+                                  <span class="dropdown-user-text">Post</span>
+                                </a>
+                              </li>
+                              <li class="dropdown-user-item">
+                                <a class="dropdown-item" href="displayCategoryManager">
+                                  <span class="dropdown-user-text">Category</span>
+                                </a>
+                              </li>
+                              </ul>
+                            </li>
+                        </c:if>
             </ul>
             <form class="d-flex" action="SearchProduct">
                 <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
-
-          <!-- <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li> -->
-          <c:if test="${currentAccount.isAdmin == true}">
-            <li class="nav-item dropdown">
-              <a class="nav-link header-text" href="#">Manager</a>
-                <ul class="dropdown-menu dropdown-menu-end mt-2 username--overflow" aria-labelledby="navbarDropdown">
-            <li class="dropdown-user-item">
-              <a class="dropdown-item " href="displayAccountManager">
-                <span class="dropdown-user-text ">Account</span>
-              </a>
-            </li>
-            <li class="dropdown-user-item">
-              <a class="dropdown-item" href="displayPostManager">
-                <span class="dropdown-user-text">Post</span>
-              </a>
-            </li>
-            <li class="dropdown-user-item">
-              <a class="dropdown-item" href="displayCategoryManager">
-                <span class="dropdown-user-text">Category</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-
+            
             <c:if test="${not empty currentAccount}">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
@@ -428,8 +422,5 @@
                     </div>
                 </a>             
             </c:if>
-
-
-     
     </div>
 </nav>
