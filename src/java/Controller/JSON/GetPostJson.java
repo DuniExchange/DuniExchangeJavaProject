@@ -32,6 +32,8 @@ public class GetPostJson extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int editPostID = Integer.parseInt(request.getParameter("editPostID"));
+            
+            
         }
     }
 
