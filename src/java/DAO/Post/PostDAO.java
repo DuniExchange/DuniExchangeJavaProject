@@ -166,4 +166,42 @@ public class PostDAO {
         }
         return false;
     }
+    
+        public static Post getPostByPostID(int postID) throws SQLException{
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        
+        List<Post> posts = new ArrayList();
+        try {
+            con = DBConnection.makeConnection();
+
+            if (con != null) {
+                String query = "select * from Post where postID=?";
+                stm = con.prepareStatement(query);  
+                stm.setString(1, postID);
+
+                rs = stm.executeQuery();
+                while (rs.next()) {
+                    int postUserID = rs.getInt(2);
+                    String postUserFullname = UserDAO.getUserFullnameByID(postUserID+"");
+                    String postTitle = rs.getString(3);
+                    Date postDate = rs.getDate(4);
+                    String postDescription = rs.getString(5);
+                    int postLike = rs.getInt(6);
+                    String postThumbnailURL = rs.getString(7);
+                    boolean isDisable = rs.getBoolean(8);
+                    
+                    posts.add(new Post(postID, postUserID, postUserFullname, postTitle, postDate, postDescription, postLike, postThumbnailURL, isDisable));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) rs.close();
+            if (stm != null) stm.close();
+            if (con != null) con.close();
+        }
+        return posts;
+    }
 }

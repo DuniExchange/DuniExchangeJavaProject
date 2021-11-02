@@ -5,6 +5,16 @@
             180
         </session-timeout>
     </session-config>
+        
+    <servlet>
+        <servlet-name>GetPostJson</servlet-name>
+        <servlet-class>Controller.JSON.GetPostJson</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetPostJson</servlet-name>
+        <url-pattern>/get-post</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>TestAjax</servlet-name>
         <servlet-class>Controller.Test.TestAjax</servlet-class>

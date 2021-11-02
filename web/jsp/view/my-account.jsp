@@ -66,12 +66,12 @@
                 <div class="function-container border-container container-shadow col-12 bg-opaque-primary overflow-hidden">
                     <!--tab-->
                     <div class="tablinks px-4 py-3 d-flex" id="post-tablinks">
-                        <div class="tablink py-2 mx-2 d-flex flex-column" id="tab-post">
-                            Your Post 
+                        <div class="tablink py-2 mx-2 d-flex flex-column align-items-center" id="tab-post">
+                            Posts 
                             <div class="tab-underline"></div>
                         </div>
-                        <div class="tablink py-2 mx-2 d-flex flex-column" id="tab-create">
-                            Upload Post
+                        <div class="tablink py-2 mx-2 d-flex flex-column align-items-center" id="tab-create">
+                            Create
                             <div class="tab-underline"></div>
                         </div>                       
                     </div>
@@ -161,7 +161,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="cancel"></button>
             </div>
             <div class="modal-body">
@@ -179,15 +179,15 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            Delete
+            ...
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary">Save</button>
             </div>
           </div>
         </div>
