@@ -14,6 +14,7 @@ public class Post {
     private int postID;
     private int postUserID;
     private String postUserFullname;
+    private String postUsername;
     private String postTitle;
     private Date postDate;
     private String postDescription;
@@ -62,6 +63,24 @@ public class Post {
         this.postLike = postLike;
         this.postThumbnailURL = postThumbnailURL;
         this.isDisable = isDisable;
+    }
+    
+    public Post(int postID,String postUsername, String postTitle, Date postDate, String postDescription, int postLike, String postThumbnailURL, boolean isDisable) {
+        this.postID = postID;
+        this.postUsername = postUsername;
+        this.postTitle = postTitle;
+        this.postDate = postDate;
+        this.postDescription = postDescription;
+        this.postLike = postLike;
+        this.postThumbnailURL = postThumbnailURL;
+        this.isDisable = isDisable;
+    }
+    public String getPostUsername() {
+        return postUsername;
+    }
+
+    public void setPostUsername(String postUsername) {
+        this.postUsername = postUsername;
     }
 
     public int getPostID() {
