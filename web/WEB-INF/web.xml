@@ -46,20 +46,96 @@
     </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            180
         </session-timeout>
     </session-config>
     <servlet>
-        <servlet-name>DisplayAccountServelt</servlet-name>
-        <servlet-class>Controller.Account.DisplayAccountServlet</servlet-class>
+        <servlet-name>TestAjax</servlet-name>
+        <servlet-class>Controller.Test.TestAjax</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>TestAjax</servlet-name>
+        <url-pattern>/test-ajax</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ChangeAdminState</servlet-name>
+        <servlet-class>Controller.Manager.ChangeAdminState</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeAdminState</servlet-name>
+        <url-pattern>/changeAdminState</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteAccount</servlet-name>
+        <servlet-class>Controller.Manager.DeleteAccount</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteAccount</servlet-name>
+        <url-pattern>/deleteAccount</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ManagerCategory</servlet-name>
+        <servlet-class>Controller.Manager.ManagerCategory</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManagerCategory</servlet-name>
+        <url-pattern>/managerCategory</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DisplayCategoryManager</servlet-name>
+        <servlet-class>Controller.Manager.DisplayCategoryManager</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DisplayCategoryManager</servlet-name>
+        <url-pattern>/displayCategoryManager</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ChangeCategoryState</servlet-name>
+        <servlet-class>Controller.Manager.ChangeCategoryState</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeCategoryState</servlet-name>
+        <url-pattern>/changeCategoryState</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DisplayAccountManager</servlet-name>
+        <servlet-class>Controller.Manager.DisplayAccountManager</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DisplayAccountManager</servlet-name>
+        <url-pattern>/displayAccountManager</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>DisplayAllProduct</servlet-name>
         <servlet-class>Controller.AllProduct.DisplayAllProduct</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>DisplayAllProduct</servlet-name>
+        <url-pattern>/DisplayAllProduct</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DisplayAccountServelt</servlet-name>
+        <servlet-class>Controller.Account.DisplayAccountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
         <servlet-name>DisplayAccountServelt</servlet-name>
         <url-pattern>/account</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreatePost</servlet-name>
+        <servlet-class>Controller.Account.CreatePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreatePost</servlet-name>
+        <url-pattern>/create-post</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeletePostServlet</servlet-name>
+        <servlet-class>Controller.Account.DeletePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletePostServlet</servlet-name>
+        <url-pattern>/delete-post</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>Login</servlet-name>

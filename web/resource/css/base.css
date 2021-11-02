@@ -160,6 +160,10 @@ link: https://lingtalfi.com/bootstrap4-color-generator#
   --primary_text_color_dark_bright: #fff;
 }
 
+.text-hover:hover{
+    color: var(--text-light-hover);
+}
+
 .alert-primary {
   color: var(--primary_t5);
   background-color: var(--primary_t9);
@@ -227,10 +231,12 @@ button.bg-primary:focus {
   background-color: var(--primary_t7);
   border-color: var(--primary_t2);
 }
-
 .btn-primary:focus,
 .btn-primary.focus {
-  box-shadow: 0 0 0 0.2rem var(--primary_shadow);
+  box-shadow: none;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--primary_text_color_dark_bright);
 }
 
 .btn-primary.disabled,
@@ -408,7 +414,7 @@ a.text-primary:focus {
 .border-container{
     border-radius: 0.6rem;
 }
-/* foooter  */
+/*for distance header*/
 #general-container{
     position: relative;
     top: var(--header-height);

@@ -65,12 +65,13 @@ constraint fk_Category foreign key (categoryID) references Category(categoryID)
 go
 
 
-create table ProductImage
+
+create table PostImage
 (
 postID int NOT NULL,
-imageURL nvarchar(50) NOT NULL,
+postImageURL nvarchar(1000) NOT NULL,
 constraint fk_PostImage foreign key (postID) references Post(postID),
-constraint pk_ProductImage primary key (postID, imageURL)
+constraint pk_ProductImage primary key (postID, postImageURL)
 )
 go
 
@@ -148,15 +149,6 @@ delete from Post
 
 ---------------------------------------------------Kết thúc khởi tạo cơ sở dữ liệu-----------------------------------------------
 
----------------------------------------------------Bắt đầu thêm một vài bản ghi cho bảng ProductComment------------------------
-insert into ProductComment(ProductCommentText, ProductCommentDate, postID, userID) values
-(N'Gất Kảm Động',GETDATE(),'1','1'),
-(N'Sản phẩm thật tuyệt vời',GETDATE(),'2','2'),
-(N'Nhìn rất tốt nhưng không muốn đổi',GETDATE(),'3','3')
---delete from ProductComment
-Select * from ProductComment
-
----------------------------------------------------Kết thúc thêm một vài bản ghi cho bảng ProductComment------------------------
 
 
 
@@ -398,13 +390,39 @@ N'Bộ sách "Dạy con làm giàu" gồm 13 cuốn được viết bởi Robert
 select * from Post
 ---------------------------------------------------Kết thúc thêm một vài bản ghi cho bảng Post------------------------
 
-------------------------------Bắt đầu thêm một vài bản ghi cho bảng ProductImage------------------------
+---------------------------------------------------Bắt đầu thêm một vài bản ghi cho bảng ProductComment------------------------
+insert into ProductComment(ProductCommentText, ProductCommentDate, postID, userID) values
+(N'Gất Kảm Động',GETDATE(),'1','1'),
+(N'Sản phẩm thật tuyệt vời',GETDATE(),'2','2'),
+(N'Nhìn rất tốt nhưng không muốn đổi',GETDATE(),'3','3')
+--delete from ProductComment
+Select * from ProductComment
 
---insert into ProductImage(postID,imageURL) values 
---(3,'images/Apollo-images/Big-images-B.png'),
---(3,'images/Apollo-images/Big-images-A.png'),
---(3,'images/Apollo-images/Big-images-C.png')
---select * from ProductImage
+---------------------------------------------------Kết thúc thêm một vài bản ghi cho bảng ProductComment------------------------
+
+------------------------------Bắt đầu thêm một vài bản ghi cho bảng ProductImage------------------------
+insert into ProductImage(postID,imageURL) values 
+(3,'/DuniExchange/resource/img/product-img/Big-images-B.png'),
+(3,'/DuniExchange/resource/img/product-img/Big-images-A.png'),
+(3,'/DuniExchange/resource/img/product-img/Big-images-C.png'),
+(1,'/DuniExchange/resource/img/product-img/AoNhieuMau.jfif'),
+(2,'/DuniExchange/resource/img/product-img/SachLamGiau.jpg'),
+(3,'/DuniExchange/resource/img/product-img/candyChip.jfif'),
+(4,'/DuniExchange/resource/img/product-img/DongHoSieuNhan.jfif'),
+(5,'/DuniExchange/resource/img/product-img/giaythuongdinh.jpg'),
+(6,'/DuniExchange/resource/img/product-img/taba6.jpg'),
+(7,'/DuniExchange/resource/img/product-img/xinhDep.jpeg'),
+(8,'/DuniExchange/resource/img/product-img/anh-con-heo-dang-yeu.jpg'),
+(9,'/DuniExchange/resource/img/product-img/mongDan.jfif'),
+(10,'/DuniExchange/resource/img/product-img/sao.jpg'),
+(11,'/DuniExchange/resource/img/product-img/voPhuc.png'),
+(12,'/DuniExchange/resource/img/product-img/topnotch.jpg'),
+(13,'/DuniExchange/resource/img/product-img/changiay.jfif'),
+(14,'/DuniExchange/resource/img/product-img/colormate-hop-go-12-thuong.jpg'),
+(15,'/DuniExchange/resource/img/product-img/download.png'),
+(16,'/DuniExchange/resource/img/product-img/DongHo.jpg'),
+(17,'/DuniExchange/resource/img/product-img/dam-ngu-tre-em.jpg'),
+(18,'/DuniExchange/resource/img/product-img/tui-deo-cheo-di-choi-03.jpg')
 ------------------------------Kết thúc thêm một vài bản ghi cho bảng ProductImage------------------------
 
 
@@ -415,10 +433,18 @@ insert into PostCategory(postID,categoryID) values
 (1,1),
 (2,4),
 (2,2)
+<<<<<<< HEAD
 select *
                        from Post a, UserAccount b
                         where a.postUserID = b.userID
 
+=======
+
+insert into PostCategory(categoryID,postID) values
+(1,5),(1,11),(1,16),(1,17),(1,18),(2,4),(2,6),(2,15),
+(2,16),(4,9),(4,15),(4,10),(6,2),(6,13),(6,12),
+(8,16),(10,13),(10,9),(11,7),(12,8)
+>>>>>>> 63c49d6b21b92cc5388dafff5b0bb8ac0b8d66a8
 select * from PostCategory
 ------------------------------Kết thúc thêm một vài bản ghi cho bảng CategoryPost------------------------
 
@@ -484,12 +510,12 @@ select * from ViewPostAndCategory
 --else print N'Có'
 --B2---Tạo trigger ngăn việc chèn hoặc update trùng username
 
-create trigger AccountTrigger on Account after insert, update
+create trigger AccountTrigger on UserAccount after insert, update
 as
 begin
 	declare @newUsername varchar(20);
-	set @newUsername = (select inserted.username from inserted);
-	if (1< (select count(*) from Account where Account.username = @newUsername))
+	set @newUsername = (select inserted.userUserName from inserted);
+	if (1< (select count(*) from UserAccount where UserAccount.userUserName = @newUsername))
 		begin
 			print N'Username này đã tồn tại'
 			print @newUsername

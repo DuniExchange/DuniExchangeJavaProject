@@ -1,30 +1,32 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package Controller.Account;
+package Controller.AllProductExchange;
 
-import DAO.Category.CategoryDAO;
-import DAO.Post.PostDAO;
+import DAO.Post_Account.Post_AccountDAO;
 import Entity.Category;
-import Entity.Post;
-import Entity.UserAccount;
+import Entity.Post_Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Minky
+ * @author acer
  */
-public class DisplayAccountServlet extends HttpServlet {
+@WebServlet(name = "DisplayAllProductExchangeByCategory", urlPatterns = {"/DisplayAllProductExchangeByCategory"})
+public class DisplayAllProductExchangeByCategory extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,22 +38,32 @@ public class DisplayAccountServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, SQLException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-        UserAccount currentAccount = (UserAccount)request.getSession().getAttribute("currentAccount");
-        if(currentAccount == null) {
-            response.sendRedirect(this.getServletContext().getContextPath());
-            return;
+        response.setContentType("text/html;charset=UTF-8");
+        String PostByCate = request.getParameter("caid");
+        
+        Post_AccountDAO PAD = new Post_AccountDAO();
+        
+        List<Post_Account> listPostExchangebyCate = new ArrayList<>();
+        listPostExchangebyCate = PAD.getListPostExchangeByCategory(PostByCate);
+              
+              //get category
+        List<Category> listCategory = new ArrayList<>();
+        listCategory = PAD.getAllCategory();
+        int numberOfProductExchangeByCategory = PAD.getNumberOfAllProductExchangeByCategory(PostByCate);
+        
+        
+        
+        request.setAttribute("listC", listCategory);
+        
+        request.setAttribute("listPost_Account", listPostExchangebyCate);
+        
+        request.setAttribute("numberItem", numberOfProductExchangeByCategory);
+        
+        request.getRequestDispatcher("jsp/view/all-product_exchange.jsp").forward(request, response);
         }
-
-        List<Post> postList = PostDAO.getPostByUserID(currentAccount.getUserID());
-        List<Category> categoryList = CategoryDAO.getAllCategory();
-        request.setAttribute("POST_LIST", postList);
-        request.setAttribute("CATEGORY_LIST", categoryList);
-        request.getRequestDispatcher("jsp/view/my-account.jsp").forward(request, response);
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -65,8 +77,8 @@ public class DisplayAccountServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(DisplayAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DisplayAllProductExchangeByCategory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -83,8 +95,8 @@ public class DisplayAccountServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(DisplayAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DisplayAllProductExchangeByCategory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

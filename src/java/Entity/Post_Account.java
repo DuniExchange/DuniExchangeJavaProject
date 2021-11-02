@@ -31,6 +31,7 @@ public class Post_Account {
     private float userRating;
     private boolean isAdmin;
     private boolean isValidate;
+    
 
     public Post_Account() {
     }
@@ -77,6 +78,55 @@ public class Post_Account {
         this.isValidate = isValidate;
         this.isUsedExchange = isUsedExchange;
     }
+
+    public Post_Account(int postID, String postTitle, Date postDate, int postLike, String postThumbnailURL) {
+        this.postID = postID;
+        this.postTitle = postTitle;
+        this.postDate = postDate;
+        this.postLike = postLike;
+        this.postThumbnailURL = postThumbnailURL;
+    }
+
+    public Post_Account(int postID, int post_AccountID, String postTitle, Date postDate, String postDescription, int postLike, String postThumbnailURL, String userUsername, String userPassword, String userEmail, java.sql.Date createDate, String facebookURL, String userImage, float userRating, boolean isAdmin, boolean isValidate) {
+        this.postID = postID;
+        this.post_AccountID = post_AccountID;
+        this.postTitle = postTitle;
+        this.postDate = postDate;
+        this.postDescription = postDescription;
+        this.postLike = postLike;
+        this.postThumbnailURL = postThumbnailURL;
+        this.userUsername = userUsername;
+        this.userPassword = userPassword;
+        this.userEmail = userEmail;
+        this.createDate = createDate;
+        this.facebookURL = facebookURL;
+        this.userImage = userImage;
+        this.userRating = userRating;
+        this.isAdmin = isAdmin;
+        this.isValidate = isValidate;
+    }
+
+    public Post_Account(int postID, int post_AccountID, String postTitle, Date postDate, String postDescription, int postLike, String postThumbnailURL, boolean isDisable, String userUsername, String userPassword, String userEmail, java.sql.Date createDate, String facebookURL, String userImage, float userRating, boolean isAdmin, boolean isValidate) {
+        this.postID = postID;
+        this.post_AccountID = post_AccountID;
+        this.postTitle = postTitle;
+        this.postDate = postDate;
+        this.postDescription = postDescription;
+        this.postLike = postLike;
+        this.postThumbnailURL = postThumbnailURL;
+        this.isDisable = isDisable;
+        this.userUsername = userUsername;
+        this.userPassword = userPassword;
+        this.userEmail = userEmail;
+        this.createDate = createDate;
+        this.facebookURL = facebookURL;
+        this.userImage = userImage;
+        this.userRating = userRating;
+        this.isAdmin = isAdmin;
+        this.isValidate = isValidate;
+    }
+
+    
 
     
 
@@ -224,6 +274,7 @@ public class Post_Account {
         this.isValidate = isValidate;
     }
 
+
     public int getIsUsedExchange() {
         return isUsedExchange;
     }
@@ -236,6 +287,7 @@ public class Post_Account {
     @Override
     public String toString() {
         return "Post_Account{" + "postID=" + postID + ", post_AccountID=" + post_AccountID + ", postTitle=" + postTitle + ", postDate=" + postDate + ", postDescription=" + postDescription + ", postLike=" + postLike + ", postThumbnailURL=" + postThumbnailURL + ", isDisable=" + isDisable + ", isUsedExchange=" + isUsedExchange + ", userUsername=" + userUsername + ", userPassword=" + userPassword + ", userEmail=" + userEmail + ", userFullname=" + userFullname + ", createDate=" + createDate + ", facebookURL=" + facebookURL + ", userImage=" + userImage + ", userRating=" + userRating + ", isAdmin=" + isAdmin + ", isValidate=" + isValidate + '}';
+
     }
     
     

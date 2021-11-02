@@ -6,8 +6,11 @@
 package Controller.AllProduct;
 
 import DAO.Post.PostDAO;
+import DAO.Post_Account.Post_AccountDAO;
 import static DAO.Post_Account.Post_AccountDAO.getListPost_Account;
+import Entity.Category;
 import Entity.Post;
+
 import Entity.Post_Account;
 import Entity.UserAccount;
 import java.io.IOException;
@@ -39,9 +42,8 @@ public class DisplayAllProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
+        Post_AccountDAO PAD = new Post_AccountDAO();
         List<Post_Account> listPost_Account = new ArrayList<>();
-        listPost_Account = getListPost_Account();
-
         UserAccount currentAccount = (UserAccount) request.getSession().getAttribute("currentAccount");
 
         if (currentAccount != null) {
@@ -50,6 +52,24 @@ public class DisplayAllProduct extends HttpServlet {
         }
 
         request.setAttribute("listPost_Account", listPost_Account);
+
+
+              listPost_Account = getListPost_Account();
+              
+              //get category
+        List<Category> listCategory = new ArrayList<>();
+        listCategory = PAD.getAllCategory();
+        
+        
+        //get number item not exchange
+        int numberItemNotExchange = PAD.getNumberOfAllProductNotExChange();
+        
+        request.setAttribute("listPost_Account", listPost_Account);
+        
+        request.setAttribute("listC", listCategory);
+        
+        request.setAttribute("numberItem", numberItemNotExchange);
+        
 
         request.getRequestDispatcher("jsp/view/all-product.jsp").forward(request, response);
     }

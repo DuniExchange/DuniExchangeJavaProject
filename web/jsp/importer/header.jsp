@@ -6,7 +6,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container">
+
         <a class="navbar-brand" href="/DuniExchange"><img style="width: 160px; height: auto" src="/DuniExchange/resource/img/logo.png"
                                                           alt="DuniExchange Logo"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -16,13 +16,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item ">
-                    <a class="nav-link header-text header-text--active" aria-current="page" href="#">Home Page</a>
+                    <a class="nav-link header-text header-text--active" aria-current="page" href="DisplayHomeServlet">Home Page</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link header-text" href="DisplayAllProduct">All Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link header-text" href="#">Exchanged Product</a>
+                    <a class="nav-link header-text" href="DisplayAllProductExchange">Exchanged Product</a>
                 </li>
                 <!-- <li class="nav-item dropdown" >
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,7 +43,7 @@
                     <a class="nav-link header-text" href="#">About Us</a>
                 </li>
             </ul>
-            <form class="d-flex" action="#">
+            <form class="d-flex" action="SearchProduct">
                 <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
@@ -405,6 +405,7 @@
                 </a>             
             </c:if>
 
-        </div>
+
+     
     </div>
 </nav>

@@ -10,16 +10,17 @@ var $img = $('#img');
         
         if(files.length > 0){
             destroyError("img-container");
-            console.log($('.preview-upload'));
+            for(const file of files){
+                let type = file.type.split("/").pop();
+                if(type !== 'jpg' && type !== 'jpeg' && type !== 'png' && type !== 'bmp'){
+                    insertError(document.getElementById("img-container"), "Please choose valid img file extension (.jpg, .jpeg, .png, .bmp)");
+                    return;
+                }
+            }
             $('.upload-preview').addClass('move-out');
             $('.upload-icon').addClass('d-none');
         } else {
-            $('.upload-preview').removeClass('move-out');
-            $('.upload-preview').addClass('move-in');
-            setTimeout(function(){
-                $('.upload-preview').removeClass('move-in');
-            }, 600);
-            $('.upload-icon').removeClass('d-none');
+            clearPreview();
             return;
         }
         
@@ -35,6 +36,16 @@ var $img = $('#img');
         output.onload = function() {
            URL.revokeObjectURL(output.src); // free memory
         };
+    }
+    
+    function clearPreview(){
+        $('.upload-preview').removeClass('move-out');
+        $('#preview').html("");
+        $('.upload-preview').addClass('move-in');
+        setTimeout(function(){
+            $('.upload-preview').removeClass('move-in');
+        }, 600);
+        $('.upload-icon').removeClass('d-none');
     }
     
     var handleChooseFile = function(event) {
@@ -62,6 +73,7 @@ var $img = $('#img');
     })
     .on('drop', function(e) {
         droppedFiles = e.originalEvent.dataTransfer.files;
+        $('#img')[0].files = droppedFiles;        
         previewFile(droppedFiles);
     });
 
