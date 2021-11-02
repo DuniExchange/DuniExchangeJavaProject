@@ -8,6 +8,14 @@
         <servlet-name>DeleteAccount</servlet-name>
         <servlet-class>Controller.Manager.DeleteAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DisplayChangeAccountInfo</servlet-name>
+        <servlet-class>Controller.Email.DisplayChangeAccountInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValidatePasswordFromMail</servlet-name>
+        <servlet-class>Controller.Email.ValidatePasswordFromMail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManagerCategory</servlet-name>
         <url-pattern>/managerCategory</url-pattern>
@@ -36,6 +44,30 @@
         <servlet-name>DisplayAllProduct</servlet-name>
         <url-pattern>/DisplayAllProduct</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisplayPostManager</servlet-name>
+        <url-pattern>/displayPostManager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisplayForgotPassword</servlet-name>
+        <url-pattern>/displayForgotPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidateEmail</servlet-name>
+        <url-pattern>/validateEmail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidateCodeServlet</servlet-name>
+        <url-pattern>/validateCode</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisplayChangeAccountInfo</servlet-name>
+        <url-pattern>/displayChangeAccountInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidatePasswordFromMail</servlet-name>
+        <url-pattern>/validatePasswordFromMail</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -44,6 +76,22 @@
     <servlet>
         <servlet-name>CreatePost</servlet-name>
         <servlet-class>Controller.Account.CreatePostServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DisplayPostManager</servlet-name>
+        <servlet-class>Controller.Manager.DisplayPostManager</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DisplayForgotPassword</servlet-name>
+        <servlet-class>Controller.Email.DisplayForgotPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValidateEmail</servlet-name>
+        <servlet-class>Controller.Email.ValidateEmail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValidateCodeServlet</servlet-name>
+        <servlet-class>Controller.Email.ValidateCodeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CreatePost</servlet-name>

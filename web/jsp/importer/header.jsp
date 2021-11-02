@@ -49,7 +49,7 @@
               </a>
             </li>
             <li class="dropdown-user-item">
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="displayPostManager">
                 <span class="dropdown-user-text">Post</span>
               </a>
             </li>

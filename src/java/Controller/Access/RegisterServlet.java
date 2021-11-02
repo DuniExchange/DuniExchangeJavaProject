@@ -84,14 +84,7 @@ public class RegisterServlet extends HttpServlet {
             Pattern pat;
             
             if (password.trim().equals(re_password.trim())) {
-//                System.out.println("Mat khau giong nhau");
-//                boolean insert = ManagerAccessDAO.insertAccount(username, fullname, email, password);
                 ManagerAccessDAO.insertAccount(username, fullname, email, password);
-//                if (insert) {
-//                    System.out.println("thêm account thành công");
-//                }else{
-//                    System.out.println("Khong them account duoc");
-//                }
                 HttpSession session = request.getSession();
                 try {
                         UserAccount currentAccount = ManagerAccessDAO.getAccountByUserName(username);

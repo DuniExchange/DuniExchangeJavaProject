@@ -35,7 +35,7 @@ public class Post {
         this.postThumbnailURL = postThumbnailURL;
         this.isDisable = isDisable;
     }
-
+    
     public int getPostID() {
         return postID;
     }

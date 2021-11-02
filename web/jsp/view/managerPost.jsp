@@ -3,6 +3,7 @@
     Created on : Oct 22, 2021, 1:18:34 PM
     Author     : truon
 --%>
+<%@page import="Entity.Post" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -171,11 +172,11 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+    <jsp:include page="/jsp/importer/header.jsp"></jsp:include>                
 
     <div class="container-lg"  style="width: 100%;">
         <div class="table-responsive" >
             <div class="table-wrapper" >
-                <jsp:include page="/jsp/importer/header.jsp"></jsp:include>                
             </div>
         </div>
     </div>
@@ -186,79 +187,39 @@ $(document).ready(function(){
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-3"><h2>Manager <b style="color: #fd5631">Post</b></h2></div>
-                    <div class="col-sm-9">
-                        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
-                    </div>
                 </div>
             </div>
             <table class="table table-bordered">
                 <thead>
                     <tr style="word-wrap: initial; text-align: center;">
                         <th style="width: 5%;">ID</th>
-                        <th>Username</th>
-                        <th style="width: 25%;" >Email</th>
-                        <th style="width: 15%;">Full name</th>
-                        <th  style="width: 8%;">Avatar</th>
-                        <th>Admin</th>
-                        <th>Actions</th>
+                        <th style="width: 10%;">Owner</th>
+                        <th style="width: 25%;" >postTitle</th>
+                        <th style="width: 35%;">postDescription</th>
+                        <th  style="width: 8%;">Thumnail</th>
+                        <th  style="width: 8%;">postLike</th>
+                        <th>isDisable</th>
                     </tr>
                 </thead>
                 <tbody>
+                <c:forEach items="${lPost}" var="o">
                     <tr>
-                        <td class="Boqua">1</td>
-                        <td>trang</td>
-                        <td>trangttude150338@fpt.edu.vn</td>
-                        <td>Uyên Trang</td>
-                        <td class="Boqua"><img class="rounded-circle" width="48px" height="48px" alt=""
-                            src="${currentAccount.userAvatarURL}" alt="${currentAccount.userUsername}"> </td>
+                        <td class="Boqua">${o.postID}</td>
+                        <td>${o.postUsername}</td>
+                        <td>${o.postTitle}</td>
+                        <td>${o.postDescription}</td>
+                        <td class="Boqua"><img width="48px" height="48px"
+                            src="${o.postThumbnailURL}" alt="${currentAccount.userUsername}">
+                        </td>
+                        <td>${o.postLike}</td>
                         <td class="Boqua">                  
                         <label class="custom-control ios-switch">
-                            <input type="checkbox" class="ios-switch-control-input"  <c:if test="${o.isDisable==true}"> checked=""</c:if> onclick="location.href = 'changeCategoryState?cID=${o.categoryID}&state=${o.isDisable}'">
+                            <input type="checkbox" class="ios-switch-control-input"  <c:if test="${o.isDisable==true}"> checked=""</c:if> >
                             <span class="ios-switch-control-indicator"></span>
                         </label>
                         </td>
-                        <td>
-                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>trang</td>
-                        <td>trangttude150338@fpt.edu.vn</td>
-                        <td>Uyên Trang</td>
-                        <td><img class="rounded-circle" width="48px" height="48px" alt=""
-                            src="${currentAccount.userAvatarURL}" alt="${currentAccount.userUsername}"> </td>
-                        <td>                  
-                            <label class="custom-control ios-switch">
-                                <input type="checkbox" class="ios-switch-control-input" checked="">
-                                <span class="ios-switch-control-indicator"></span>
-                            </label></td>
-                        <td>
-                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                          <td>trang</td>
-                        <td>trangttude150338@fpt.edu.vn</td>
-                        <td>Uyên Trang</td>
-                        <td><img class="rounded-circle" width="48px" height="48px" alt=""
-                            src="${currentAccount.userAvatarURL}" alt="${currentAccount.userUsername}"> </td>
-                        <td>                  
-                            <label class="custom-control ios-switch">
-                                <input type="checkbox" class="ios-switch-control-input" <c:if test="${3==4}">checked=""</c:if>>
-                                <span class="ios-switch-control-indicator"></span>
-                            </label></td>
-                        <td>
-                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>      
+                </c:forEach>
                 </tbody>
             </table>
         </div>
