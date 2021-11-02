@@ -5,7 +5,7 @@
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top p-2">
 
         <a class="navbar-brand" href="/DuniExchange"><img style="width: 160px; height: auto" src="/DuniExchange/resource/img/logo.png"
                                                           alt="DuniExchange Logo"></a>
@@ -68,7 +68,7 @@
             </form>
             
             <c:if test="${not empty currentAccount}">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <div class="d-inline-flex align-items-center" style="height: 100%;">
                             <a class="nav-link px-0 py-0 ms-lg-4 me-lg-2 mt-lg-0 mb-lg-0 ms-0 mt-3 mb-2" href="#" id="navbarDropdown"
