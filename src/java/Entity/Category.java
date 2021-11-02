@@ -25,20 +25,6 @@ public class Category {
         this.isDisable = isDisable;
     }
 
-    public Category(int categoryID, String categoryName, String categoryIcon) {
-        this.categoryID = categoryID;
-        this.categoryName = categoryName;
-        this.categoryIcon = categoryIcon;
-    }
-
-    public boolean isIsDisable() {
-        return isDisable;
-    }
-
-    public void setIsDisable(boolean isDisable) {
-        this.isDisable = isDisable;
-    }
-
     public int getCategoryID() {
         return categoryID;
     }
@@ -63,9 +49,17 @@ public class Category {
         this.categoryIcon = categoryIcon;
     }
 
+    public boolean getIsDisable() {
+        return isDisable;
+    }
+
+    public void setIsDisable(boolean isDisable) {
+        this.isDisable = isDisable;
+    }
+
     @Override
     public String toString() {
         return "Category{" + "categoryID=" + categoryID + ", categoryName=" + categoryName + ", categoryIcon=" + categoryIcon + ", isDisable=" + isDisable + '}';
     }
-
+    
 }

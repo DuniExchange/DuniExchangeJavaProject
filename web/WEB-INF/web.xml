@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>ChangeAdminState</servlet-name>
-        <servlet-class>Controller.Manager.ChangeAdminState</servlet-class>
+        <servlet-name>ExchangeServlet</servlet-name>
+        <servlet-class>Controller.Exchange.ExchangeServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteAccount</servlet-name>
-        <servlet-class>Controller.Manager.DeleteAccount</servlet-class>
+        <servlet-name>NotificationServlet</servlet-name>
+        <servlet-class>Controller.Notification.NotificationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateSeenServlet</servlet-name>
+        <servlet-class>Controller.Notification.UpdateSeenServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AcceptExchangeServlet</servlet-name>
+        <servlet-class>Controller.Exchange.AcceptExchangeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DenyExchangeServlet</servlet-name>
+        <servlet-class>Controller.Exchange.DenyExchangeServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DisplayChangeAccountInfo</servlet-name>
@@ -17,32 +29,28 @@
         <servlet-class>Controller.Email.ValidatePasswordFromMail</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ManagerCategory</servlet-name>
-        <url-pattern>/managerCategory</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DisplayCategoryManager</servlet-name>
-        <url-pattern>/displayCategoryManager</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ChangeCategoryState</servlet-name>
-        <url-pattern>/changeCategoryState</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DisplayAccountManager</servlet-name>
-        <url-pattern>/displayAccountManager</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ChangeAdminState</servlet-name>
-        <url-pattern>/changeAdminState</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteAccount</servlet-name>
-        <url-pattern>/deleteAccount</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>DisplayAllProduct</servlet-name>
         <url-pattern>/DisplayAllProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExchangeServlet</servlet-name>
+        <url-pattern>/ExchangeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NotificationServlet</servlet-name>
+        <url-pattern>/NotificationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSeenServlet</servlet-name>
+        <url-pattern>/UpdateSeenServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AcceptExchangeServlet</servlet-name>
+        <url-pattern>/AcceptExchangeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DenyExchangeServlet</servlet-name>
+        <url-pattern>/DenyExchangeServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DisplayPostManager</servlet-name>
@@ -70,12 +78,13 @@
     </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            180
         </session-timeout>
     </session-config>
+        
     <servlet>
-        <servlet-name>CreatePost</servlet-name>
-        <servlet-class>Controller.Account.CreatePostServlet</servlet-class>
+        <servlet-name>GetPostJson</servlet-name>
+        <servlet-class>Controller.JSON.GetPostJson</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DisplayPostManager</servlet-name>
@@ -94,36 +103,97 @@
         <servlet-class>Controller.Email.ValidateCodeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CreatePost</servlet-name>
-        <url-pattern>/create-post</url-pattern>
+        <servlet-name>GetPostJson</servlet-name>
+        <url-pattern>/get-post</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>TestAjax</servlet-name>
+        <servlet-class>Controller.Test.TestAjax</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestAjax</servlet-name>
+        <url-pattern>/test-ajax</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>DisplayAccountServelt</servlet-name>
-        <servlet-class>Controller.Account.DisplayAccountServlet</servlet-class>
+        <servlet-name>ChangeAdminState</servlet-name>
+        <servlet-class>Controller.Manager.ChangeAdminState</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeAdminState</servlet-name>
+        <url-pattern>/changeAdminState</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteAccount</servlet-name>
+        <servlet-class>Controller.Manager.DeleteAccount</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteAccount</servlet-name>
+        <url-pattern>/deleteAccount</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ManagerCategory</servlet-name>
         <servlet-class>Controller.Manager.ManagerCategory</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>ManagerCategory</servlet-name>
+        <url-pattern>/managerCategory</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>DisplayCategoryManager</servlet-name>
         <servlet-class>Controller.Manager.DisplayCategoryManager</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>DisplayCategoryManager</servlet-name>
+        <url-pattern>/displayCategoryManager</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ChangeCategoryState</servlet-name>
         <servlet-class>Controller.Manager.ChangeCategoryState</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeCategoryState</servlet-name>
+        <url-pattern>/changeCategoryState</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>DisplayAccountManager</servlet-name>
         <servlet-class>Controller.Manager.DisplayAccountManager</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>DisplayAccountManager</servlet-name>
+        <url-pattern>/displayAccountManager</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>DisplayAllProduct</servlet-name>
         <servlet-class>Controller.AllProduct.DisplayAllProduct</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>DisplayAllProduct</servlet-name>
+        <url-pattern>/DisplayAllProduct</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DisplayAccountServelt</servlet-name>
+        <servlet-class>Controller.Account.DisplayAccountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
         <servlet-name>DisplayAccountServelt</servlet-name>
         <url-pattern>/account</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreatePost</servlet-name>
+        <servlet-class>Controller.Account.CreatePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreatePost</servlet-name>
+        <url-pattern>/create-post</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeletePostServlet</servlet-name>
+        <servlet-class>Controller.Account.DeletePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletePostServlet</servlet-name>
+        <url-pattern>/delete-post</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -156,6 +226,6 @@
         <url-pattern>/node_modules/*</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>DisplayHomeServlet</welcome-file>
+        <welcome-file>NotificationServlet</welcome-file>
     </welcome-file-list>
 </web-app>

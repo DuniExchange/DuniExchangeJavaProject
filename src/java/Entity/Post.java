@@ -14,16 +14,45 @@ public class Post {
     private int postID;
     private int postUserID;
     private String postUserFullname;
+    private String postUsername;
     private String postTitle;
     private Date postDate;
     private String postDescription;
     private int postLike;
     private String postThumbnailURL;
     private boolean isDisable;
+    private int isUsedExchange;
 
     public Post() {
     }
 
+    public Post(int postID, int postUserID, String postUserFullname, String postTitle, Date postDate, String postDescription, int postLike, String postThumbnailURL, boolean isDisable, int isUsedExchange) {
+        this.postID = postID;
+        this.postUserID = postUserID;
+        this.postUserFullname = postUserFullname;
+        this.postTitle = postTitle;
+        this.postDate = postDate;
+        this.postDescription = postDescription;
+        this.postLike = postLike;
+        this.postThumbnailURL = postThumbnailURL;
+        this.isDisable = isDisable;
+        this.isUsedExchange = isUsedExchange;
+    }
+
+    public Post(int postID, int postUserID, String postTitle, Date postDate, String postDescription, int postLike, String postThumbnailURL, boolean isDisable, int isUsedExchange) {
+        this.postID = postID;
+        this.postUserID = postUserID;
+        this.postTitle = postTitle;
+        this.postDate = postDate;
+        this.postDescription = postDescription;
+        this.postLike = postLike;
+        this.postThumbnailURL = postThumbnailURL;
+        this.isDisable = isDisable;
+        this.isUsedExchange = isUsedExchange;
+    }
+
+    
+    
     public Post(int postID, int postUserID, String postUserFullname, String postTitle, Date postDate, String postDescription, int postLike, String postThumbnailURL, boolean isDisable) {
         this.postID = postID;
         this.postUserID = postUserID;
@@ -36,6 +65,24 @@ public class Post {
         this.isDisable = isDisable;
     }
     
+    public Post(int postID,String postUsername, String postTitle, Date postDate, String postDescription, int postLike, String postThumbnailURL, boolean isDisable) {
+        this.postID = postID;
+        this.postUsername = postUsername;
+        this.postTitle = postTitle;
+        this.postDate = postDate;
+        this.postDescription = postDescription;
+        this.postLike = postLike;
+        this.postThumbnailURL = postThumbnailURL;
+        this.isDisable = isDisable;
+    }
+    public String getPostUsername() {
+        return postUsername;
+    }
+
+    public void setPostUsername(String postUsername) {
+        this.postUsername = postUsername;
+    }
+
     public int getPostID() {
         return postID;
     }
@@ -108,8 +155,18 @@ public class Post {
         this.isDisable = isDisable;
     }
 
+    public int getIsUsedExchange() {
+        return isUsedExchange;
+    }
+
+    public void setIsUsedExchange(int isUsedExchange) {
+        this.isUsedExchange = isUsedExchange;
+    }
+
     @Override
     public String toString() {
-        return "Post{" + "postID=" + postID + ", postUserID=" + postUserID + ", postUserFullname=" + postUserFullname + ", postTitle=" + postTitle + ", postDate=" + postDate + ", postDescription=" + postDescription + ", postLike=" + postLike + ", postThumbnailURL=" + postThumbnailURL + ", isDisable=" + isDisable + '}';
+        return "Post{" + "postID=" + postID + ", postUserID=" + postUserID + ", postUserFullname=" + postUserFullname + ", postTitle=" + postTitle + ", postDate=" + postDate + ", postDescription=" + postDescription + ", postLike=" + postLike + ", postThumbnailURL=" + postThumbnailURL + ", isDisable=" + isDisable + ", isUsedExchange=" + isUsedExchange + '}';
     }
+
+    
 }

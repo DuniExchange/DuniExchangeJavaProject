@@ -66,12 +66,12 @@
                 <div class="function-container border-container container-shadow col-12 bg-opaque-primary overflow-hidden">
                     <!--tab-->
                     <div class="tablinks px-4 py-3 d-flex" id="post-tablinks">
-                        <div class="tablink py-2 mx-2 d-flex flex-column" id="tab-post">
-                            Your Post 
+                        <div class="tablink py-2 mx-2 d-flex flex-column align-items-center" id="tab-post">
+                            Posts 
                             <div class="tab-underline"></div>
                         </div>
-                        <div class="tablink py-2 mx-2 d-flex flex-column" id="tab-create">
-                            Upload Post
+                        <div class="tablink py-2 mx-2 d-flex flex-column align-items-center" id="tab-create">
+                            Create
                             <div class="tab-underline"></div>
                         </div>                       
                     </div>
@@ -82,22 +82,30 @@
                         <div class="tabcontent col-6 p-3 d-flex flex-column overflow-auto" id="post">
                             <div>
                                 <c:forEach items="${POST_LIST}" var="post">
-                                    <div class="post d-flex bg-primary px-3 border-container mb-3">
-                                        <div class="imgp">
-                                            <img src="${post.postThumbnailURL}" style="" alt="anh san pham">
-                                        </div>
-                                        <div class="contentp ms-3 flex-grow-1 d-flex flex-column">
-                                            <a class="title" href="" style="font-size: 30px;font-weight: bold ;" title="${post.postTitle}">${post.postTitle}</a>
-                                            <div class="date-n-author d-flex"><p class="date">${post.postDate} -</p> <a class="author ms-1" href="">${post.postUserFullname}</a></div>
-                                            <div class="decription pe-2"><p class="m-0">${post.postDescription}</p></div>
-                                            <div class="like-progress d-flex my-auto">
-                                                <div class="icon-heart me-2"><i class="far fa-heart"></i></div>
-                                                <div>
-                                                    <p class="m-0">${post.postLike}</p>
+                                    <c:if test="${not post.isDisable}">
+                                        <div class="post d-flex bg-primary px-3 border-container mb-3">
+                                            <div class="imgp">
+                                                <img src="${post.postThumbnailURL}" style="" alt="anh san pham">
+                                            </div>
+                                            <div class="contentp ms-3 flex-grow-1 d-flex flex-column">
+                                                <a class="title text-hover" href="" style="font-size: 30px;font-weight: bold ;" title="${post.postTitle}">${post.postTitle}</a>
+                                                <div class="date-n-author d-flex"><p class="date">${post.postDate} -</p> <a class="author ms-1" href="">${post.postUserFullname}</a></div>
+                                                <div class="decription pe-2"><p class="m-0">${post.postDescription}</p></div>
+                                                <div class="post-button my-auto d-flex  justify-content-between">
+                                                    <div class="like-progress d-flex">
+                                                        <div class="icon-heart me-2"><i class="far fa-heart"></i></div>
+                                                        <div>
+                                                            <p class="m-0">${post.postLike}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="edit-n-delete d-flex">
+                                                        <div class="edit-button me-2" data-id="${post.postID}" data-bs-toggle="modal" data-bs-target="#edit-modal"><i class="far fa-edit text-hover"></i></div>
+                                                        <div class="delete-button" data-id="${post.postID}" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="far fa-trash-alt text-hover"></i></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </c:if>
                                 </c:forEach>
                             </div>
                         </div>
@@ -147,17 +155,55 @@
           <jsp:include page="/jsp/importer/footer.jsp"></jsp:include>
         <!-- footer import -->
     </div>
+        
+    <!--   delete modal  -->
+    <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="cancel"></button>
+            </div>
+            <div class="modal-body">
+                Do you want to delete this post?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-action="cancel">Cancel</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-action="accept">Delete</button>
+            </div>
+          </div>
+        </div>
+    </div>
+        
+    <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+    </div>    
   
-  <jsp:include page="/jsp/importer/base-js.jsp"></jsp:include>
+    <jsp:include page="/jsp/importer/base-js.jsp"></jsp:include>
   
     <script src="/DuniExchange/resource/js/tab-toggle.js"></script>
-    <<script src="/DuniExchange/resource/js/my-account.js"></script>
+    <script src="/DuniExchange/resource/js/my-account/my-account.js"></script>
     <script src="/DuniExchange/resource/js/upload-preview.js"></script>
-    <script src="/DuniExchange/resource/js/multipart-form.js"></script>
+    <script src="/DuniExchange/resource/js/ajax-data-sender.js"></script>
     
     <script type="text/javascript">
         var isError = false;
 
+        //add an error
         function insertError(container, msg){
             isError = true;
             console.log(container.getAttribute("id"));
@@ -167,7 +213,8 @@
             font.setAttribute("id", container.id +"-error");
             container.appendChild(font);
         }
-
+        
+        //destroy an error
         function destroyError(containerID){
             var container = document.getElementById(containerID);
 
@@ -178,7 +225,8 @@
             console.log("remove " + error.id + " at "  + container.tagName + " id="+ container.id);
             container.removeChild(error);
         }
-
+        
+        //destroy all error
         function destroyAllError(){
             var inputContainers = document.getElementsByClassName("input-container");
 
@@ -191,7 +239,8 @@
                 ip.removeChild(error);
             }
         }
-
+        
+        //validate create post form
         function validate(){
             destroyAllError();
             isError = false;
@@ -218,6 +267,7 @@
             return !isError;
         }
         
+        //reset data in create post form after send request
         function clearForm(){
             var title = $("#title");
             var img = $("#img");
