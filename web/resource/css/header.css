@@ -28,7 +28,7 @@
   min-width: 200px;
   color: var(--text-color);
 }
-.disable-text {
+.disable-text span{
   color: var(--text-sub-color) !important;
 }
 @media (min-width: 991.98px) {

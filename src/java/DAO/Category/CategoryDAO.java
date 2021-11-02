@@ -21,7 +21,8 @@ import java.util.List;
  * @author Minky
  */
 public class CategoryDAO {
-    public static List<Category> getAllCategory() throws SQLException{
+
+    public static List<Category> getAllCategory() throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -30,25 +31,37 @@ public class CategoryDAO {
         List<Category> categories = new ArrayList();
         try {
             con = DBConnection.makeConnection();
-
+            
             if (con != null) {
-                stm = con.prepareStatement(query);  
-
+                stm = con.prepareStatement(query);                
+                
                 rs = stm.executeQuery();
                 while (rs.next()) {
-                    int categoryID = rs.getInt(1);
-                    String categoryName = rs.getString(2);
-                    String categoryIcon = rs.getString(3);
-                    categories.add(new Category(categoryID, categoryName, categoryIcon));
+                    categories.add(new Category(rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getBoolean(4)));
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (rs != null) rs.close();
-            if (stm != null) stm.close();
-            if (con != null) con.close();
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
         }
         return categories;
+    }
+    public static void main(String[] args) throws SQLException {
+        CategoryDAO d = new CategoryDAO();
+        List<Category> categories = d.getAllCategory();
+        System.out.println(categories);
+        
     }
 }

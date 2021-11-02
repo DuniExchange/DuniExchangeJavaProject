@@ -43,7 +43,8 @@ public class DisplayAccountServlet extends HttpServlet {
             response.sendRedirect(this.getServletContext().getContextPath());
             return;
         }
-        List<Post> postList = PostDAO.getPostByUserID(currentAccount.getUserID()+"");
+
+        List<Post> postList = PostDAO.getPostByUserID(currentAccount.getUserID());
         List<Category> categoryList = CategoryDAO.getAllCategory();
         request.setAttribute("POST_LIST", postList);
         request.setAttribute("CATEGORY_LIST", categoryList);
