@@ -28,6 +28,10 @@
         <servlet-name>ValidatePasswordFromMail</servlet-name>
         <servlet-class>Controller.Email.ValidatePasswordFromMail</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangeAdAbleState</servlet-name>
+        <servlet-class>Controller.Manager.ChangeAdAbleState</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NotificationServlet</servlet-name>
         <url-pattern>/NotificationServlet</url-pattern>
@@ -68,12 +72,15 @@
         <servlet-name>ValidatePasswordFromMail</servlet-name>
         <url-pattern>/validatePasswordFromMail</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeAdAbleState</servlet-name>
+        <url-pattern>/changeAdAbleState</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             180
         </session-timeout>
     </session-config>
-        
     <servlet>
         <servlet-name>GetPostJson</servlet-name>
         <servlet-class>Controller.JSON.GetPostJson</servlet-class>
@@ -98,7 +105,6 @@
         <servlet-name>GetPostJson</servlet-name>
         <url-pattern>/get-post</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>TestAjax</servlet-name>
         <servlet-class>Controller.Test.TestAjax</servlet-class>
@@ -114,14 +120,6 @@
     <servlet-mapping>
         <servlet-name>ChangeAdminState</servlet-name>
         <url-pattern>/changeAdminState</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>DeleteAccount</servlet-name>
-        <servlet-class>Controller.Manager.DeleteAccount</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteAccount</servlet-name>
-        <url-pattern>/deleteAccount</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ManagerCategory</servlet-name>

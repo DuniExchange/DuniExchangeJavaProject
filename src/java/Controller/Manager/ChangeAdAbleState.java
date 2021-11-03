@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author truon
  */
-public class DeleteAccount extends HttpServlet {
+public class ChangeAdAbleState extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,13 +33,14 @@ public class DeleteAccount extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("aID");
-        AccountManagerDAO dao = new AccountManagerDAO();
+        String state = request.getParameter("state");
         try {
-            dao.deleteCategory(id);
+            AccountManagerDAO.changeAccountAble(id,state);
             response.sendRedirect("displayAccountManager");
         } catch (SQLException ex) {
-            Logger.getLogger(DeleteAccount.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ChangeAdAbleState.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

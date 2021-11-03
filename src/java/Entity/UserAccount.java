@@ -23,6 +23,7 @@ public class UserAccount {
     private float userRating;
     private boolean isAdmin;
     private boolean isValidate;
+    private boolean isDisable;
 
     public UserAccount() {
     }
@@ -41,13 +42,14 @@ public class UserAccount {
         this.isValidate = isValidate;
     }
 
-    public UserAccount(int userID, String userUsername, String userEmail, String userFullname, String userAvatarURL, boolean isAdmin) {
+    public UserAccount(int userID, String userUsername, String userEmail, String userFullname, String userAvatarURL, boolean isAdmin, boolean isDisable) {
         this.userID = userID;
         this.userUsername = userUsername;
         this.userEmail = userEmail;
         this.userFullname = userFullname;
         this.userAvatarURL = userAvatarURL;
         this.isAdmin = isAdmin;
+        this.isDisable = isDisable;
     }
     
 
@@ -140,6 +142,14 @@ public class UserAccount {
 
     public void setUserAvatarURL(String userAvatarURL) {
         this.userAvatarURL = userAvatarURL;
+    }
+
+    public boolean isIsDisable() {
+        return isDisable;
+    }
+
+    public void setIsDisable(boolean isDisable) {
+        this.isDisable = isDisable;
     }
 
     @Override

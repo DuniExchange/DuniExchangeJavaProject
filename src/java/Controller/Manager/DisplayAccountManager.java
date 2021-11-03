@@ -35,9 +35,8 @@ public class DisplayAccountManager extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        AccountManagerDAO dao = new AccountManagerDAO();
         try {
-            ArrayList<UserAccount> ls = dao.getAllAccount();
+            ArrayList<UserAccount> ls = AccountManagerDAO.getAllAccount();
             for (UserAccount l : ls) {
                 System.out.println(l.toString());
             }
