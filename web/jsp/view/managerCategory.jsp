@@ -10,11 +10,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <jsp:include  page="/jsp/importer/base-css.jsp"></jsp:include>
 <title>Manager Category</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/DuniExchange/resource/css/bootstrapCheck.min.css">
+    <!--<link rel="stylesheet" href="/DuniExchange/resource/css/bootstrapCheck.min.css">-->
     
     <!-- Style -->
     <link rel="stylesheet" href="/DuniExchange/resource/css/styleCheck.css">
@@ -289,6 +289,6 @@ $(document).ready(function(){
     <!-- scroll reveal -->
   <script src="/DuniExchange/node_modules/scrollreveal/dist/scrollreveal.js"></script>
   <!-- home page js -->
-  <script src="/DuniExchange/resource/js/home.js"></script>
+  <!--<script src="/DuniExchange/resource/js/home.js"></script>-->
 </body>
 </html>

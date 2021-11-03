@@ -33,7 +33,7 @@ public class ChangePostState extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //cID=${o.categoryID},state
-        String id = request.getParameter("cID");
+        String id = request.getParameter("pID");
         String state = request.getParameter("state");
         try {
             CategoryManagerDAO.changePostState(id, state);

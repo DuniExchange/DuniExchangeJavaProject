@@ -14,7 +14,7 @@
   <jsp:include  page="/jsp/importer/base-css.jsp"></jsp:include>
 <title>Manager Post</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/DuniExchange/resource/css/bootstrapCheck.min.css">
+    <!--<link rel="stylesheet" href="/DuniExchange/resource/css/bootstrapCheck.min.css">-->
     
     <!-- Style -->
     <link rel="stylesheet" href="/DuniExchange/resource/css/styleCheck.css">
