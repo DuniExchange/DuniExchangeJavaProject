@@ -222,7 +222,7 @@ $(document).ready(function(){
                         <td>${o.postLike}</td>
                         <td class="Boqua">                  
                         <label class="custom-control ios-switch">
-                            <input type="checkbox" class="ios-switch-control-input"  <c:if test="${o.isDisable==true}"> checked=""</c:if> >
+                            <input type="checkbox" class="ios-switch-control-input"  <c:if test="${o.isDisable==true}"> checked=""</c:if> onclick="location.href = 'changePostState?pID=${o.postID}&state=${o.isDisable}'">
                             <span class="ios-switch-control-indicator"></span>
                         </label>
                         </td>

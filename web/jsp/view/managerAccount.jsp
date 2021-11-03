@@ -199,7 +199,7 @@ $(document).ready(function(){
                         </td>
                         <td>
                             <label class="custom-control ios-switch">
-                            <input type="checkbox" class="ios-switch-control-input"  <c:if test="${o.isDisable==true}"> checked=""</c:if> onclick="location.href = 'changeAdAbleState?aID=${o.userID}&state=${o.isAdmin}'">
+                            <input type="checkbox" class="ios-switch-control-input"  <c:if test="${o.isDisable==true}"> checked=""</c:if> onclick="location.href = 'changeAdAbleState?aID=${o.userID}&state=${o.isDisable}'">
                             <span class="ios-switch-control-indicator"></span>
                             </label>
                             <!--<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>-->

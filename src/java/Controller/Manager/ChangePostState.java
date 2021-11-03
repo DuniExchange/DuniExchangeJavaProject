@@ -7,7 +7,6 @@ package Controller.Manager;
 
 import DAO.Manager.CategoryManagerDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author truon
  */
-public class ChangeCategoryState extends HttpServlet {
+public class ChangePostState extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,15 +32,14 @@ public class ChangeCategoryState extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         //cID=${o.categoryID},state
         String id = request.getParameter("cID");
         String state = request.getParameter("state");
         try {
-            CategoryManagerDAO.changeCategoryState(id, state);
-            request.getRequestDispatcher("displayCategoryManager").forward(request, response);
+            CategoryManagerDAO.changePostState(id, state);
+            request.getRequestDispatcher("displayPostManager").forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(ChangeCategoryState.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ChangePostState.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

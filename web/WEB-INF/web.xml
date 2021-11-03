@@ -32,6 +32,10 @@
         <servlet-name>ChangeAdAbleState</servlet-name>
         <servlet-class>Controller.Manager.ChangeAdAbleState</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePostState</servlet-name>
+        <servlet-class>Controller.Manager.ChangePostState</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NotificationServlet</servlet-name>
         <url-pattern>/NotificationServlet</url-pattern>
@@ -75,6 +79,10 @@
     <servlet-mapping>
         <servlet-name>ChangeAdAbleState</servlet-name>
         <url-pattern>/changeAdAbleState</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePostState</servlet-name>
+        <url-pattern>/changePostState</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
