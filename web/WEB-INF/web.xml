@@ -28,6 +28,10 @@
         <servlet-name>ValidatePasswordFromMail</servlet-name>
         <servlet-class>Controller.Email.ValidatePasswordFromMail</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditPostServlet</servlet-name>
+        <servlet-class>Controller.Account.EditPostServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NotificationServlet</servlet-name>
         <url-pattern>/NotificationServlet</url-pattern>
@@ -68,16 +72,15 @@
         <servlet-name>ValidatePasswordFromMail</servlet-name>
         <url-pattern>/validatePasswordFromMail</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditPostServlet</servlet-name>
+        <url-pattern>/edit-post</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             180
         </session-timeout>
     </session-config>
-        
-    <servlet>
-        <servlet-name>GetPostJson</servlet-name>
-        <servlet-class>Controller.JSON.GetPostJson</servlet-class>
-    </servlet>
     <servlet>
         <servlet-name>DisplayPostManager</servlet-name>
         <servlet-class>Controller.Manager.DisplayPostManager</servlet-class>
@@ -94,11 +97,14 @@
         <servlet-name>ValidateCodeServlet</servlet-name>
         <servlet-class>Controller.Email.ValidateCodeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetPostInfoJson</servlet-name>
+        <servlet-class>Controller.JSON.GetPostInfoJson</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>GetPostJson</servlet-name>
-        <url-pattern>/get-post</url-pattern>
+        <servlet-name>GetPostInfoJson</servlet-name>
+        <url-pattern>/get-postinfo</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>TestAjax</servlet-name>
         <servlet-class>Controller.Test.TestAjax</servlet-class>

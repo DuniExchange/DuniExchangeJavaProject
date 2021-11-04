@@ -128,7 +128,7 @@ p.avatar-name{
     font-weight: 600;
 }
 
-.decription{
+.description{
     max-height: 72px;
     /*overflow: scroll;*/
     overflow-wrap: break-word;
@@ -143,8 +143,11 @@ p.avatar-name{
     width: 200px;
     object-fit: cover;
 }
-#category-items{
+#create-category-items{
     max-height: 816px;
+}
+
+.category-item{
     overflow: scroll;
     overflow-x: hidden;
     overflow-y: auto;
@@ -164,7 +167,7 @@ p.avatar-name{
 
 .upload-icon{
     display: inline-block;
-    padding: 50px 374px;
+    padding: auto;
 }
 
 .preview{

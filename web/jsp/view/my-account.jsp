@@ -83,14 +83,14 @@
                             <div>
                                 <c:forEach items="${POST_LIST}" var="post">
                                     <c:if test="${not post.isDisable}">
-                                        <div class="post d-flex bg-primary px-3 border-container mb-3">
+                                        <div class="post d-flex bg-primary px-3 border-container mb-3" data-id="${post.postID}">
                                             <div class="imgp">
                                                 <img src="${post.postThumbnailURL}" style="" alt="anh san pham">
                                             </div>
                                             <div class="contentp ms-3 flex-grow-1 d-flex flex-column">
                                                 <a class="title text-hover" href="" style="font-size: 30px;font-weight: bold ;" title="${post.postTitle}">${post.postTitle}</a>
                                                 <div class="date-n-author d-flex"><p class="date">${post.postDate} -</p> <a class="author ms-1" href="">${post.postUserFullname}</a></div>
-                                                <div class="decription pe-2"><p class="m-0">${post.postDescription}</p></div>
+                                                <div class="description pe-2"><p class="m-0">${post.postDescription}</p></div>
                                                 <div class="post-button my-auto d-flex  justify-content-between">
                                                     <div class="like-progress d-flex">
                                                         <div class="icon-heart me-2"><i class="far fa-heart"></i></div>
@@ -99,8 +99,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="edit-n-delete d-flex">
-                                                        <div class="edit-button me-2" data-id="${post.postID}" data-bs-toggle="modal" data-bs-target="#edit-modal"><i class="far fa-edit text-hover"></i></div>
-                                                        <div class="delete-button" data-id="${post.postID}" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="far fa-trash-alt text-hover"></i></div>
+                                                        <div class="edit-button me-2" data-bs-toggle="modal" data-bs-target="#edit-modal"><i class="far fa-edit text-hover"></i></div>
+                                                        <div class="delete-button" data-s1="hello" data-s2="goodbye" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="far fa-trash-alt text-hover"></i></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,37 +111,37 @@
                         </div>
                     
                         <div class="tabcontent col-6 p-3" id="create">
-                            <div id="form-container" class="form-container flex-fill">
+                            <div class="form-container flex-fill">
                                 <form method="post" enctype='multipart/form-data' id="create-post-form">
-                                    <div id="title-container" class="form-group input-container mb-2">
-                                        <label for="title" class="create-label">Title:</label>
-                                        <input type="text" name="title" id="title" class="form-control">                                    
+                                    <div class="title-container form-group input-container mb-2">
+                                        <label for="create-title" class="create-label">Title:</label>
+                                        <input type="text" name="title" id="create-title" class="form-control">                     
                                     </div>
-                                    <div id="img-container" class="form-group input-container mb-2">
+                                    <div class="img-container form-group input-container mb-2">
                                         <label for="custom-file" class="create-label">Photo attached:</label>
                                         <div class="custom-file mb-2">
-                                            <input accept="image/png, image/jpeg, image/bmp" type="file" name="img" id="img" hidden multiple>
-                                            <label class="btn btn-primary" for="img">Choose File</label>
+                                            <input accept="image/png, image/jpeg, image/bmp" type="file" name="img" id="create-img" class="preview-img-input" hidden multiple>
+                                            <label class="btn btn-primary" for="create-img">Choose File</label>
                                         </div>
-                                        <div class="upload-preview bg-white">
+                                        <div class="upload-preview bg-white d-flex align-items-center justify-content-center">
                                             <div class="upload-icon"><i class="fad fa-upload"></i></div>
-                                            <div class="preview d-flex" id="preview"></div>
+                                            <div class="preview d-flex" id="create-preview"></div>
                                         </div>
                                     </div>
-                                    <div id="category-container" class="form-group input-container mb-2">
+                                    <div class="category-container form-group input-container mb-2">
                                         <label for="category-items" class="create-label">Category:</label>
-                                        <div id="category-items" class="category-items d-flex flex-wrap">
+                                        <div id="create-category-items" class="category-items d-flex flex-wrap">
                                             <c:forEach var="cat" items="${CATEGORY_LIST}" varStatus="count">  
-                                                 <div id="category-item-${count.index + 1}" class="category-item d-flex align-items-center">
-                                                     <input type="checkbox" name="category" value="${cat.categoryID}" class="me-1">
+                                                 <div class="category-item d-flex align-items-center">
+                                                     <input type="checkbox" name="category" value="${cat.categoryID}" data-id="${cat.categoryID}" class="me-1">
                                                      <label for="category" style="max-width: 100px" class="text-truncate" title="${cat.categoryName}">${cat.categoryName}</label>
                                                  </div>
                                             </c:forEach> 
                                         </div>
                                     </div>
-                                    <div id="decription-container" class="form-group input-container mb-2">
-                                        <label for="decription" class="create-label">Mô tả:</label>
-                                        <textarea name="decription" id="decription" class="form-control" rows="10" style="resize:none;"></textarea>
+                                    <div class="description-container form-group input-container mb-2">
+                                        <label for="create-description" class="create-label">Description:</label>
+                                        <textarea name="description" id="create-description" class="form-control" rows="10" style="resize:none;"></textarea>
                                     </div>
                                     <input type="button" role="button" value="Đăng" class="mr-auto btn btn-primary" id="create-post-button">
                                 </form>
@@ -177,17 +177,52 @@
         
     <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
+            <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="cancel"></button>
             </div>
             <div class="modal-body">
-            ...
+                <div class="loading-placeholder">Loading...</div>
+                
+                <div class="form-container flex-fill">
+                    <form method="post" enctype='multipart/form-data' id="edit-post-form">
+                        <div class="title-container form-group input-container mb-2">
+                            <label for="edit-title" class="edit-label">Title:</label>
+                            <input type="text" name="title" id="edit-title" class="form-control">                     
+                        </div>
+                        <div class="img-container form-group input-container mb-2">
+                            <label for="custom-file" class="edit-label">Photo attached:</label>
+                            <div class="custom-file mb-2">
+                                <input accept="image/png, image/jpeg, image/bmp" type="file" name="img" id="edit-img" class="preview-img-input" hidden multiple>
+                                <label class="btn btn-primary" for="edit-img">Choose File</label>
+                            </div>
+                            <div class="upload-preview bg-white d-flex align-items-center justify-content-center">
+                                <div class="upload-icon"><i class="fad fa-upload"></i></div>
+                                <div class="preview d-flex" id="edit-preview"></div>
+                            </div>
+                        </div>
+                        <div class="category-container form-group input-container mb-2">
+                            <label for="category-items" class="edit-label">Category:</label>
+                            <div id="edit-category-items" class="category-items d-flex flex-wrap">
+                                <c:forEach var="cat" items="${CATEGORY_LIST}" varStatus="count">  
+                                     <div class="category-item d-flex align-items-center">
+                                         <input type="checkbox" name="category" value="${cat.categoryID}" class="me-1" data-id="${cat.categoryID}">
+                                         <label for="category" style="max-width: 100px" class="text-truncate" title="${cat.categoryName}">${cat.categoryName}</label>
+                                     </div>
+                                </c:forEach> 
+                            </div>
+                        </div>
+                        <div class="description-container form-group input-container mb-2">
+                            <label for="edit-description" class="edit-label">Description:</label>
+                            <textarea name="description" id="edit-description" class="form-control" rows="10" style="resize:none;"></textarea>
+                        </div>                        
+                    </form>
+                </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-action="cancel">Cancel</button>
+              <button type="button" class="btn btn-primary" data-action="accept">Save</button>
             </div>
           </div>
         </div>
@@ -197,7 +232,7 @@
   
     <script src="/DuniExchange/resource/js/tab-toggle.js"></script>
     <script src="/DuniExchange/resource/js/my-account/my-account.js"></script>
-    <script src="/DuniExchange/resource/js/upload-preview.js"></script>
+    <script src="/DuniExchange/resource/js/my-account/upload-preview.js"></script>
     <script src="/DuniExchange/resource/js/ajax-data-sender.js"></script>
     
     <script type="text/javascript">
@@ -206,73 +241,53 @@
         //add an error
         function insertError(container, msg){
             isError = true;
-            console.log(container.getAttribute("id"));
+            console.log('insert error ', container);
             var font = document.createElement('font');                       
             font.innerHTML = msg;
             font.setAttribute("color", "red");
-            font.setAttribute("id", container.id +"-error");
+            font.setAttribute("class", "error-font");
             container.appendChild(font);
         }
         
-        //destroy an error
-        function destroyError(containerID){
-            var container = document.getElementById(containerID);
-
-            console.log("container: " + container.id);
-
-            var error = document.getElementById(container.id + "-error");
-            if(error === null) return;
-            console.log("remove " + error.id + " at "  + container.tagName + " id="+ container.id);
-            container.removeChild(error);
-        }
-        
         //destroy all error
-        function destroyAllError(){
-            var inputContainers = document.getElementsByClassName("input-container");
-
-            console.log("eLen: " + inputContainers.length);
-
-            for(const ip of inputContainers){
-                var error = document.getElementById(ip.id + "-error");
-                if(error === null) continue;
-                console.log("remove " + error.id + " at "  + ip.tagName + " id="+ ip.id);
-                ip.removeChild(error);
-            }
+        function destroyAllError(key){
+            $(`#\${key}-post-form .error-font`).remove();
         }
-        
+                
         //validate create post form
-        function validate(){
-            destroyAllError();
-            isError = false;
-            var title = $("#title");
-            var img = $("#img");
-            var descr = $("#decription");
-            var cat = $('#category-items input[type=checkbox]:checked');
+        function validate(key){
+            destroyAllError(key);
+            isError = false; //set isError false first            
+            let title = $(`#\${key}-title`);
+            let img = $(`#\${key}-img`);
+            let descr = $(`#\${key}-description`);
+            let cat = $(`#\${key}-category-items input[type=checkbox]:checked`);
+            
             if(title[0].value === "" || title[0].value === null){
-                insertError(document.getElementById("title-container"), "Must fill this field");
+                insertError($(`#\${key}-post-form .title-container`)[0], "Must fill this field");
             }
 
             if(img[0].files.length === 0){
-                insertError(document.getElementById("img-container"), "Must choose file");
+                insertError($(`#\${key}-post-form .img-container`)[0], "Must choose file");
             }
             
             if(cat.length === 0){
-                insertError(document.getElementById("category-container"), "Must choose at least a category");
+                insertError($(`#\${key}-post-form .category-container`)[0], "Must choose at least a category");
             }
             
             if(descr[0].value === "" || descr[0].value === null){
-                insertError(document.getElementById("decription-container"), "Must fill this field");
+                insertError($(`#\${key}-post-form .description-container`)[0], "Must fill this field");
             }
 
             return !isError;
         }
         
         //reset data in create post form after send request
-        function clearForm(){
-            var title = $("#title");
-            var img = $("#img");
-            var descr = $("#decription");
-            var cat = $('#category-items input[type=checkbox]:checked');
+        function clearForm(key){
+            let title = $(`#\${key}-title`);
+            let img = $(`#\${key}-img`);
+            let descr = $(`#\${key}-description`);
+            let cat = $(`#\${key}-category-items input[type=checkbox]:checked`);
             
             title.val('');
             img.val('');

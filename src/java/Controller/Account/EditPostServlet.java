@@ -17,12 +17,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +28,7 @@ import org.apache.commons.fileupload.FileItem;
  *
  * @author Minky
  */
-public class CreatePostServlet extends HttpServlet {
+public class EditPostServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,7 +40,7 @@ public class CreatePostServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             try {
@@ -54,37 +50,40 @@ public class CreatePostServlet extends HttpServlet {
                 HashMap<String, List<String>> formFields = efr.getFormFields(); //get form field data from form
                 List<FileItem> fileItemList = efr.getFileItems(); //get file item from form
                 List<String> filePathList = EncForm.uploadFile(fileItemList.toArray(new FileItem[fileItemList.size()]), "resource/img/product-img", request, servletContext); //upload all file in list, then get the path list of uploaded items
-
+                
                 int postUserID = ((UserAccount)request.getSession().getAttribute("currentAccount")).getUserID(); //get id of current account
-
-                String postTitle = formFields.get("title").get(0);
-                Timestamp postDate = new Timestamp(new Date().getTime());
+                
+                int postID = Integer.parseInt(formFields.get("postID").get(0));
+                String postTitle = formFields.get("title").get(0);                
                 String postDescription = formFields.get("description").get(0);
                 String thumbnailURL = filePathList.get(0); //for thumbnail
                 List<String> categoryIDList = formFields.get("category");
+                
                 Integer[] categoryIDs = {};
                 if(!categoryIDList.isEmpty()){
                     categoryIDs = categoryIDList.stream().map(cat -> Integer.parseInt(cat)).toArray(Integer[]::new);
                 }
-
-                System.out.println("accountID: " + postUserID + " postTitle: " + postTitle + " postDate: " + postDate + " postDescription: " + postDescription + " postLike: " + " thumbnailURL: " + thumbnailURL + "\n");
-                System.out.println("categories:" + Arrays.toString(categoryIDs));
-
-                //update Post
-                int postID = PostDAO.insertPost(postUserID, postTitle, postDate, postDescription, thumbnailURL);
-
-                if(postID > 0){
-                    //update ProductImage
-                    PostImageDAO.insertPostImage(postID, filePathList.toArray(new String[filePathList.size()]));
-                    //update CategoryPost
-                    if(categoryIDs.length != 0) PostCategoryDAO.insertPostCategory(postID, categoryIDs);
-                }
+//
+//                System.out.println("postID: " + postID + "accountID: " + postUserID + " postTitle: " + postTitle + " postDescription: " + postDescription + " thumbnailURL: " + thumbnailURL + "\n");
+//                System.out.println("categories:" + Arrays.toString(categoryIDs));
+                out.println("postID: " + postID + "accountID: " + postUserID + " postTitle: " + postTitle + " postDescription: " + postDescription + " thumbnailURL: " + thumbnailURL + "\n");
+                out.println("categories:" + Arrays.toString(categoryIDs));
+//
+//                //update Post
+//                boolean isSuccess = PostDAO.updatePost(postID, postUserID, postTitle, postDescription, thumbnailURL);
+//
+//                if(isSuccess){
+//                    //update ProductImage
+//                    PostImageDAO.updatePostImageDeleteFirst(postID, filePathList.toArray(new String[filePathList.size()]));
+//                    //update CategoryPost
+//                    if(categoryIDs.length != 0) PostCategoryDAO.updatePostCategoryDeleteFirst(postID, categoryIDs);
+//                }
             } catch (Exception e) {
                 e.printStackTrace();
-                out.print(e.getMessage() + "\nCreate Fail!");
+                out.print(e.getMessage() + "\nEdit Fail!");
                 return;
             }
-            out.print("Create Success!");
+            out.print("Edit Success!");
         }
     }
 
@@ -100,7 +99,7 @@ public class CreatePostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath());
+        processRequest(request, response);
     }
 
     /**
@@ -114,11 +113,7 @@ public class CreatePostServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(CreatePostServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

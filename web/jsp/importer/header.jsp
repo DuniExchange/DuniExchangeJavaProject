@@ -150,7 +150,7 @@
                                                         <span class="dropdown-item-noti-username">${i.userFullname}</span>
                                                     </c:if>
                                                 </c:forEach>
-                                                <span class="normal"> wants to exchange </span>
+                                                <span class="normal"> wants to exchange</span>
                                                 <c:forEach items="${listPost}" var="i">
                                                     <c:if test="${o.secondPostID == i.postID}" >
                                                         <span class="dropdown-item-noti-product-title">${i.postTitle}</span>
