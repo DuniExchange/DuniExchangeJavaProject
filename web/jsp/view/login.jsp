@@ -57,7 +57,7 @@
                             </div>
                             
                                 <font color="red">${not empty requestScope.MESSAGE ? requestScope.MESSAGE : ""}</font>
-                                <a href="displayForgotPassword">Forgot password?</a>
+                                <br><a href="displayForgotPassword">Forgot password?</a>
 
                             <div class="form-group form-button">
                                 <input type="submit" name="Login" id="Login" class="form-submit" value="Sign in"/>

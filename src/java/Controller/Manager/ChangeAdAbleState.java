@@ -3,10 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.Email;
+package Controller.Manager;
 
+import DAO.Manager.AccountManagerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author truon
  */
-public class ValidateCodeServlet extends HttpServlet {
+public class ChangeAdAbleState extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,17 +34,13 @@ public class ValidateCodeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String email = request.getParameter("emailA");
-        String code  = (String) request.getSession().getAttribute("codeCheck");
-        String validateCode = request.getParameter("code");
-        if (code.trim().equals(validateCode.trim())) {
-            request.setAttribute("MainEmail", email);
-            request.getSession().removeAttribute("codeCheck");
-            request.getRequestDispatcher("displayChangeAccountInfo").forward(request, response);
-        }else{
-            request.setAttribute("emailA", email);
-            request.setAttribute("MESSAGE", "No match, please re-enter");
-            request.getRequestDispatcher("jsp/view/validateCodeMail.jsp").forward(request, response);
+        String id = request.getParameter("aID");
+        String state = request.getParameter("state");
+        try {
+            AccountManagerDAO.changeAccountAble(id,state);
+            response.sendRedirect("displayAccountManager");
+        } catch (SQLException ex) {
+            Logger.getLogger(ChangeAdAbleState.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -37,9 +37,8 @@ public class ChangeCategoryState extends HttpServlet {
         //cID=${o.categoryID},state
         String id = request.getParameter("cID");
         String state = request.getParameter("state");
-        CategoryManagerDAO dao = new CategoryManagerDAO();
         try {
-            dao.changeCategoryState(id, state);
+            CategoryManagerDAO.changeCategoryState(id, state);
             request.getRequestDispatcher("displayCategoryManager").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ChangeCategoryState.class.getName()).log(Level.SEVERE, null, ex);

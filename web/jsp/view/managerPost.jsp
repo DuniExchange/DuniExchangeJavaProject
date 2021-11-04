@@ -14,17 +14,17 @@
   <jsp:include  page="/jsp/importer/base-css.jsp"></jsp:include>
 <title>Manager Post</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/DuniExchange/resource/css/bootstrapCheck.min.css">
+    <!--<link rel="stylesheet" href="/DuniExchange/resource/css/bootstrapCheck.min.css">-->
     
     <!-- Style -->
     <link rel="stylesheet" href="/DuniExchange/resource/css/styleCheck.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">-->
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>-->
 <style>
 body {
     color: #404E67;
@@ -222,7 +222,7 @@ $(document).ready(function(){
                         <td>${o.postLike}</td>
                         <td class="Boqua">                  
                         <label class="custom-control ios-switch">
-                            <input type="checkbox" class="ios-switch-control-input"  <c:if test="${o.isDisable==true}"> checked=""</c:if> >
+                            <input type="checkbox" class="ios-switch-control-input"  <c:if test="${o.isDisable==true}"> checked=""</c:if> onclick="location.href = 'changePostState?pID=${o.postID}&state=${o.isDisable}'">
                             <span class="ios-switch-control-indicator"></span>
                         </label>
                         </td>

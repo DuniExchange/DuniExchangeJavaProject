@@ -142,10 +142,9 @@ public class ManagerAccessDAO {
     public static boolean insertAccount(String username, String fullname, String email, String password) throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
-        ResultSet rs = null;
         String sql = "insert into "
-                + "UserAccount(userUsername,userPassword,userEmail,userFullname,isAdmin,usercreateDate,userfacebookURL,userAvatarURL,isValidate)"
-                + " values(?,?,?,?,0,?,'','',?)";
+                + "UserAccount(userUsername,userPassword,userEmail,userFullname,isAdmin,usercreateDate,userfacebookURL,userAvatarURL,isValidate,userRating)"
+                + " values(?,?,?,?,0,?,'','',?,0)";
         try {
             con = DBConnection.makeConnection();
             String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));
@@ -162,11 +161,9 @@ public class ManagerAccessDAO {
                 } else {
                     stm.setBoolean(6, true);
                 }
-                int row = stm.executeUpdate();
+                boolean check = stm.execute();
 //                System.out.println(row);
-                if (row > 0) {
-                    return true;
-                }
+                return check;
 
             }
         } catch (Exception e) {
@@ -199,4 +196,39 @@ public class ManagerAccessDAO {
             System.out.println("Khong ton tai nguoi dung");
         }
     }
+        public static boolean isHaveMail(String userEmail) throws SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        String query = "select userEmail from UserAccount where userEmail = ?";
+        String user = null;
+        try {
+            con = DBConnection.makeConnection();
+
+            if (con != null) {
+                stm = con.prepareStatement(query);
+                stm.setString(1, userEmail);
+
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    user = rs.getString(1);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return user != null;
+    }
+
 }

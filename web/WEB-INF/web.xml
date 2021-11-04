@@ -32,6 +32,14 @@
         <servlet-name>EditPostServlet</servlet-name>
         <servlet-class>Controller.Account.EditPostServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangeAdAbleState</servlet-name>
+        <servlet-class>Controller.Manager.ChangeAdAbleState</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePostState</servlet-name>
+        <servlet-class>Controller.Manager.ChangePostState</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NotificationServlet</servlet-name>
         <url-pattern>/NotificationServlet</url-pattern>
@@ -76,11 +84,23 @@
         <servlet-name>EditPostServlet</servlet-name>
         <url-pattern>/edit-post</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeAdAbleState</servlet-name>
+        <url-pattern>/changeAdAbleState</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePostState</servlet-name>
+        <url-pattern>/changePostState</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             180
         </session-timeout>
     </session-config>
+    <servlet>
+        <servlet-name>GetPostJson</servlet-name>
+        <servlet-class>Controller.JSON.GetPostJson</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>DisplayPostManager</servlet-name>
         <servlet-class>Controller.Manager.DisplayPostManager</servlet-class>
@@ -120,14 +140,6 @@
     <servlet-mapping>
         <servlet-name>ChangeAdminState</servlet-name>
         <url-pattern>/changeAdminState</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>DeleteAccount</servlet-name>
-        <servlet-class>Controller.Manager.DeleteAccount</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteAccount</servlet-name>
-        <url-pattern>/deleteAccount</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ManagerCategory</servlet-name>

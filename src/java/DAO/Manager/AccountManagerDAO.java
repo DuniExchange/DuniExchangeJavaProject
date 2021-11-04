@@ -18,7 +18,8 @@ import java.util.ArrayList;
  * @author truon
  */
 public class AccountManagerDAO {
-   public static ArrayList<UserAccount> getAllAccount() throws SQLException {
+
+    public static ArrayList<UserAccount> getAllAccount() throws SQLException {
 
         ArrayList<UserAccount> ls = new ArrayList<>();
         Connection con = null;
@@ -40,7 +41,7 @@ public class AccountManagerDAO {
                             rs.getString(4).trim(),
                             rs.getString(5).trim(),
                             rs.getString(8).trim(),
-                            rs.getBoolean(10)));
+                            rs.getBoolean(10), rs.getBoolean(12)));
                 }
             }
         } catch (Exception e) {
@@ -59,8 +60,7 @@ public class AccountManagerDAO {
 
         return ls;
     }
-   
-   
+
     public static void changeAccountAdmin(String id, String oldState) throws SQLException {
         boolean newState = false;
         if (oldState.trim().equals("false")) {
@@ -95,9 +95,12 @@ public class AccountManagerDAO {
             }
         }
     }
-    
-    
-    public static void deleteCategory(String id) throws SQLException {
+
+    public static void changeAccountAble(String id, String oldState) throws SQLException {
+        boolean newState = false;
+        if (oldState.trim().equals("false")) {
+            newState = true;
+        }
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -106,10 +109,11 @@ public class AccountManagerDAO {
             con = DBConnection.makeConnection();
 
             if (con != null) {
-                String sql = "delete UserAccount where userID = ?";
+                String sql = "update UserAccount set isDisable = ? where userID = ?";
 
                 stm = con.prepareStatement(sql);
-                stm.setInt(1, Integer.parseInt(id));
+                stm.setBoolean(1, newState);
+                stm.setInt(2, Integer.parseInt(id));
                 stm.execute();
             }
         } catch (Exception e) {
@@ -126,7 +130,7 @@ public class AccountManagerDAO {
             }
         }
     }
-    
+
     public static void main(String[] args) throws SQLException {
         AccountManagerDAO dao = new AccountManagerDAO();
         dao.changeAccountAdmin("1003", "false");

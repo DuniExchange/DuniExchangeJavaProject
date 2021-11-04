@@ -103,4 +103,39 @@ public class CategoryManagerDAO {
 //            System.out.println(l.toString());
 //        }
     }
+    
+        public static void changePostState(String id, String oldState) throws SQLException {
+        boolean newState = false;
+        if (oldState.trim().equals("false")) {
+            newState = true;
+        }
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        try {
+            con = DBConnection.makeConnection();
+
+            if (con != null) {
+                String sql = "update Post set isDisable = ? where postID = ?";
+
+                stm = con.prepareStatement(sql);
+                stm.setBoolean(1, newState);
+                stm.setInt(2, Integer.parseInt(id));
+                stm.execute();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
 }

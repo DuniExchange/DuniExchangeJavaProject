@@ -79,6 +79,12 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("username", username);
             request.setAttribute("fullname", fullname);
             request.getRequestDispatcher("displayRegisterServlet").forward(request, response);
+        }else if (ManagerAccessDAO.isHaveMail(email)) {
+            request.setAttribute("MESSAGE", "Already have this email");
+            request.setAttribute("email", email);
+            request.setAttribute("username", username);
+            request.setAttribute("fullname", fullname);
+            request.getRequestDispatcher("displayRegisterServlet").forward(request, response);
         }else{
             String grex = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\\\.[A-Za-z0-9]+)$";
             Pattern pat;

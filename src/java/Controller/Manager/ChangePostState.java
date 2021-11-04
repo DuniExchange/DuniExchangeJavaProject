@@ -5,9 +5,8 @@
  */
 package Controller.Manager;
 
-import DAO.Manager.AccountManagerDAO;
+import DAO.Manager.CategoryManagerDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author truon
  */
-public class DeleteAccount extends HttpServlet {
+public class ChangePostState extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,13 +32,14 @@ public class DeleteAccount extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("aID");
-        AccountManagerDAO dao = new AccountManagerDAO();
+        //cID=${o.categoryID},state
+        String id = request.getParameter("pID");
+        String state = request.getParameter("state");
         try {
-            dao.deleteCategory(id);
-            response.sendRedirect("displayAccountManager");
+            CategoryManagerDAO.changePostState(id, state);
+            request.getRequestDispatcher("displayPostManager").forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(DeleteAccount.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ChangePostState.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
