@@ -9,7 +9,7 @@
 <html>
 
     <head>
-        <title></title>
+        <title>Validate Code</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -182,9 +182,8 @@
     <td bgcolor="#f4f4f4" align="center" style="padding: 30px 10px 0px 10px;">
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
             <tr>
-                <td bgcolor="#FFECD1" align="center" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                    <h2 style="font-size: 20px; font-weight: 400; color: #111111; margin: 0;">Quay trở lại trang chủ</h2>
-                    <p style="margin: 0;"><a href="home"  style="color: #fd5631;">Trang chủ</a></p>
+                <td bgcolor="#ef684a" align="center" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
+                    <p style="margin: 0;"><a href="/DuniExchange"  style="color: white;">Home</a></p>
                 </td>
             </tr>
         </table>

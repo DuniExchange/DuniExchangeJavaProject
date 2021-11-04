@@ -5,8 +5,10 @@
  */
 package Controller.Email;
 
+import DAO.User.ManagerAccessDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
@@ -33,18 +35,29 @@ public class ValidateEmail extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String mail = request.getParameter("emailA");
-        String vCode = code.getRandomNumberString();
-        
-        withHTML sendmail = new withHTML();
-
-        request.setAttribute("emailA", mail);
-        request.getSession().setAttribute("codeCheck", vCode);
-        request.getRequestDispatcher("jsp/view/validateCodeMail.jsp").forward(request, response);
         try {
-            sendmail.sendHTML(mail, vCode);
-        } catch (MessagingException ex) {
+            if (ManagerAccessDAO.isHaveMail(mail)) {
+                String vCode = code.getRandomNumberString();
+
+                withHTML sendmail = new withHTML();
+
+                request.setAttribute("emailA", mail);
+                request.getSession().setAttribute("codeCheck", vCode);
+                request.getRequestDispatcher("jsp/view/validateCodeMail.jsp").forward(request, response);
+                try {
+                    sendmail.sendHTML(mail, vCode);
+                } catch (MessagingException ex) {
+                    Logger.getLogger(ValidateEmail.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                request.setAttribute("emailA", mail);
+                request.setAttribute("MESSAGE", "Do not have this email in system");
+                request.getRequestDispatcher("displayForgotPassword").forward(request, response);
+            }
+        } catch (SQLException ex) {
             Logger.getLogger(ValidateEmail.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

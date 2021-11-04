@@ -39,7 +39,7 @@ public class ValidateCodeServlet extends HttpServlet {
             request.getRequestDispatcher("displayChangeAccountInfo").forward(request, response);
         }else{
             request.setAttribute("emailA", email);
-            request.setAttribute("MESSAGE", "Không khớp, vui lòng nhập lại");
+            request.setAttribute("MESSAGE", "No match, please re-enter");
             request.getRequestDispatcher("jsp/view/validateCodeMail.jsp").forward(request, response);
         }
     }
