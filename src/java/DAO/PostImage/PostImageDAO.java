@@ -73,9 +73,7 @@ public class PostImageDAO {
                 
                 stm = con.prepareStatement(deleteQuery);
                 stm.setInt(1, PostID);
-                if(stm.executeUpdate() == 0){
-                    return -2; //delete fault
-                }
+                stm.executeUpdate();
                 
                 int successCount = 0;
                 for (String imgURL : postImageURL) {

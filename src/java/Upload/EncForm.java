@@ -52,9 +52,8 @@ public class EncForm {
                     }
                     formField.get(itemFieldName).add(itemValue);
                 } else { 
-                    System.out.println("filename: " +  item.getName());
-                    
-                    fileItems.add(item);
+                    System.out.println("filename: " +  item.getName() + " [" + item.getSize() + "]");
+                    if(!item.getName().isEmpty()) fileItems.add(item);
                 }
             }
             System.out.println("fileNames: " + fileItems.stream().map(fi -> fi.getName()).collect(Collectors.toList()));
@@ -96,7 +95,7 @@ public class EncForm {
         return "/DuniExchange/" + relativeSavePath + "/" + path;
     }
     
-    public static List<String> uploadFile(FileItem[] items, String relativeSavePath, HttpServletRequest request, ServletContext servletContext) throws Exception{
+    public static List<String> uploadFile(FileItem[] items, String relativeSavePath, HttpServletRequest request, ServletContext servletContext){
         List<String> filePaths = new ArrayList();
         for(FileItem item : items){
             String filePath = uploadFile(item, relativeSavePath, request, servletContext);

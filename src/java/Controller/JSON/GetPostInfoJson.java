@@ -6,6 +6,7 @@ package Controller.JSON;
 
 import DAO.Post.PostDAO;
 import DAO.PostCategory.PostCategoryDAO;
+import DAO.User.UserDAO;
 import Entity.Post;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -58,6 +59,7 @@ public class GetPostInfoJson extends HttpServlet {
             
             Post post = null;
             List<Integer> categories = null;
+            String postUserName;
             try {
                 post = PostDAO.getPostByPostID(Integer.parseInt(editPostID));
                 categories = PostCategoryDAO.getPostCategoriesByPostID(Integer.parseInt(editPostID));

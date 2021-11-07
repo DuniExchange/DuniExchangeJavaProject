@@ -29,9 +29,9 @@
     <!-- header import -->
     
 <!--main body-->
-    <div class="d-flex flex-column bg-primary-gradient text-regular" id="general-container">
+    <div class="d-flex flex-column bg-dark-gradient text-regular-lighter" id="general-container">
         <div>
-            <div class="container border-container container-shadow bg-opaque-primary" id="avatar-section">
+            <div class="container border-container container-shadow bg-opaque-primary-marker" id="avatar-section">
                 <div class="basic-container" id="avatar-display">
                     <div class="avatar-container">
                         <a href="${ACCOUNT.userAvatarURL}" class="avatar-link" aria-hidden="true">
@@ -53,7 +53,7 @@
         <div class="d-flex container p-0 align-items-start" id="body-section">
 
             <div class="basic-container col-4 pt-3 pe-3 d-flex" id="information-display">
-                <div class="info-container border-container container-shadow col-12 bg-opaque-primary">
+                <div class="info-container border-container container-shadow col-12 bg-opaque-primary-marker">
                     <div class="info ml-5 px-3 py-2">
                         <span class="d-block mb-2">Gmail: <div class="gmail info-text">${ACCOUNT.userEmail}</div></span>
                         <span class="d-block mb-2">Facebook: <div class="phone info-text">${ACCOUNT.userFacebookURL}</div></span>
@@ -63,7 +63,7 @@
             </div>
             
             <div class="basic-container col-8 py-3" id="function-display">
-                <div class="function-container border-container container-shadow col-12 bg-opaque-primary overflow-hidden">
+                <div class="function-container border-container container-shadow col-12 bg-opaque-primary-marker overflow-hidden">
                     <!--tab-->
                     <div class="tablinks px-4 py-3 d-flex" id="post-tablinks">
                         <div class="tablink py-2 mx-2 d-flex flex-column align-items-center" id="tab-post">
@@ -162,14 +162,14 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="cancel"></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 Do you want to delete this post?
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-action="cancel">Cancel</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-action="accept">Delete</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" data-action="accept">Delete</button>
             </div>
           </div>
         </div>
@@ -177,10 +177,10 @@
         
     <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content"> 
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-action="cancel"></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="loading-placeholder">Loading...</div>
@@ -215,13 +215,13 @@
                         </div>
                         <div class="description-container form-group input-container mb-2">
                             <label for="edit-description" class="edit-label">Description:</label>
-                            <textarea name="description" id="edit-description" class="form-control" rows="10" style="resize:none;"></textarea>
+                            <textarea name="description" id="edit-description" class="form-control" rows="2" style="resize:none;"></textarea>
                         </div>                        
                     </form>
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-action="cancel">Cancel</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
               <button type="button" class="btn btn-primary" data-action="accept">Save</button>
             </div>
           </div>
@@ -252,10 +252,10 @@
         //destroy all error
         function destroyAllError(key){
             $(`#\${key}-post-form .error-font`).remove();
-        }
-                
+        }        
         //validate create post form
-        function validate(key){
+        function validate(key, config = {isCheckFile: true}){
+            
             destroyAllError(key);
             isError = false; //set isError false first            
             let title = $(`#\${key}-title`);
@@ -267,8 +267,10 @@
                 insertError($(`#\${key}-post-form .title-container`)[0], "Must fill this field");
             }
 
-            if(img[0].files.length === 0){
-                insertError($(`#\${key}-post-form .img-container`)[0], "Must choose file");
+            if(config.isCheckFile){
+                if(img[0].files.length === 0){
+                    insertError($(`#\${key}-post-form .img-container`)[0], "Must choose file");     
+                }
             }
             
             if(cat.length === 0){

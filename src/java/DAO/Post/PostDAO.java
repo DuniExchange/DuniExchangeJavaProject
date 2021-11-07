@@ -367,44 +367,39 @@ public class PostDAO {
         return post;
     }
     
-    public static boolean updatePost(int postID, int postUserID, String postTitle, String postDescription, String postThumbnailURL) throws Exception {
+    public static boolean updatePost(int postID, int postUserID, String postTitle, String postDescription, String postThumbnailURL) throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
 
-        try {
-            con = DBConnection.makeConnection();
+        con = DBConnection.makeConnection();
 
-            if (con != null) {
-                String query = "update Post\n"
-                        + "set postTitle=?,postDescription=?,postThumbnailURL=?)\n"
-                        + "where postID=? amd postUserID=?";
-                stm = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-                stm.setString(1, postTitle);
-                stm.setString(2, postDescription);                
-                stm.setString(3, postThumbnailURL);
-                stm.setInt(4, postID);
-                stm.setInt(5, postUserID);
+        if (con != null) {
+            String query = "update Post\n"
+                    + "set postTitle=?,postDescription=?" + (postThumbnailURL.isEmpty() ? "\n"  : ",postThumbnailURL='" + postThumbnailURL + "'\n") //if postThumbnail is empty mean no thumbnail change
+                    + "where postID=? and postUserID=?";
+            stm = con.prepareStatement(query);
+            stm.setString(1, postTitle);
+            stm.setString(2, postDescription);                
+            stm.setInt(3, postID);
+            stm.setInt(4, postUserID);
 
-                int row = stm.executeUpdate();
+            int row = stm.executeUpdate();
 
-                if (row == 0) {
-                    return true;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stm != null) {
-                stm.close();
-            }
-            if (con != null) {
-                con.close();
+            if (row > 0) {
+                return true;
             }
         }
+        if (rs != null) {
+            rs.close();
+        }
+        if (stm != null) {
+            stm.close();
+        }
+        if (con != null) {
+            con.close();
+        }
+        
         return false;
     }
 }

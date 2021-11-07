@@ -11,7 +11,8 @@ function sendFormData(url, formdata){
         processData: false,
         method: 'POST',
         type: 'POST', // For jQuery < 1.9
-        success: function(response){
+        success: function(response, textStatus, jqXHR){
+            console.log(jqXHR);
             alert(response);
             return true;
         },

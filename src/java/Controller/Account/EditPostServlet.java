@@ -12,11 +12,14 @@ import Upload.EncForm;
 import Upload.EncFormResult;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +43,7 @@ public class EditPostServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             try {
@@ -56,7 +59,8 @@ public class EditPostServlet extends HttpServlet {
                 int postID = Integer.parseInt(formFields.get("postID").get(0));
                 String postTitle = formFields.get("title").get(0);                
                 String postDescription = formFields.get("description").get(0);
-                String thumbnailURL = filePathList.get(0); //for thumbnail
+                String thumbnailURL = "";
+                if(!filePathList.isEmpty()) thumbnailURL = filePathList.get(0); //for thumbnail
                 List<String> categoryIDList = formFields.get("category");
                 
                 Integer[] categoryIDs = {};
@@ -64,26 +68,32 @@ public class EditPostServlet extends HttpServlet {
                     categoryIDs = categoryIDList.stream().map(cat -> Integer.parseInt(cat)).toArray(Integer[]::new);
                 }
 //
-//                System.out.println("postID: " + postID + "accountID: " + postUserID + " postTitle: " + postTitle + " postDescription: " + postDescription + " thumbnailURL: " + thumbnailURL + "\n");
-//                System.out.println("categories:" + Arrays.toString(categoryIDs));
-                out.println("postID: " + postID + "accountID: " + postUserID + " postTitle: " + postTitle + " postDescription: " + postDescription + " thumbnailURL: " + thumbnailURL + "\n");
-                out.println("categories:" + Arrays.toString(categoryIDs));
+                System.out.println("postID: " + postID + " postUserID: " + postUserID + " postTitle: " + postTitle + " postDescription: " + postDescription + " thumbnailURL: " + thumbnailURL + "\n");
+                System.out.println("categories:" + Arrays.toString(categoryIDs));
+//                out.println("postID: " + postID + "accountID: " + postUserID + " postTitle: " + postTitle + " postDescription: " + postDescription + " thumbnailURL: " + thumbnailURL + "\n");
+//                out.println("categories:" + Arrays.toString(categoryIDs));
 //
-//                //update Post
-//                boolean isSuccess = PostDAO.updatePost(postID, postUserID, postTitle, postDescription, thumbnailURL);
-//
-//                if(isSuccess){
-//                    //update ProductImage
-//                    PostImageDAO.updatePostImageDeleteFirst(postID, filePathList.toArray(new String[filePathList.size()]));
-//                    //update CategoryPost
-//                    if(categoryIDs.length != 0) PostCategoryDAO.updatePostCategoryDeleteFirst(postID, categoryIDs);
-//                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                out.print(e.getMessage() + "\nEdit Fail!");
-                return;
+                //update Post
+                boolean isSuccess = PostDAO.updatePost(postID, postUserID, postTitle, postDescription, thumbnailURL);
+                
+                System.out.println("add post: " + isSuccess);
+                
+                if(isSuccess){
+                    //update ProductImage
+                    if(!filePathList.isEmpty()) //file path list can be empty in edit process
+                    {
+                        System.out.println("add post image " + PostImageDAO.updatePostImageDeleteFirst(postID, filePathList.toArray(new String[filePathList.size()])));
+                    }
+                    //update CategoryPost
+                    if(categoryIDs.length != 0) {
+                        System.out.println("add post category " + PostCategoryDAO.updatePostCategoryDeleteFirst(postID, categoryIDs));
+                    }
+                }
+                out.print("Edit Success!");            
+            } catch (SQLException e) {
+                out.print("Edit Fail!");
+                throw e;
             }
-            out.print("Edit Success!");
         }
     }
 
@@ -99,7 +109,7 @@ public class EditPostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.sendRedirect(request.getContextPath());
     }
 
     /**
@@ -113,7 +123,11 @@ public class EditPostServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {            
+            Logger.getLogger(EditPostServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
