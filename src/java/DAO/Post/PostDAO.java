@@ -402,4 +402,33 @@ public class PostDAO {
         
         return false;
     }
+    
+    public static int GetLike(int pid) throws SQLException{
+        Connection con = DBConnection.makeConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        
+        if (con != null) {
+            String query = "select postLike from Post where postID=?";
+            
+            stm = con.prepareStatement(query);
+            stm.setInt(1, pid);
+            
+            rs = stm.executeQuery();
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+        }
+        if (rs != null) {
+            rs.close();
+        }
+        if (stm != null) {
+            stm.close();
+        }
+        if (con != null) {
+            con.close();
+        }
+        
+        return 0;
+    }
 }

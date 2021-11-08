@@ -162,7 +162,7 @@ insert into UserAccount(userUserName,userPassword,userEmail,userFullname,isAdmin
 ('trang','$2a$12$uEAYVuMEuSu6MhbIjHX.M.yWpt/Pd23O91LHXIlOdcbdl69hdw2xS','trangttude150338@fpt.edu.vn',N'Uyên Trang',1,GETDATE(),
 'www.facebook.com/profile.php?id=100009267167030','/DuniExchange/resource/img/avatar/trang.png',1,0),
 ('khoi','$2a$12$BFtT6wdESrTNT4JMhROjnO83hDnCEIwCG1K4sIHCWx6kh2IwO0M06','khoinmde10323@fpt.edu.vn',N'Mạnh Khôi',1,GETDATE(),
-'www.facebook.com/profile.php?id=100011319337285','/DuniExchange/resource/img/avatar/khoi.png',1,0),
+'www.facebook.com/profile.php?id=100011319337285','/DuniExchange/resource/img/avatar/khoi.jpg',1,0),
 ('dat','$2a$12$h5ig0gmoeE13KBu8Ji4wguSp1diqUKFytj5bVjJpdZom/RFNxQe4K','dathdde150170@fpt.edu.vn',N'Đắc Đạt',1,GETDATE(),
 'www.facebook.com/profile.php?id=100042160700182','/DuniExchange/resource/img/avatar/Avt-Dat.jpg',1,0)
 --quang 123
@@ -248,7 +248,7 @@ N'Bộ sách "Dạy con làm giàu" gồm 13 cuốn được viết bởi Robert
 14113,'/DuniExchange/resource/img/product-img/dam-ngu-tre-em.jpg'),
 
 (2,N'Túi đeo chéo ',GETDATE(),N'Túi đeo chéo sành điệu, có thể đựng điện thoại, ví tiền hay các vật dụng khác, túi còn có thể đựng cả nghiệp của bạn',
-3751,'images/product-img/tui-deo-cheo-di-choi-03.jpg'),
+3751,'/DuniExchange/resource/img/product-img/tui-deo-cheo-di-choi-03.jpg'),
 
 (5,N'Đồng hồ đeo tay ',GETDATE(),N'Đồng hồ điện tử của hãng casio dành cho học sinh, sinh viên có thể hẹn giờ ,đặt báo thức ',
 2219,'/DuniExchange/resource/img/product-img/dongHoCasio.jpg'),
@@ -386,8 +386,7 @@ N'Bộ sách "Dạy con làm giàu" gồm 13 cuốn được viết bởi Robert
 1345,'/DuniExchange/resource/img/product-img/playstation2.jfif'),
 
 (4,N'FidgetSpinner',GETDATE(),N'Con quay Fidget Spinner có thể giúp giảm stress và bồn chồn. ',
-8244,'/DuniExchange/resource/img/Product-images/fidgetSpinner.jfif')
-select * from Post
+8244,'/DuniExchange/resource/img/product-img/fidgetSpinner.jfif')
 ---------------------------------------------------Kết thúc thêm một vài bản ghi cho bảng Post------------------------
 
 ---------------------------------------------------Bắt đầu thêm một vài bản ghi cho bảng ProductComment------------------------
@@ -500,6 +499,48 @@ select * from ViewPostAndCategory
 
 ----P2--------Trigger cho bảng Account - Mục đích: username không được trùng
 
+--Trigger dành cho LikePostUser khi cật nhập sẽ cật nhập cả Like bên phía của Post
+create trigger PostLikeUserTrigger on PostLikeUser after insert, delete
+as
+begin
+	declare @postID int;
+	if exists (select 1 from inserted)
+	   begin		
+			set @postID = (select inserted.postID from inserted);
+			update Post set postLike += 1 where postID = @postID
+	   end
+	else
+	   begin
+			set @postID = (select deleted.postID from deleted);			
+			update Post set postLike -= 1 where postID = @postID
+	   end
+end
+
+create trigger PostLikeUserPreventUpdate on PostLikeUser after update
+as
+begin
+     begin
+         raiserror('Cannot update rows',16,1) 
+         rollback transaction
+         return;
+     end
+end
+
+select * from PostLikeUser
+
+insert into PostLikeUser values (1, 2)
+insert into PostLikeUser values (4, 2)
+insert into PostLikeUser values (7, 2)
+insert into PostLikeUser values (1, 3)
+insert into PostLikeUser values (4, 3)
+insert into PostLikeUser values (7, 3)
+insert into PostLikeUser values (1, 4)
+insert into PostLikeUser values (4, 4)
+insert into PostLikeUser values (7, 4)
+insert into PostLikeUser values (1, 5)
+insert into PostLikeUser values (4, 5)
+insert into PostLikeUser values (7, 5)
+update PostLikeUser set userID=2 where postID = 68
 --B1-<KHONG CAN CUNG DUOC>--Tạo function trả về bảng username trùng với giá trị nhập vào-----------
 
 --create function checkUsernameExist (@username varchar(20)) returns table
@@ -526,19 +567,6 @@ begin
 			commit transaction
 		end
 end
-
---Ví dụ
-select * from Account
-insert into Account(username,userPassword,userEmail,userFullname,isAdmin,createDate,facebookURL,userImage) values
-('trang23','banana','trangttude150338@fpt.edu.vn',N'Uyên Trang',1,GETDATE(),
-'www.facebook.com/profile.php?id=100009267167030',''),
-('khoi','abcd','khoinmde150323@fpt.edu.vn',N'Mạnh Khôi',1,GETDATE(),
-'www.facebook.com/profile.php?id=100011319337285',''),
-('quang','123','quanglnnde150066@fpt.edu.vn',N'Nhật Quang LNN',1,GETDATE(),
-'www.facebook.com/profile.php?id=100008194183640',''),
-('minky','ykniM','tinhhhde150357@fpt.edu.vn',N'Hồ Hữu Tình',1,GETDATE(),
-'www.facebook.com/minky.lg2d','')
-
 ----Hết P2----------------------------------------------------------------------------------------------------------
 
 ----P3--------Trigger cho bảng Category - Mục đích: categoryName không được trùng

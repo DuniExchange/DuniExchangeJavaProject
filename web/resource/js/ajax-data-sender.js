@@ -10,16 +10,7 @@ function sendFormData(url, formdata){
         contentType: false,
         processData: false,
         method: 'POST',
-        type: 'POST', // For jQuery < 1.9
-        success: function(response, textStatus, jqXHR){
-            console.log(jqXHR);
-            alert(response);
-            return true;
-        },
-        error: function(jqXHR, textStatus, errorThrown){
-            alert(errorThrown + ' ' + textStatus);
-            return false;
-        }
+        type: 'POST' // For jQuery < 1.9
     });
 }
 

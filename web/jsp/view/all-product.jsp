@@ -3,7 +3,10 @@
     Created on : Oct 22, 2021, 3:23:20 PM
     Author     : ADMIN
 --%>
+<%@page import="org.apache.taglibs.standard.tag.common.sql.ResultImpl"%>
+<%@page import="java.util.SortedMap"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,12 +17,9 @@
         <!--  base css importing-->
         <jsp:include  page="/jsp/importer/base-css.jsp"></jsp:include>
             <!-- allProduct css -->
-            <link rel="stylesheet" href="/DuniExchange/resource/css/all-product.css">
-            <!--<link rel="stylesheet" href="/DuniExchange/resource/css/home.css">-->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-            <title>All Product</title>
-        </head>
+        <link rel="stylesheet" href="/DuniExchange/resource/css/all-product.css">
+        <title>All Product</title>
+    </head>
         <body>
             <!-- header import -->
         <jsp:include page="/jsp/importer/header.jsp"></jsp:include>
@@ -147,20 +147,34 @@
                             </div>
                         </div>
                         <div class="row">
+                            
+                        <sql:setDataSource var="db" driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                            url="jdbc:sqlserver://localhost:1433;databaseName=DuniExchange"  
+                            user="sa"  password="admin"/>  
                         <c:forEach items="${listPost_Account}" var="o">
                             <c:if test="${o.isUsedExchange != 2}">
-                            <div class="col-lg-4 col-sm-6 mb-4 latest-post-product">
+                            <div class="col-lg-4 col-sm-6 mb-4 latest-post-product post" data-id="${o.postID}">
                                 <div class="latest-post-img-cover">
                                     <!-- <img src="resource/img/product-img/dam-ngu-tre-em.jpg" alt="" class="img-fluid"> -->
                                     <div class="all-product-img"
                                          style="background:linear-gradient(to bottom, rgba(37, 37, 37, 0) 75%, rgb(37, 37, 37)), url('${o.postThumbnailURL}');">
                                     </div>
-                                    <a href="#"><button class="like-button btn">
-                                            <span style="margin-top: 2px;">
-                                                <i class="far fa-heart"></i>
-                                            </span>
-                                        </button>
-                                    </a>
+                                    <sql:query dataSource="${db}" var="rs">  
+                                        select * from PostLikeUser where userID=? and PostID=?;  
+                                        <sql:param value="${sessionScope.currentAccount.userID}" />
+                                        <sql:param value="${o.postID}" />
+                                    </sql:query>
+                                    <c:set var="isLiked" value="${not empty rs.rows[0]}"/>
+                                     <%
+                                         SortedMap[] sm = ((ResultImpl)pageContext.findAttribute("rs")).getRows();
+                                         if(sm.length != 0) System.out.println(sm[0].values());
+                                         System.out.println(pageContext.findAttribute("isLiked"));
+                                     %>
+                                    <div class="like-button btn ${isLiked ? "liked" : ""}">
+                                        <span class="like-icon" style="margin-top: 2px;">
+                                            <i class="${isLiked ? "fas" : "far"} fa-heart"></i>
+                                        </span>
+                                    </div>
                                     <c:if test="${o.post_AccountID != currentAccount.userID}">
                                         <div class="position-absolute" style="left: 20px; top: 22.5px">
                                             <a href="#" class="badge badge-primary exchange" data-bs-toggle="modal" data-bs-target="#exchangeModal">Exchange now</a>
@@ -169,8 +183,8 @@
                                     </c:if>
                                     <ul class="list-description-absolute">
                                         <li class="list-description-item">
-                                            <span><i class="far fa-heart"></i></span>
-                                            <span>${o.postLike}</span>
+                                            <span class="like-icon"><i class="far fa-heart"></i></span>
+                                            <span class="post-like">${o.postLike}</span>
                                         </li>
                                         <li class="list-description-item">
                                             <span><i class="far fa-comment-alt-dots"></i></span>
@@ -500,9 +514,14 @@
                 </div>
             </div>
 
-        </div> 
+        <!-- footer import -->
+        <%--<jsp:include page="/jsp/importer/footer.jsp"></jsp:include>--%>
+        <!-- footer import -->
+        <jsp:include page="/jsp/importer/base-js.jsp"></jsp:include>
+        <script src="/DuniExchange/resource/js/ajax-data-sender.js"></script>
+        <script src="/DuniExchange/resource/js/like-product.js"></script>
         <script>
-            $(document).ready(function () {
+            $(document).ready(function(){
                 $('div .exchange').on('click', function () {
                     var id = $(this).parent().find("#secondPostID").val();
                     console.log(id);
@@ -510,14 +529,5 @@
                 });
             });
         </script>
-
-        </div>       
-
-        <!-- footer import -->
-        <%--<jsp:include page="/jsp/importer/footer.jsp"></jsp:include>--%>
-        <!-- footer import -->
-        <jsp:include page="/jsp/importer/base-js.jsp"></jsp:include>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
     </body>
 </html>

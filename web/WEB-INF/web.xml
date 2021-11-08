@@ -229,6 +229,14 @@
         <servlet-name>DisplayHomeServlet</servlet-name>
         <url-pattern>/DisplayHomeServlet</url-pattern>
     </servlet-mapping>
+        <servlet>
+        <servlet-name>LikePostServlet</servlet-name>
+        <servlet-class>Controller.LikePost.LikePostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LikePostServlet</servlet-name>
+        <url-pattern>/like-post</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/resource/*</url-pattern>

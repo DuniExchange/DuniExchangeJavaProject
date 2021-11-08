@@ -7,7 +7,9 @@ $('#tab-post').trigger('click'); //choose begin tab
 //need multipart-form.js
 $('#create-post-button').on('click', function(){
     if(validate('create')){
-        sendFormData('create-post', new FormData($('#create-post-form')[0])); //send form data
+        sendFormData('create-post', new FormData($('#create-post-form')[0])).done(function(e){
+            alert(e);
+        }); //send form data
         clearForm('create');
     }
 });
@@ -100,8 +102,9 @@ $('.edit-button').on('click.edit.post', function(){
                 let formData = new FormData($('#edit-post-form')[0]);
                 formData.append('postID', currentActivePost.data('id'));
                 
-                sendFormData('edit-post', formData).done(function(){
+                sendFormData('edit-post', formData).done(function(e){
                     loadUpdatePost(currentActivePost); //after send success, update post
+                    alert(e);
                 });
             }
         }

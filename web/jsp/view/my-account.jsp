@@ -83,7 +83,7 @@
                             <div>
                                 <c:forEach items="${POST_LIST}" var="post">
                                     <c:if test="${not post.isDisable}">
-                                        <div class="post d-flex bg-primary px-3 border-container mb-3" data-id="${post.postID}">
+                                        <div class="post d-flex bg-white-marker px-3 border-container mb-3" data-id="${post.postID}">
                                             <div class="imgp">
                                                 <img src="${post.postThumbnailURL}" style="" alt="anh san pham">
                                             </div>
@@ -231,9 +231,9 @@
     <jsp:include page="/jsp/importer/base-js.jsp"></jsp:include>
   
     <script src="/DuniExchange/resource/js/tab-toggle.js"></script>
+    <script src="/DuniExchange/resource/js/ajax-data-sender.js"></script>
     <script src="/DuniExchange/resource/js/my-account/my-account.js"></script>
     <script src="/DuniExchange/resource/js/my-account/upload-preview.js"></script>
-    <script src="/DuniExchange/resource/js/ajax-data-sender.js"></script>
     
     <script type="text/javascript">
         var isError = false;

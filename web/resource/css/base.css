@@ -210,6 +210,9 @@ link: https://lingtalfi.com/bootstrap4-color-generator#
     background-color: #ffeeee26;
 }
 
+.bg-white-marker{
+    background-color: #ffffff33;
+}
 
 a.bg-primary:hover,
 a.bg-primary:focus,
@@ -429,7 +432,7 @@ a.text-primary:focus {
 /*scrollbar custom*/
 ::-webkit-scrollbar-track
 {
-    background-color: #d7492a;
+    background-color: initial;
     border-radius: 2rem;
 }
 ::-webkit-scrollbar
@@ -439,11 +442,11 @@ a.text-primary:focus {
 
 ::-webkit-scrollbar-thumb
 {
-    background-color: purple;
+    background-color: var(--primary-color);
     border-radius: 2rem;
 }
 
 ::-webkit-scrollbar-thumb:active
 {
-    background-color: var(--text-light-hover);
+    background-color: var(--primary-color-hover);
 }
