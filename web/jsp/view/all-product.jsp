@@ -204,7 +204,7 @@
                                                 <div class="text-center"><img style="border-radius: 50%; object-fit: cover;"
                                                                               src="${o.userImage}" alt="" width="40px" height="40px">
                                                 </div>
-                                                <div class="text-center">${o.userFullname}</div>
+                                                <div class="text-center"><a href="viewUserProfileServlet?idU=${o.post_AccountID}">${o.userFullname}</a></div>
                                             </div>
                                         </div>
                                         <ul class="list-description d-flex  align-items-center">

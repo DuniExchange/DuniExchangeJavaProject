@@ -40,6 +40,10 @@
         <servlet-name>ChangePostState</servlet-name>
         <servlet-class>Controller.Manager.ChangePostState</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewUserProfileServlet</servlet-name>
+        <servlet-class>Controller.ViewUserProfile.ViewUserProfileServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NotificationServlet</servlet-name>
         <url-pattern>/NotificationServlet</url-pattern>
@@ -91,6 +95,10 @@
     <servlet-mapping>
         <servlet-name>ChangePostState</servlet-name>
         <url-pattern>/changePostState</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewUserProfileServlet</servlet-name>
+        <url-pattern>/viewUserProfileServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -229,7 +237,7 @@
         <servlet-name>DisplayHomeServlet</servlet-name>
         <url-pattern>/DisplayHomeServlet</url-pattern>
     </servlet-mapping>
-        <servlet>
+    <servlet>
         <servlet-name>LikePostServlet</servlet-name>
         <servlet-class>Controller.LikePost.LikePostServlet</servlet-class>
     </servlet>

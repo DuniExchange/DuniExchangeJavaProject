@@ -27,7 +27,7 @@ public class ManagerAccessDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
 
-        String query = "select userUserName from UserAccount where userUserName = ?";
+        String query = "select userUserName from UserAccount where userUserName = ? and isDisable = 0";
         String user = null;
         try {
             con = DBConnection.makeConnection();
@@ -201,7 +201,7 @@ public class ManagerAccessDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
 
-        String query = "select userEmail from UserAccount where userEmail = ?";
+        String query = "select userEmail from UserAccount where userEmail = ? and isDisable = 0";
         String user = null;
         try {
             con = DBConnection.makeConnection();
